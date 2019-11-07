@@ -8,6 +8,6 @@ var accountSchema = new Schema ({
     collection: "accounts"
 })
 
-var accountSchema = mongoose.model('Account', accountSchema)
+var Account = mongoose.model('Accounts', accountSchema)
 
-module.exports = accountSchema;
+module.exports = Account;

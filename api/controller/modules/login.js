@@ -1,7 +1,7 @@
 module.exports.login = (model, req, res) => {
+    var response = { error: null, data: null }
     model.findOne(
         { username: req.body.username, password: req.body.password }, (err, data) => {
-            var response = { error: null, data: null }
             if (err) {
                 response.error = { status: true, message: err };
             } else {
