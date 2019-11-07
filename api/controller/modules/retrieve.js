@@ -1,4 +1,3 @@
-let models = require("../model/accounts");
 
 let retrieveOne = (model,req,res) => {
 // model - from server to database
@@ -6,9 +5,8 @@ let retrieveOne = (model,req,res) => {
 // res - from server to client
     res.send("hello")
 }
-let retrieveAll = (res) => {
-    models.Accounts.find({}, (err, account) => {
-
+let retrieveAll = (Account, res) => {
+    Account.find({}, (err, account) => {
         if (err) {
             res.status(200).send({ error: { body: err, message: "no account", status: true }, success: false, data: null })
         } else {
