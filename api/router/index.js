@@ -3,7 +3,7 @@ const express = require("express");
 const routes = express.Router();
 const controller = require('../controller/mainController');
 
-routes.route('/retrieve').get((req,res)=>{
+routes.route('/retrieve').post((req,res)=>{
     controller.retrieve(res);
 })
 

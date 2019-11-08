@@ -1,5 +1,6 @@
+let response = { error: null, data: null }
+
 module.exports.login = (model, req, res) => {
-    var response = { error: null, data: null }
     model.findOne(
         { username: req.body.username, password: req.body.password }, (err, data) => {
             if (err) {
