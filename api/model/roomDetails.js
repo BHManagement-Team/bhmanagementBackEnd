@@ -26,5 +26,7 @@ var roomSchema = new Schema ({
         type: Number,
         required: true
     }
+}, {
+    collection: "roomDetails"
 })
 var roomSchema = mongoose.model('roomDetails', roomSchema)

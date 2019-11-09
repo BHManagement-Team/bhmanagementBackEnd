@@ -5,7 +5,7 @@ var accountSchema = new Schema ({
     username: String,
     password: String
 }, {
-    collection: "accounts"
+    collection: "Accounts"
 })
 var Account = mongoose.model('Accounts', accountSchema)
 
