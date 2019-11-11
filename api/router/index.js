@@ -21,4 +21,10 @@ routes.route('/deleteAccount').post((req, res) => {
     mainController.removeAccount(req,res);
 })
 
+
+routes.route('/retrieveAllMatchAccount').post((req, res) => {
+    mainController.retrieveAllAccount(req,res);
+})
+
+
 module.exports = routes

@@ -4,7 +4,7 @@ const modules = {
     retrieve: require("./modules/retrieve"),
     createAccount: require("./accounts/create"),
     deleteAccount: require("./accounts/delete"),
-
+    retrieveAllAccount: require("./accounts/retrieve"),
 }
 
 let retrieve = (res) => {
@@ -22,9 +22,13 @@ let removeAccount = (req, res) => {
     modules.deleteAccount(req, res)
 }
 
+let retrieveAllAccount = (req, res) => {
+    // modules.retrieve.retrieveOne()
+    modules.retrieveAllAccount.retrieveAll(req, res)
+}
 
 let login = (req, res) => {
     console.log("entered");
     modules.login.login(Account, req, res)
 }
-module.exports = { login, retrieve, addAccount, removeAccount };
+module.exports = { login, retrieve, addAccount, removeAccount, retrieveAllAccount };
