@@ -2,7 +2,7 @@ let models = require('../../model/account');
 var response = { error: false, success: false, data: null }
 
 let deleteOne = (req, res) => {
-    models.deleteOne({ _id: req.body.id }, (err) => {
+    models.delete({ _id: req.body.id }, (err) => {
         if (err) {
             response.status = 400
             response.error = true
@@ -32,7 +32,7 @@ let deleteMany = (req, res) => {
             response.status = 200
             response.error = false
             response.success = true
-            response.message = "Successfully Deleted from DB!"
+            response.message = "Successfully Deleted Many from DB!"
             // res.status(200).send({ error: false, success: true })
         }
     })

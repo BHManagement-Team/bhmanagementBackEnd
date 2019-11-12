@@ -4,31 +4,33 @@ const modules = {
     retrieve: require("./modules/retrieve"),
     createAccount: require("./accounts/create"),
     deleteAccount: require("./accounts/delete"),
-    retrieveAllAccount: require("./accounts/retrieve"),
+    retrieveAccount: require("./accounts/retrieve"),
 }
 
 let retrieve = (res) => {
-    // modules.retrieve.retrieveOne()
     modules.retrieve.retrieveAll(Account, res)
 }
 
 let addAccount = (req, res) => {
-    // modules.retrieve.retrieveOne()
     modules.createAccount(req, res)
 }
 
-let removeAccount = (req, res) => {
-    // modules.retrieve.retrieveOne()
-    modules.deleteAccount(req, res)
+let retrieveAllAccount = (req, res) => {
+    modules.retrieveAccount.retrieveAll(req, res)
 }
 
-let retrieveAllAccount = (req, res) => {
-    // modules.retrieve.retrieveOne()
-    modules.retrieveAllAccount.retrieveAll(req, res)
+let retrieveOneAccount = (req, res) => {
+    modules.retrieveAccount.retrieveOne(req, res)
 }
+
+let removeAccount = (req, res) => {
+    modules.deleteAccount.deleteOne(req, res)
+}
+
 
 let login = (req, res) => {
     console.log("entered");
     modules.login.login(Account, req, res)
 }
-module.exports = { login, retrieve, addAccount, removeAccount, retrieveAllAccount };
+
+module.exports = { login, retrieve, addAccount, retrieveAllAccount, retrieveOneAccount, removeAccount };

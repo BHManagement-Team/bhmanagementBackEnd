@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 const dbConfig = "mongodb://localhost:27017/dbBhm";
 
 mongoose.Promise = global.Promise;
-console.log("Connecting..,");
+console.log("Connecting to the Server..,");
 mongoose.connect(dbConfig, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -20,7 +20,7 @@ mongoose.connect(dbConfig, {
     if (err) {
         console.log("error : " + err);
     } else {
-        console.log("database is connected!");
+        console.log("MongoDB is connected!");
     }
 });
 
