@@ -2,11 +2,7 @@ const AccountModel = require('../../model/account');
 let response = { error: false, success: false }
 
 let update = (req, res) => {
-    var query = { username: req.body.username, password: req.body.password };
-    req.newData.username = req.body.username;
-    req.newData.password = req.body.password;
-
-    AccountModel.Account.findOneAndUpdate(query, req.newData, { upsert: true },
+    AccountModel.Account.findOneAndUpdate({_id:req.body.id},req.body,{ upsert: true },
         (err, account) => {
             if (err) {
                 response.error = true
