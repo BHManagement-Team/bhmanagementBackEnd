@@ -5,8 +5,8 @@ var accountSchema = new Schema({
     username: String,
     password: String
 }, {
-    collection: "Accounts"
+    collection: "Sample"
 })
-var Account = mongoose.model('Accounts', accountSchema)
+var Account = mongoose.model('Sample', accountSchema)
 
 module.exports = { Account };

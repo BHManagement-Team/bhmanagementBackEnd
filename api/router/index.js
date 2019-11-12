@@ -14,9 +14,15 @@ routes.route('/createAccount').post((req, res) => {
     mainController.addAccount(req, res);
 })
 
-
 routes.route('/deleteAccount').post((req, res) => {
     mainController.removeAccount(req, res);
+})
+
+routes.route('/deleteAllAccount').post((req, res) => {
+    console.log(">>>>>>>>>delete")
+    mainController.removeAllAccount(req, res);
+    console.log(">>>>>>>>>DONEdelete")
+
 })
 
 
@@ -28,9 +34,7 @@ routes.route('/retrieveAccount/').post((req, res) => {
     mainController.retrieveOneAccount(req, res);
 })
 
-routes.route('/removeAccount/').post((req, res) => {
-    mainController.removeAccount(req, res);
-})
+
 
 routes.route('/login').post((req, res) => {
     mainController.login(req, res);

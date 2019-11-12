@@ -26,11 +26,13 @@ let retrieveOneAccount = (req, res) => {
 let removeAccount = (req, res) => {
     modules.deleteAccount.deleteOne(req, res)
 }
-
+let removeAllAccount = (req, res) => {
+    modules.deleteAccount.deleteMany(req, res)
+}
 
 let login = (req, res) => {
     console.log("entered");
     modules.login.login(Account, req, res)
 }
 
-module.exports = { login, retrieve, addAccount, retrieveAllAccount, retrieveOneAccount, removeAccount };
+module.exports = { login, retrieve, addAccount, retrieveAllAccount, retrieveOneAccount, removeAccount, removeAllAccount };
