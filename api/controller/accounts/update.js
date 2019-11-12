@@ -6,6 +6,7 @@ let updateOne = (req, res) => {
     models.Account.findByIdAndUpdate(
         { _id: req.body._id }, //find match item in DB
         req.body,//the update to be made
+        { upsert: true }, 
         { new: true }, //to return the latest update not the pre update one
         (err, data) => { //callback function
             if (err) { // Handle any possible database errors
