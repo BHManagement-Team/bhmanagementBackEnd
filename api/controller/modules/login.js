@@ -1,4 +1,6 @@
-let response = { error: null, data: null }
+const AccountModel = require('../../model/account');
+
+let response = { error: false, success: false }
 
 module.exports.login = (model, req, res) => {
     model.findOne(

@@ -1,14 +1,27 @@
 
 const express = require("express");
 const routes = express.Router();
-const controller = require('../controller/mainController');
+const mainController = require('../controller/mainController');
 
-routes.route('/retrieve').post((req,res)=>{
-    controller.retrieve(res);
+
+routes.route('/createAccount').post((req,res)=>{
+    mainController.create(req,res);
+})
+
+routes.route('/retrieveAll').post((req, res)=>{
+    mainController.retrieveAll(req, res);
+})
+
+routes.route('/retrieveOne').post((req,res)=>{
+    mainController.retrieveOne(req, res);
+})
+
+routes.route('/update').post((req,res)=>{
+    mainController.update(req, res);
 })
 
 routes.route('/login').post((req,res)=>{
-    controller.login(req, res);
+    mainController.login(req, res);
 })
 
 

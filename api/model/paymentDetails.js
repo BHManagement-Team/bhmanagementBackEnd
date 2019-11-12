@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var paymentSchema = new Schema ({
-    occupantID: {
+    paymentID: {
         type: occupantID,
         required: true,
         unique:true

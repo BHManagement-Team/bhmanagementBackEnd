@@ -10,7 +10,6 @@ const mongoose = require("mongoose");
 const dbConfig = "mongodb://localhost:27017/dbBhm";
 
 mongoose.Promise = global.Promise;
-console.log("Connecting..,");
 mongoose.connect(dbConfig, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -20,18 +19,17 @@ mongoose.connect(dbConfig, {
     if (err) {
         console.log("error : " + err);
     } else {
-        console.log("database is connected!");
+        console.log("Database is connected!");
     }
 });
-
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true, limit: "20mb" }));
 app.use(bodyParser.json({ limit: "20mb" }));
 
-app.use("/bhm", router)
+app.use("/bhm", router);
 
 
 app.listen(port, () => {
-    console.log("Server is running in port..," + port)
+    console.log("Server is running in port " + port)
 })

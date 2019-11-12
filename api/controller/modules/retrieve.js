@@ -1,24 +1,44 @@
-let response = { error: null, success: null }
+const AccountModel = require('../../model/account');
+let response = { error: false, success: false }
 
-let retrieveOne = (model, req, res) => {
-    // model - from server to database
-    // req - from client to server
-    // res - from server to client
-    res.send("hello")
-}
-let retrieveAll = (Account, res) => {
-    Account.find({}, (err, account) => {
+let retrieveAll = (req, res) => {
+    AccountModel.Account.find({}, (err, account) => {
         if (err) {
-            response = { error: { body: err, message: "no account", status: true }, success: false, data: null }
+            response.error = true
+            response.status= 404
+            response.success= false
+            response.data = err
+            response.message = "No account found!" 
         } else {
             response = { error: false, success: true, data: account }
         }
     }).catch(err => {
         if (err) {
-            response = { error: { body: err, message: "service unavailable", status: true }, success: false, data: null }
+            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
         }
     });
-    res.status(200).send(response);
+    res.send(response);
 }
 
-module.exports = { retrieveOne, retrieveAll }
+
+let retrieveOne = (req, res) => {
+    AccountModel.Account.findOne({_id: req.body.id},
+         (err, account) => {
+        if (err) {
+            response.error = true
+            response.status= 404
+            response.success= false
+            response.data = err
+            response.message = "No account found!" 
+        } else {
+            response = { error: false, success: true, data: account }
+        }
+    }).catch(err => {
+        if (err) {
+            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+        }
+    });
+    res.send(response);
+}
+
+module.exports = {retrieveOne, retrieveAll }
