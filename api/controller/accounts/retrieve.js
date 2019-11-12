@@ -15,7 +15,7 @@ let retrieveAll = (req, res) => {
             response.error = false
             response.success = true
             response.data = result
-            response.message = "Successful!"
+            response.message = "Successfully Retrieve All!"
             // response = { error: false, success: true, data: account }
         }
     }).catch(err => {

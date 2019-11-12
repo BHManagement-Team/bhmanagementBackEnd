@@ -2,7 +2,7 @@ let models = require('../../model/account');
 var response = { error: false, success: false, data: null }
 
 let deleteOne = (req, res) => {
-    models.Account.findByIdAndRemove({ _id: req.body.id }, (err,data) => {
+    models.Account.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, data) => {
         if (err) {
             response.status = 400
             response.error = true
@@ -23,7 +23,7 @@ let deleteOne = (req, res) => {
 }
 
 let deleteMany = (req, res) => {
-    models.Account.deleteMany({}, (err,data) => {
+    models.Account.deleteMany({}, (err, data) => {
         if (err) {
             response.status = 400
             response.error = true
