@@ -14,12 +14,14 @@ module.exports = (req, res) => {
             response.error = false
             response.success = true
             response.data = result
+            response.message = "Successfully Created!"
         })
         .catch(err => {
-            response.status = 404
+            response.status = 503
             response.error = true
             response.success = false
             response.data = err
+            response.message = "Service Unavailable!"
         })
     res.send(response)
 }

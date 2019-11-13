@@ -10,7 +10,10 @@ routes.route('/retrieve').post((req, res) => {
 })
 
 routes.route('/createAccount').post((req, res) => {
+    console.log(req.body);    
     mainController.addAccount(req, res);
+    console.log(">>>>>>>created");
+    
 })
 
 routes.route('/retrieveAllAccount').post((req, res) => {
