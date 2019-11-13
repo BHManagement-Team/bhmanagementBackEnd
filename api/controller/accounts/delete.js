@@ -4,7 +4,7 @@ var response = { error: false, success: false, data: null }
 let deleteOne = (req, res) => {
     models.Account.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, data) => {
         if (err) {
-            response.status = 400
+            response.status = 404
             response.error = true
             response.success = false
             response.message = "No Data from DB!"
@@ -19,13 +19,19 @@ let deleteOne = (req, res) => {
             // res.status(200).send({ error: false, success: true })
         }
     })
+    .catch((err) => {
+        response.status = 503
+        response.error = true
+        response.data = err
+        response.message = "Service Unavailable!"
+    })
     res.status(200).send(response);
 }
 
 let deleteMany = (req, res) => {
     models.Account.deleteMany({}, (err, data) => {
         if (err) {
-            response.status = 400
+            response.status = 404
             response.error = true
             response.success = false
             response.data = err
@@ -39,6 +45,15 @@ let deleteMany = (req, res) => {
             response.message = "Successfully Deleted Many from DB!"
             // res.status(200).send({ error: false, success: true })
         }
+    })
+    .then((result) => {
+        response.data = result
+    })
+    .catch((err) => {
+        response.status = 503
+        response.error = true
+        response.data = err
+        response.message = "Service Unavailable!"
     })
     res.status(200).send(response);
 }
