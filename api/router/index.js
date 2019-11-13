@@ -20,6 +20,14 @@ routes.route('/update').post((req,res)=>{
     mainController.update(req, res);
 })
 
+routes.route('/deleteAll').post((req,res)=>{
+    mainController.deleteAll(req, res);
+})
+
+routes.route('/deleteOne').post((req,res)=>{
+    mainController.deleteOne(req, res);
+})
+
 routes.route('/login').post((req,res)=>{
     mainController.login(req, res);
 })

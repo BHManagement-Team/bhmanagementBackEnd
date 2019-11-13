@@ -1,4 +1,4 @@
-const AccountModel = require('../../model/account');
+const AccountModel = require('../../../model/account');
 
 let response = { error: false, success: false }
 
