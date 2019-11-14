@@ -74,6 +74,9 @@ routes.route('/deleteOccupantByID/:id').post((req,res)=>{
     mainController.occDeleteByID(req, res);
 })
 
-
+//Routes for Rooms
+routes.route('/createRoom').post((req, res)=>{
+    mainController.roomCreate(req, res);
+})
 
 module.exports = routes

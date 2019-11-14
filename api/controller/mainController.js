@@ -7,7 +7,8 @@ const modules = {
     occCreate: require("./modules/OccupantsCRUD/createOcc"),
     occRetrieve: require("./modules/OccupantsCRUD/retrieveOcc"), 
     occUpdate: require("./modules/OccupantsCRUD/updateOcc"),
-    occDelete: require("./modules/OccupantsCRUD/deleteOcc")
+    occDelete: require("./modules/OccupantsCRUD/deleteOcc"),
+    roomCreate: require("./modules/RoomCRUD/createRoom")
 }
 //CRUD for Accounts
 let create = (req, res) =>{
@@ -81,7 +82,14 @@ let occDeleteByID = (req, res)=>{
     modules.occDelete.deleteOccupantByID(req, res)
 }
 
+//CRUD for Rooms
+
+let roomCreate = (req, res)=>{
+    modules.roomCreate.createRoom(req,res)
+}
+
 
 module.exports = { create, retrieveAll, retrieveOne , retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate ,
-    occRetrieveAll , occRetrieveOne,  occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID
+    occRetrieveAll , occRetrieveOne,  occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
+    roomCreate
 };
