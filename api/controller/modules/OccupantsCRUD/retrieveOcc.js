@@ -1,14 +1,14 @@
-const AccountModel = require('../../../model/account');
+const OccupantModel = require('../../../model/occupantDetails');
 let response = { error: false, success: false }
 
-let retrieveAll = (req, res) => {
-    AccountModel.Account.find({}, (err, account) => {
+let retrieveAllOccupants = (req, res) => {
+    OccupantModel.occupantSchema.find({}, (err, account) => {
         if (err) {
             response.error = true
             response.status= 404
             response.success= false
             response.data = err
-            response.message = "No account found!" 
+            response.message = "No occupant found!" 
         } else {
             response = { error: false, success: true, data: account }
         }
@@ -21,15 +21,15 @@ let retrieveAll = (req, res) => {
 }
 
 
-let retrieveOne = (req, res) => {
-    AccountModel.Account.findOne({_id: req.body.id},
+let retrieveOneOccupant = (req, res) => {
+    OccupantModel.occupantSchema.findOne({_id: req.body.id},
          (err, account) => {
         if (err) {
             response.error = true
             response.status= 404
             response.success= false
             response.data = err
-            response.message = "No account found!" 
+            response.message = "No occupant found!" 
         } else {
             response = { error: false, success: true, data: account }
         }
@@ -42,15 +42,15 @@ let retrieveOne = (req, res) => {
 }
 
 
-let retrievebyId = (req, res) => {
-    AccountModel.Account.findOne({_id: req.params.id},
+let retrieveOccbyId = (req, res) => {
+    OccupantModel.occupantSchema.findOne({_id: req.params.id},
          (err, account) => {
         if (err) {
             response.error = true
             response.status= 404
             response.success= false
             response.data = err
-            response.message = "No account found!" 
+            response.message = "No occupant found!" 
         } else {
             response = { error: false, success: true, data: account }
         }
@@ -62,4 +62,4 @@ let retrievebyId = (req, res) => {
     res.send(response);
 }
 
-module.exports = {retrieveOne, retrieveAll, retrievebyId }
+module.exports = {retrieveAllOccupants, retrieveOneOccupant, retrieveOccbyId }
