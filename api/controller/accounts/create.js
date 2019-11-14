@@ -1,7 +1,7 @@
 let models = require('../../model/account');
 var response = { error: false, success: false, data: null }
 
-module.exports = (req, res) => {
+let createAccount = (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     let account = new models.Account({
@@ -25,3 +25,5 @@ module.exports = (req, res) => {
         })
     res.send(response)
 }
+
+module.exports = { createAccount }

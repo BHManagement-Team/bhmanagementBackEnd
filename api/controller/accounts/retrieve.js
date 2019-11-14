@@ -48,9 +48,10 @@ let retrieveOne = (req, res) => {
         }
     }).catch(err => {
         if (err) {
-            response.status = 404
+            response.status = 503
             response.error = true
             response.data = err
+            response.message = "Service Unavailable!"
             // response = { error: { body: err, message: "service unavailable", status: true }, success: false, data: null }
         }
     });
