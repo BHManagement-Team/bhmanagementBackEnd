@@ -34,12 +34,12 @@ let retrieveAll = (req, res) => {
 }
 
 let retrieveOne = (req, res) => {
-    models.Account.find({ username: req.body.username }, (err, result) => {
+    models.Account.find({ username: req.body.username }, { password: req.body.password }, (err, result) => {
         if (err) {
             response.status = 404
             response.success = true
             response.data = result
-            response.message = "No Document found!"
+            response.message = "No Account found!"
             // response = { error: { body: err, message: "no result", status: true }, success: false, data: null }
         } else {
             var token = jwt.sign({
@@ -55,15 +55,15 @@ let retrieveOne = (req, res) => {
             // response = { error: false, success: true, data: account }
         }
     })
-    .catch(err => {
-        if (err) {
-            response.status = 503
-            response.error = true
-            response.data = err
-            response.message = "Service Unavailable!"
-            // response = { error: { body: err, message: "service unavailable", status: true }, success: false, data: null }
-        }
-    });
+        .catch(err => {
+            if (err) {
+                response.status = 503
+                response.error = true
+                response.data = err
+                response.message = "Service Unavailable!"
+                // response = { error: { body: err, message: "service unavailable", status: true }, success: false, data: null }
+            }
+        });
     res.send(response);
 }
 

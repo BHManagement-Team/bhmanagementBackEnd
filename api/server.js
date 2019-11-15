@@ -1,4 +1,4 @@
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -32,6 +32,6 @@ app.use(bodyParser.json({ limit: "20mb" }));
 app.use("/bhm", router)
 
 
-app.listen(port, () => {
-    console.log("Server is running in port..," + port)
+app.listen(PORT, "0.0.0.0", () => {
+    console.log("Server is running in PORT..," + PORT)
 })
