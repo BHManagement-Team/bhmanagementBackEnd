@@ -13,7 +13,7 @@ let retrieve = (res) => {
 }
 
 let addAccount = (req, res) => {
-    modules.createAccount(req, res)
+    modules.createAccount.createAccount(req, res)
 }
 
 let retrieveAllAccount = (req, res) => {

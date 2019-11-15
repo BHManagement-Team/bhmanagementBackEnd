@@ -1,5 +1,7 @@
 let models = require('../../model/account');
 var response = { error: false, success: false, data: null }
+const config = require("../../system/config")
+const jwt = require("jsonwebtoken")
 
 let retrieveAll = (req, res) => {
     models.Account.find((err, result) => {
@@ -32,7 +34,7 @@ let retrieveAll = (req, res) => {
 }
 
 let retrieveOne = (req, res) => {
-    models.Account.find({ _id: req.body.id }, (err, result) => {
+    models.Account.find({ username: req.body.username }, (err, result) => {
         if (err) {
             response.status = 404
             response.success = true
@@ -40,13 +42,20 @@ let retrieveOne = (req, res) => {
             response.message = "No Document found!"
             // response = { error: { body: err, message: "no result", status: true }, success: false, data: null }
         } else {
+            var token = jwt.sign({
+                result
+            }, config.secret, {
+                expiresIn: 86400 // expires in 24 hours
+            })
+            response.token = token
             response.status = 200
             response.success = true
             response.data = result
             response.message = "Successfully Retrieved One!"
             // response = { error: false, success: true, data: account }
         }
-    }).catch(err => {
+    })
+    .catch(err => {
         if (err) {
             response.status = 503
             response.error = true
