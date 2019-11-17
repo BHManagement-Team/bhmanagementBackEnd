@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var roomSchema = new Schema ({
+var room = new Schema ({
     room_floor: {
         type: Number,
         required: true
@@ -19,6 +19,6 @@ var roomSchema = new Schema ({
         required: true
     }
 })
-var roomSchema = mongoose.model('roomDetails', roomSchema)
+var roomSchema = mongoose.model('roomDetails', room)
 
 module.exports = { roomSchema }

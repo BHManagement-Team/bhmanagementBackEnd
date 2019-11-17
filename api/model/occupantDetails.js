@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var occupantSchema = new Schema({
+var occupant = new Schema({
     occupant_name: {
         type: String,
         required: true
@@ -24,6 +24,6 @@ var occupantSchema = new Schema({
     }
 }, { collection: "occupantDetails" }
 )
-var occupantSchema = mongoose.model('occupantDetails', occupantSchema)
+var occupantSchema = mongoose.model('occupantDetails', occupant)
 
 module.exports = { occupantSchema }

@@ -74,9 +74,38 @@ routes.route('/deleteOccupantByID/:id').post((req,res)=>{
     mainController.occDeleteByID(req, res);
 })
 
+
 //Routes for Rooms
 routes.route('/createRoom').post((req, res)=>{
     mainController.roomCreate(req, res);
+})
+
+routes.route('/retrieveAllRooms').post((req, res)=>{
+    mainController.roomRetrieveAll(req, res);
+})
+
+routes.route('/retrieveOneRoom').post((req, res)=>{
+    mainController.roomRetrieveOne(req, res);
+})
+
+routes.route('/retrieveRoomByID/:id').post((req, res)=>{
+    mainController.roomRetrievebyId(req, res);
+})
+
+routes.route('/updateRoom').post((req,res)=>{
+    mainController.roomUpdate(req,res);
+})
+
+routes.route('/deleteAllRooms').post((req,res)=>{
+    mainController.roomDeleteAll(req, res);
+})
+
+routes.route('/deleteOneRoom').post((req,res)=>{
+    mainController.roomDeleteOne(req, res);
+})
+
+routes.route('/deleteRoomByID/:id').post((req,res)=>{
+    mainController.roomDeleteByID(req, res);
 })
 
 module.exports = routes

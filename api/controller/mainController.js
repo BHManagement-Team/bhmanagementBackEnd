@@ -8,7 +8,10 @@ const modules = {
     occRetrieve: require("./modules/OccupantsCRUD/retrieveOcc"), 
     occUpdate: require("./modules/OccupantsCRUD/updateOcc"),
     occDelete: require("./modules/OccupantsCRUD/deleteOcc"),
-    roomCreate: require("./modules/RoomCRUD/createRoom")
+    roomCreate: require("./modules/RoomCRUD/createRoom"),
+    roomRetrieve: require("./modules/RoomCRUD/retrieveRoom"),
+    roomUpdate: require("./modules/RoomCRUD/updateRoom"), 
+    roomDelete: require("./modules/RoomCRUD/deleteRoom")
 }
 //CRUD for Accounts
 let create = (req, res) =>{
@@ -88,8 +91,33 @@ let roomCreate = (req, res)=>{
     modules.roomCreate.createRoom(req,res)
 }
 
+let roomRetrieveAll = (req, res) => {
+    modules.roomRetrieve.retrieveAllRooms(req, res)
+}
+
+let roomRetrieveOne = (req, res)=>{
+    modules.roomRetrieve.retrieveOneRoom(req, res)
+}
+
+let roomRetrievebyId = (req, res)=>{
+    modules.roomRetrieve.retrieveRoombyId(req, res)
+}
+let roomUpdate = (req, res)=>{
+    modules.roomUpdate.updateRoom(req, res)
+}
+let roomDeleteAll = (req, res)=>{
+    modules.roomDelete.deleteAllRooms(req, res)
+}
+
+let roomDeleteOne = (req, res)=>{
+    modules.roomDelete.deleteOneRoom(req, res)
+}
+
+let roomDeleteByID = (req, res)=>{
+    modules.roomDelete.deleteRoomByID(req, res)
+}
 
 module.exports = { create, retrieveAll, retrieveOne , retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate ,
     occRetrieveAll , occRetrieveOne,  occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
-    roomCreate
+    roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomDeleteAll, roomDeleteOne, roomDeleteByID
 };

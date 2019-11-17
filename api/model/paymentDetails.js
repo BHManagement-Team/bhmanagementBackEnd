@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var paymentSchema = new Schema ({
+var payment = new Schema ({
     paymentID: {
         type: occupantID,
         required: true,
@@ -16,4 +16,6 @@ var paymentSchema = new Schema ({
         required: true
     }
 })
-var paymentSchema = mongoose.model('paymentDetails', paymentSchema)
+var paymentSchema = mongoose.model('paymentDetails', payment)
+
+module.exports = { paymentSchema }
