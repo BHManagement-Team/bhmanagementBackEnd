@@ -1,6 +1,6 @@
 const modules = {
+    loginAccount: require("./modules/login"),
     createAccount: require("./modules/AccountCRUD/create"),
-    login: require("./modules/AccountCRUD/login"),
     retrieve: require("./modules/AccountCRUD/retrieve"),
     update: require("./modules/AccountCRUD/update"),
     delete: require("./modules/AccountCRUD/delete"),
@@ -13,6 +13,11 @@ const modules = {
     roomUpdate: require("./modules/RoomCRUD/updateRoom"), 
     roomDelete: require("./modules/RoomCRUD/deleteRoom")
 }
+//Login 
+let login = (req, res)=>{
+    modules.loginAccount.login(req, res)
+}
+
 //CRUD for Accounts
 let create = (req, res) =>{
     console.log("entered");
@@ -117,7 +122,7 @@ let roomDeleteByID = (req, res)=>{
     modules.roomDelete.deleteRoomByID(req, res)
 }
 
-module.exports = { create, retrieveAll, retrieveOne , retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate ,
+module.exports = { login, create, retrieveAll, retrieveOne , retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate ,
     occRetrieveAll , occRetrieveOne,  occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
     roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomDeleteAll, roomDeleteOne, roomDeleteByID
 };

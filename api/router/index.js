@@ -4,6 +4,10 @@ const routes = express.Router();
 const mainController = require('../controller/mainController');
 
 //Routes for Accounts
+routes.route('/login').post((req,res)=>{
+    mainController.login(req, res);
+})
+
 routes.route('/createAccount').post((req,res)=>{
     mainController.create(req,res);
 })
@@ -37,9 +41,6 @@ routes.route('/deleteByID/:id').post((req,res)=>{
     mainController.deleteByID(req, res);
 })
 
-routes.route('/login').post((req,res)=>{
-    mainController.login(req, res);
-})
 
 // Routes for Occupants
 routes.route('/createOccupant').post((req,res)=>{
