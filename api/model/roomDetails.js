@@ -1,28 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var roomSchema = new Schema({
-    roomFloor: {
+var roomSchema = new Schema ({
+    room_floor: {
         type: Number,
         required: true
     },
-    roomName: {
+    room_name: {
         type: String,
         required: true
     },
-    roomType: {
+    room_capacity: {
         type: String,
         required: true
     },
-    roomSize: {
-        type: String,
-        required: true
-    },
-    roomSharing: {
-        type: String,
-        required: true
-    },
-    roomRentPrice: {
+    room_price: {
         type: Number,
         required: true
     }
