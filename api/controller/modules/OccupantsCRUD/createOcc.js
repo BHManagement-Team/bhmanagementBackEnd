@@ -8,13 +8,14 @@ let createOcc= (req, res) => {
     let occupant_name = req.body.occupant_name;
     let occupant_email = req.body.occupant_email;
     let occupant_contact = req.body.occupant_contact;
-
-    let Occupant = new OccupantModel.occupantSchema({
+    let date_started = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+    let Occupant = new OccupantModel.occupant({
         room_name,
         room_floor,
         occupant_name,
         occupant_email,
-        occupant_contact
+        occupant_contact,
+        date_started
     })
     Occupant.save()
         .then(

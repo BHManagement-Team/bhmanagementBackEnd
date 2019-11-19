@@ -7,7 +7,6 @@ const mainController = require('../controller/mainController');
 routes.route('/login').post((req,res)=>{
     mainController.login(req, res);
 })
-
 routes.route('/createAccount').post((req,res)=>{
     mainController.create(req,res);
 })
@@ -107,6 +106,10 @@ routes.route('/deleteOneRoom').post((req,res)=>{
 
 routes.route('/deleteRoomByID/:id').post((req,res)=>{
     mainController.roomDeleteByID(req, res);
+})
+//Payment create
+routes.route('/payment/:id').post((req, res)=>{
+    mainController.payment_create(req, res);
 })
 
 module.exports = routes

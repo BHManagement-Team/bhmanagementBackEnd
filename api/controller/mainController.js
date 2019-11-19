@@ -11,7 +11,8 @@ const modules = {
     roomCreate: require("./modules/RoomCRUD/createRoom"),
     roomRetrieve: require("./modules/RoomCRUD/retrieveRoom"),
     roomUpdate: require("./modules/RoomCRUD/updateRoom"), 
-    roomDelete: require("./modules/RoomCRUD/deleteRoom")
+    roomDelete: require("./modules/RoomCRUD/deleteRoom"),
+    paymentCreate: require("./modules/PaymentCRUD/createPayment")
 }
 //Login 
 let login = (req, res)=>{
@@ -79,7 +80,7 @@ let occUpdate = (req, res)=>{
 }
 
 let occDeleteAll = (req, res)=>{
-    modules.occDelete.occDeleteAll(req, res)
+    modules.occDelete.deleteAllOccupants(req, res)
 }
 
 let occDeleteOne = (req, res)=>{
@@ -122,7 +123,11 @@ let roomDeleteByID = (req, res)=>{
     modules.roomDelete.deleteRoomByID(req, res)
 }
 
+let payment_create = (req,res)=>{
+    modules.paymentCreate.payment(req,res)
+}
+
 module.exports = { login, create, retrieveAll, retrieveOne , retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate ,
     occRetrieveAll , occRetrieveOne,  occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
-    roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomDeleteAll, roomDeleteOne, roomDeleteByID
+    roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomDeleteAll, roomDeleteOne, roomDeleteByID, payment_create
 };

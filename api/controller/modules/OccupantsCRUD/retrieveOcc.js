@@ -2,7 +2,7 @@ const OccupantModel = require('../../../model/occupantDetails');
 let response = { error: false, success: false }
 
 let retrieveAllOccupants = (req, res) => {
-    OccupantModel.occupantSchema.find({}, (err, account) => {
+    OccupantModel.occupant.find({}, (err, account) => {
         if (err) {
             response.error = true
             response.status= 404
@@ -22,7 +22,7 @@ let retrieveAllOccupants = (req, res) => {
 
 
 let retrieveOneOccupant = (req, res) => {
-    OccupantModel.occupantSchema.findOne({_id: req.body.id},
+    OccupantModel.occupant.findOne({_id: req.body.id},
          (err, account) => {
         if (err) {
             response.error = true
@@ -43,7 +43,7 @@ let retrieveOneOccupant = (req, res) => {
 
 
 let retrieveOccbyId = (req, res) => {
-    OccupantModel.occupantSchema.findOne({_id: req.params.id},
+    OccupantModel.occupant.findOne({_id: req.params.id},
          (err, account) => {
         if (err) {
             response.error = true

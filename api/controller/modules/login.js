@@ -10,6 +10,7 @@ let login = (req, res) => {
             response.status = 404
             response.success = true
             response.data = result
+            response.auth = false
             response.message = "Account not found!"
         } else {
 
@@ -22,11 +23,13 @@ let login = (req, res) => {
             response.status = 200
             response.success = true
             response.data = result
+            response.auth = true
             response.message = "Service running!"
         }
     })
         .catch(err => {
             if (err) {
+                response.auth = false
                 response.status = 503
                 response.error = true
                 response.data = err

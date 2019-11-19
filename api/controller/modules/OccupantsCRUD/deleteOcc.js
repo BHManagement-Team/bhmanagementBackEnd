@@ -2,7 +2,7 @@ const OccupantModel= require('../../../model/occupantDetails');
 let response = { error: false, success: false }
 
 let deleteOneOccupant = (req, res) => {
-    OccupantModel.occupantSchema.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, account) => {
+    OccupantModel.occupant.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, account) => {
         if (err) {
             response.error = true
             response.status= 404
@@ -22,7 +22,7 @@ let deleteOneOccupant = (req, res) => {
 
 
 let deleteOccupantByID = (req, res) => {
-    OccupantModel.occupantSchema.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, account) => {
+    OccupantModel.occupant.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, account) => {
         if (err) {
             response.error = true
             response.status= 404
@@ -42,7 +42,7 @@ let deleteOccupantByID = (req, res) => {
 
 
 let deleteAllOccupants = (req, res) => {
-    OccupantModel.occupantSchema.deleteMany({},(err, account) => {
+    OccupantModel.occupant.deleteMany({},(err, account) => {
         if (err) {
             response.error = true
             response.status= 404
