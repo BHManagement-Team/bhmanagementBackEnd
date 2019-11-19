@@ -28,11 +28,11 @@ var occupantSchema = new Schema({
         type: String, 
         required: true 
     },
-    payments:[
+    payments:
         {
             type: Array
         }
-    ]
+    
 }, { collection: "occupantDetails" }
 )
 var occupant = mongoose.model('occupantDetails', occupantSchema)
