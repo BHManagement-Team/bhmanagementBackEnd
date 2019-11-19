@@ -1,4 +1,4 @@
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 const dbConfig = "mongodb://localhost:27017/dbBhm";
 
 mongoose.Promise = global.Promise;
-console.log("Connecting..,");
+console.log("Connecting to the Server..,");
 mongoose.connect(dbConfig, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -20,7 +20,7 @@ mongoose.connect(dbConfig, {
     if (err) {
         console.log("error : " + err);
     } else {
-        console.log("database is connected!");
+        console.log("MongoDB is connected!");
     }
 });
 
@@ -32,6 +32,6 @@ app.use(bodyParser.json({ limit: "20mb" }));
 app.use("/bhm", router)
 
 
-app.listen(port, () => {
-    console.log("Server is running in port..," + port)
+app.listen(PORT, "0.0.0.0", () => {
+    console.log("Server is running in PORT..," + PORT)
 })
