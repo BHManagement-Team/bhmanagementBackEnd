@@ -8,7 +8,7 @@ let payment = (req, res) => {
         billing_date: new Date().toJSON().slice(0, 10).replace(/-/g, '/')
     }
     occupantModel.occupant.findOneAndUpdate({ _id: req.params.id },
-        { $set: { payments: create_payment } },
+        { $push: { payments: create_payment } },
         { upsert: true },
         (err, account) => {
             if (err) {
@@ -28,6 +28,5 @@ let payment = (req, res) => {
         });
     res.send(response);
 }
-
 module.exports = { payment }
 
