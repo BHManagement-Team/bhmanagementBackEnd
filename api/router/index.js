@@ -46,15 +46,15 @@ routes.route('/createOccupant').post((req,res)=>{
     mainController.occCreate(req, res);
 })
 
-routes.route('/retriveAllOccupants').post((req, res)=>{
+routes.route('/retrieveAllOccupants').post((req, res)=>{
     mainController.occRetrieveAll(req, res);
 })
 
-routes.route('/retriveOneOccupant').post((req, res)=>{
+routes.route('/retrieveOneOccupant').post((req, res)=>{
     mainController.occRetrieveOne(req, res);
 })
 
-routes.route('/retriveOccupantByID/:id').post((req, res)=>{
+routes.route('/retrieveOccupantByID/:id').post((req, res)=>{
     mainController.occRetrievebyId(req, res);
 })
 
@@ -110,6 +110,18 @@ routes.route('/deleteRoomByID/:id').post((req,res)=>{
 //Payment create
 routes.route('/payment/:id').post((req, res)=>{
     mainController.payment_create(req, res);
+})
+
+routes.route('/retrieveAllPayments').post((req, res)=>{
+    mainController.payment_retrieve(req, res);
+})
+
+routes.route('/retrieveOnePayment').post((req, res)=>{
+    mainController.payment_retrieve1(req, res);
+})
+
+routes.route('/retrievePaymentByID/:id').post((req, res)=>{
+    mainController.payment_retrievebyID(req, res);
 })
 
 module.exports = routes

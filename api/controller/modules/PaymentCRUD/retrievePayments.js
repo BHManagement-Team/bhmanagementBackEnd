@@ -1,15 +1,15 @@
-const RoomModel = require('../../../model/roomDetails');
+const PaymentModel = require('../../../model/paymentDetails');
 let response = { error: false, success: false }
 
-let retrieveAllRooms = (req, res) => {
+let retrieveAllPayments = (req, res) => {
     if (req.body.token != null) {
-        RoomModel.Room.find({}, (err, account) => {
+        PaymentModel.payment.find({}, (err, account) => {
             if (err) {
                 response.error = true
                 response.status = 404
                 response.success = false
                 response.data = err
-                response.message = "No room found!"
+                response.message = "No account found!"
             } else {
                 response = { error: false, success: true, data: account }
             }
@@ -28,16 +28,16 @@ let retrieveAllRooms = (req, res) => {
 }
 
 
-let retrieveOneRoom = (req, res) => {
+let retrieveOnePayment = (req, res) => {
     if (req.body.token != null) {
-        RoomModel.Room.findOne({ _id: req.body.id },
+        PaymentModel.payment.findOne({ _id: req.body.id },
             (err, account) => {
                 if (err) {
                     response.error = true
                     response.status = 404
                     response.success = false
                     response.data = err
-                    response.message = "No room found!"
+                    response.message = "No account found!"
                 } else {
                     response = { error: false, success: true, data: account }
                 }
@@ -56,16 +56,16 @@ let retrieveOneRoom = (req, res) => {
 }
 
 
-let retrieveRoombyId = (req, res) => {
+let retrievePaymentbyId = (req, res) => {
     if (req.body.token != null) {
-        RoomModel.Room.findOne({ _id: req.params.id },
+        PaymentModel.payment.findOne({ _id: req.params.id },
             (err, account) => {
                 if (err) {
                     response.error = true
                     response.status = 404
                     response.success = false
                     response.data = err
-                    response.message = "No occupant found!"
+                    response.message = "No account found!"
                 } else {
                     response = { error: false, success: true, data: account }
                 }
@@ -83,4 +83,4 @@ let retrieveRoombyId = (req, res) => {
     res.send(response);
 }
 
-module.exports = { retrieveAllRooms, retrieveOneRoom, retrieveRoombyId }
+module.exports = { retrieveAllPayments, retrieveOnePayment, retrievePaymentbyId }
