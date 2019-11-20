@@ -1,7 +1,7 @@
 const LoginModel = require('../../model/account');
 const jwt = require("jsonwebtoken");
 const config = require("../../system/config")
-var response = { error: false, success: false }
+var response = { error: false, success: false, data: null }
 
 let login = (req, res) => {
     LoginModel.Account.findOne({ username: req.body.username }, (err, result) => {
