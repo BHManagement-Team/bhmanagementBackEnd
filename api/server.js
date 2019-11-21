@@ -20,29 +20,15 @@ const nexmo = new Nexmo({
 //         }
 //     }
 // );
-//DBConfig
-const mongoose = require("mongoose");
-const dbConfig = "mongodb://localhost:27017/dbBhm";
 
-mongoose.Promise = global.Promise;
-console.log("Connecting to the Server..,");
-mongoose.connect(dbConfig, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
-}, (err, data) => {
-    if (err) {
-        console.log("error : " + err);
-    } else {
-        console.log("MongoDB is connected!");
-    }
-});
+ //MongoDBConfig_importing
+require('./system/dbConfig')
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true, limit: "20mb" }));
 app.use(bodyParser.json({ limit: "20mb" }));
 
+//routes
 app.use("/bhm", router);
 
 app.post('/send', (req, res) => {
@@ -54,5 +40,5 @@ app.post('/send', (req, res) => {
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-    console.log("Server is running in PORT..," + PORT)
+    console.log("Server is running in PORT.., " + PORT)
 })

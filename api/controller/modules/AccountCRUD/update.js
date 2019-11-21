@@ -35,8 +35,6 @@ let update = (req, res) => {
 }
 
 let updateByID = (req, res) => {
-    console.log(req.body);
-    
     AccountModel.Account.findOneAndUpdate({ _id: req.params.id },
         req.body,
         { new: true },

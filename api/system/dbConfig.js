@@ -13,9 +13,9 @@ mongoose.connect(dbConfig, {
     useUnifiedTopology: true
 }, (err, data) => {
     if (err) {
-        console.log("error : " + err);
+        console.log("DB error : " + err);
     } else {
-        console.log("database is connected!");
+        console.log("MongoDB is Connected!");
     }
 });
 
