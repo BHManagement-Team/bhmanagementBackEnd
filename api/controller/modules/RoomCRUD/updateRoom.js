@@ -1,51 +1,88 @@
 const RoomModel = require('../../../model/roomDetails');
 let response = { error: false, success: false }
 
+//updateRoom
 let updateRoom = (req, res) => {
-
-    
-
-    RoomModel.roomSchema.findOneAndUpdate({ _id: req.body.id },
-        req.body, 
-        {new : true},
-        (err, account) => {
-            if (err) {
+    if (req.body.token != null) {
+        RoomModel.Room.findByIdAndUpdate({ _id: req.body.id },
+            req.body,
+            { new: true },
+            (err, room) => {
+                if (err) {
+                    response.error = true
+                    response.status = 404
+                    response.success = false
+                    response.data = err
+                    response.message = "Room not Exist"
+                } else {
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = room
+                    response.message = "Room Updated Successfully!"
+                    res.send(response);
+                }
+            })
+            .catch(err => {
                 response.error = true
-                response.status = 500
                 response.success = false
+                response.status = 503
                 response.data = err
-                response.message = "No room found to update!"
-            } else {
-                response = { error: false, success: true, data: account , message: "Updated Successfully!"}
-            }
-        }).catch(err => {
-            if (err) {
-                response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-            }
-        });
-    res.send(response);
-}
+                response.message = "Service Unavailable!"
+                res.send(response);
+            });
+    }
+    else {
+        response.error = true
+        response.auth = false
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable!"
+        res.send(response);
+    }
 
+}
+//end
+
+//updateRoomById
 let updateRoomById = (req, res) => {
-    RoomModel.roomSchema.findOneAndUpdate({ _id: req.params.id },
-        req.body, 
-        {new : true},
-        (err, account) => {
-            if (err) {
+    if (req.body.token != null) {
+        RoomModel.Room.findByIdAndUpdate({ _id: req.params.id },
+            req.body,
+            { new: true },
+            (err, room) => {
+                if (err) {
+                    response.error = true
+                    response.status = 404
+                    response.success = false
+                    response.data = err
+                    response.message = "Room not Exist"
+                } else {
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = room
+                    response.message = "Room Updated Successfully!"
+                    res.send(response);
+                }
+            })
+            .catch(err => {
                 response.error = true
-                response.status = 500
                 response.success = false
+                response.status = 503
                 response.data = err
-                response.message = "No room found to update!"
-            } else {
-                response = { error: false, success: true, data: account , message: "Updated Successfully!"}
-            }
-        }).catch(err => {
-            if (err) {
-                response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-            }
-        });
-    res.send(response);
+                response.message = "Service Unavailable!"
+                res.send(response);
+            });
+    }
+    else {
+        response.error = true
+        response.auth = false
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable!"
+        res.send(response);
+    }
 }
-
+//end
 module.exports = { updateRoom, updateRoomById }

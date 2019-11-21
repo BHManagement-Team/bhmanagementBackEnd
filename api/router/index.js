@@ -96,6 +96,10 @@ routes.route('/updateRoom').post((req,res)=>{
     mainController.roomUpdate(req,res);
 })
 
+routes.route('/updateRoom/:id').post((req,res)=>{
+    mainController.roomUpdateById(req,res);
+})
+
 routes.route('/deleteAllRooms').post((req,res)=>{
     mainController.roomDeleteAll(req, res);
 })

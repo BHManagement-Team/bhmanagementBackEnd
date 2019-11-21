@@ -92,7 +92,6 @@ let occDeleteByID = (req, res) => {
 }
 
 //CRUD for Rooms
-
 let roomCreate = (req, res) => {
     modules.roomCreate.createRoom(req, res)
 }
@@ -110,6 +109,9 @@ let roomRetrievebyId = (req, res) => {
 }
 let roomUpdate = (req, res) => {
     modules.roomUpdate.updateRoom(req, res)
+}
+let roomUpdateById = (req, res) => {
+    modules.roomUpdate.updateRoomById(req, res)
 }
 let roomDeleteAll = (req, res) => {
     modules.roomDelete.deleteAllRooms(req, res)
@@ -130,5 +132,5 @@ let payment_create = (req, res) => {
 module.exports = {
     login, create, retrieveAll, retrieveOne, retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate,
     occRetrieveAll, occRetrieveOne, occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
-    roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomDeleteAll, roomDeleteOne, roomDeleteByID, payment_create
+    roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomUpdateById, roomDeleteAll, roomDeleteOne, roomDeleteByID, payment_create
 };
