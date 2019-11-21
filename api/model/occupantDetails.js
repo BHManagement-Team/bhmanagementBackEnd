@@ -24,15 +24,10 @@ var occupantSchema = new Schema({
         type: String,
         required: true
     },
-    date_started: { 
-        type: String, 
-        required: true 
-    },
-    payments:
-        {
-            type: Array
-        }
-    
+    date_started: {
+        type: String,
+        required: true
+    }
 }, { collection: "occupantDetails" }
 )
 var occupant = mongoose.model('occupantDetails', occupantSchema)

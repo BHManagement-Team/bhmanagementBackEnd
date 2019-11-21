@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 var roomSchema = new Schema ({
     room_floor: {
-        type: Number,
+        type: String,
         required: true
     },
     room_name: {
@@ -11,7 +11,7 @@ var roomSchema = new Schema ({
         required: true
     },
     room_capacity: {
-        type: String,
+        type: Number,
         required: true
     },
     room_price: {

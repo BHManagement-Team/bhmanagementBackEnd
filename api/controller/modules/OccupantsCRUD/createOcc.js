@@ -1,6 +1,6 @@
 const OccupantModel = require('../../../model/occupantDetails');
 
-let response = { error: false, success: false }
+let response = {}
 
 let createOcc = (req, res) => {
     if (req.body.token != null) {
@@ -21,11 +21,21 @@ let createOcc = (req, res) => {
         Occupant.save()
             .then(
                 data => {
-                    response = { error: false, success: true, data: data }
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = data
+                    response.message = "Successfully saved an account"
+                    res.send(response)
                 })
             .catch(err => {
                 if (err) {
-                    response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                    response.error = true
+                    response.success = false
+                    response.status = 503
+                    response.data = err
+                    response.message = "Service Unavailable"
+                    res.send(response)
                 }
             });
     } else {
@@ -33,8 +43,8 @@ let createOcc = (req, res) => {
         response.status = 503
         response.error = true
         response.message = "Service Unavailable!"
+        res.send(response);
     }
-    res.send(response);
 }
 
 module.exports = { createOcc }

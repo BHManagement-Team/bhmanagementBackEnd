@@ -3,84 +3,125 @@ let response = { error: false, success: false }
 
 let retrieveAllPayments = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.payment.find({}, (err, account) => {
+        PaymentModel.payment.find({}, (err, data) => {
             if (err) {
                 response.error = true
-                response.status = 404
                 response.success = false
+                response.status = 404
                 response.data = err
-                response.message = "No account found!"
+                response.message = "No payment found to retrieve"
+                res.send(response)
             } else {
-                response = { error: false, success: true, data: account }
+                response.error = false
+                response.success = true
+                response.status = 200
+                response.data = data
+                response.message = "Payment Retrieved Successfully!"
+                res.send(response)
             }
         }).catch(err => {
             if (err) {
-                response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable"
+                res.send(response)
             }
         });
     } else {
-        response.auth = false
-        response.status = 503
         response.error = true
-        response.message = "Service Unavailable!"
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable"
+        res.send(response)
     }
-    res.send(response);
+    // PaymentModel.payment.find({occupant_ID: new  mongoose.mongo.ObjectId('5dccf8058adf321b88dc52a7')})
+    //     .populate('accountDetails')
+    //     .exec((err, data) => {
+    //         if (err) {
+    //             res.send(err);
+    //         }
+    //         else {
+    //             res.send(data);
+    //         }
+    //     })
 }
+
 
 
 let retrieveOnePayment = (req, res) => {
     if (req.body.token != null) {
         PaymentModel.payment.findOne({ _id: req.body.id },
-            (err, account) => {
+            (err, data) => {
                 if (err) {
                     response.error = true
-                    response.status = 404
                     response.success = false
+                    response.status = 404
                     response.data = err
-                    response.message = "No account found!"
+                    response.message = "No payment found to retrieve"
+                    res.send(response)
                 } else {
-                    response = { error: false, success: true, data: account }
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = data
+                    response.message = "Payment Retrieved Successfully!"
+                    res.send(response)
                 }
             }).catch(err => {
                 if (err) {
-                    response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                    response.error = true
+                    response.success = false
+                    response.status = 503
+                    response.data = err
+                    response.message = "Service Unavailable"
+                    res.send(response)
                 }
             });
     } else {
-        response.auth = false
-        response.status = 503
         response.error = true
-        response.message = "Service Unavailable!"
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable"
+        res.send(response)
     }
-    res.send(response);
 }
-
-
 let retrievePaymentbyId = (req, res) => {
     if (req.body.token != null) {
         PaymentModel.payment.findOne({ _id: req.params.id },
-            (err, account) => {
+            (err, data) => {
                 if (err) {
                     response.error = true
-                    response.status = 404
                     response.success = false
+                    response.status = 404
                     response.data = err
-                    response.message = "No account found!"
+                    response.message = "No payment found to retrieve"
+                    res.send(response)
                 } else {
-                    response = { error: false, success: true, data: account }
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = data
+                    response.message = "Payment Retrieved Successfully!"
+                    res.send(response)
                 }
             }).catch(err => {
                 if (err) {
-                    response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                    response.error = true
+                    response.success = false
+                    response.status = 503
+                    response.data = err
+                    response.message = "Service Unavailable"
+                    res.send(response)
                 }
             });
     } else {
-        response.auth = false
-        response.status = 503
         response.error = true
-        response.message = "Service Unavailable!"
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable"
+        res.send(response)
     }
-    res.send(response);
 }
-
 module.exports = { retrieveAllPayments, retrieveOnePayment, retrievePaymentbyId }

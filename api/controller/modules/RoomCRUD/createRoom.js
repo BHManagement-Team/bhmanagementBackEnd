@@ -20,10 +20,13 @@ let createRoom = (req, res) => {
             .then(
                 data => {
                     response = { error: false, success: true, data: data }
+                    res.send(response)
                 })
             .catch(err => {
                 if (err) {
                     response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                    res.send(response)
+
                 }
             });
 
@@ -32,8 +35,9 @@ let createRoom = (req, res) => {
         response.status = 503
         response.error = true
         response.message = "Service Unavailable!"
+        res.send(response)
+
     }
-    res.send(response);
 }
 
 module.exports = { createRoom }

@@ -1,9 +1,9 @@
-const OccupantModel = require('../../../model/occupantDetails');
-let response = {}
+const PaymentModel = require('../../../model/paymentDetails');
+let response = {  }
 
-let updateOccupant = (req, res) => {
+let updatePayment = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupantSchema.findOneAndUpdate({ _id: req.body.id },
+        PaymentModel.payment.findOneAndUpdate({ _id: req.body.id },
             req.body,
             { new: true },
             (err, data) => {
@@ -12,14 +12,14 @@ let updateOccupant = (req, res) => {
                     response.success = false
                     response.status = 404
                     response.data = err
-                    response.message = "No occupant found to update!"
+                    response.message = "No payment found to update!"
                     res.send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Occupant Retrieved Successfully!"
+                    response.message = "Payment Retrieved Successfully!"
                     res.send(response)
                 }
             }).catch(err => {
@@ -42,5 +42,5 @@ let updateOccupant = (req, res) => {
     }
 }
 
-module.exports = { updateOccupant }
+module.exports = { updatePayment }
 

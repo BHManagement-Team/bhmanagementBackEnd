@@ -4,9 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const router = require('./router')
-
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const dbConfig = "mongodb://localhost:27017/dbBhm";
+global.mongoose = require("mongoose")
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig, {

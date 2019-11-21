@@ -1,72 +1,102 @@
 const OccupantModel = require('../../../model/occupantDetails');
-let response = { error: false, success: false }
+let response = {}
 
 let retrieveAllOccupants = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.find({}, (err, account) => {
+        OccupantModel.occupant.find({}, (err, data) => {
             if (err) {
                 response.error = true
-                response.status = 404
                 response.success = false
+                response.status = 404
                 response.data = err
-                response.message = "No occupant found!"
+                response.message = "No occupant found to retrieve"
+                res.send(response)
             } else {
-                response = { error: false, success: true, data: account }
+                response.error = false
+                response.success = true
+                response.status = 200
+                response.data = data
+                response.message = "Occupant Retrieved Successfully!"
+                res.send(response)
             }
         }).catch(err => {
             if (err) {
-                response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable"
+                res.send(response)
             }
         });
     } else {
-        response.auth = false
-        response.status = 503
         response.error = true
-        response.message = "Service Unavailable!"
+        response.success = false
+        response.status = 503
+        response.auth = false
+        response.message = "Service Unavailable"
+        res.send(response)
     }
-    res.send(response);
 }
 
 let retrieveOneOccupant = (req, res) => {
     if (req.body.token != null) {
         OccupantModel.occupant.findOne({ _id: req.body.id },
-            (err, account) => {
+            (err, data) => {
                 if (err) {
                     response.error = true
-                    response.status = 404
                     response.success = false
+                    response.status = 404
                     response.data = err
-                    response.message = "No occupant found!"
+                    response.message = "No occupant found to retrieve"
+                    res.send(response)
                 } else {
-                    response = { error: false, success: true, data: account }
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = data
+                    response.message = "Occupant Retrieved Successfully!"
+                    res.send(response)
                 }
             }).catch(err => {
                 if (err) {
-                    response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                    response.error = true
+                    response.success = false
+                    response.status = 503
+                    response.data = err
+                    response.message = "Service Unavailable"
+                    res.send(response)
                 }
             });
     } else {
-        response.auth = false
-        response.status = 503
         response.error = true
-        response.message = "Service Unavailable!"
+        response.success = false
+        response.status = 503
+        response.auth = false
+        response.message = "Service Unavailable"
+        res.send(response)
     }
-    res.send(response);
 }
 
 
 let retrieveOccbyId = (req, res) => {
     if (req.body.token != null) {
         OccupantModel.occupant.findOne({ _id: req.params.id },
-            (err, account) => {
+            (err, data) => {
                 if (err) {
                     response.error = true
-                    response.status = 404
                     response.success = false
+                    response.status = 404
                     response.data = err
-                    response.message = "No occupant found!"
+                    response.message = "No occupant found to retrieve"
+                    res.send(response)
                 } else {
-                    response = { error: false, success: true, data: account }
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = data
+                    response.message = "Occupant Retrieved Successfully!"
+                    res.send(response)
                 }
             }).catch(err => {
                 if (err) {
@@ -74,12 +104,13 @@ let retrieveOccbyId = (req, res) => {
                 }
             });
     } else {
-        response.auth = false
-        response.status = 503
         response.error = true
-        response.message = "Service Unavailable!"
+        response.success = false
+        response.status = 503
+        response.auth = false
+        response.message = "Service Unavailable"
+        res.send(response)
     }
-    res.send(response);
 }
 
 module.exports = { retrieveAllOccupants, retrieveOneOccupant, retrieveOccbyId }

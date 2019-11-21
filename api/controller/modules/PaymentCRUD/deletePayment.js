@@ -1,22 +1,22 @@
-const OccupantModel = require('../../../model/occupantDetails');
+const PaymentModel = require('../../../model/paymentDetails');
 let response = { }
 
-let deleteOneOccupant = (req, res) => {
+let deleteOnePayment = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, data) => {
+        PaymentModel.payment.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, data) => {
             if (err || data == null) {
                 response.error = true
                 response.success = false
                 response.status = 404
                 response.data = err
-                response.message = "No occupant found to delete"
+                response.message = "No payment found to delete"
                 res.send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
-                response.message = "Occupant Deleted Successfully!"
+                response.message = "Payment Deleted Successfully!"
                 res.send(response)
             }
         }).catch(err => {
@@ -40,22 +40,22 @@ let deleteOneOccupant = (req, res) => {
 }
 
 
-let deleteOccupantByID = (req, res) => {
+let deletePaymentByID = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, data) => {
+        PaymentModel.payment.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, data) => {
             if (err) {
                 response.error = true
                 response.success = false
                 response.status = 404
                 response.data = err
-                response.message = "No occupant found to delete"
+                response.message = "No payment found to delete"
                 res.send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
-                response.message = "Occupant Deleted Successfully!"
+                response.message = "Payment Deleted Successfully!"
                 res.send(response)
             }
         }).catch(err => {
@@ -79,22 +79,22 @@ let deleteOccupantByID = (req, res) => {
 }
 
 
-let deleteAllOccupants = (req, res) => {
+let deleteAllPayments = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.deleteMany({}, (err, data) => {
+        PaymentModel.payment.deleteMany({}, (err, data) => {
             if (err) {
                 response.error = true
                 response.success = false
                 response.status = 404
                 response.data = err
-                response.message = "No occupant found to delete"
+                response.message = "No payment found to delete"
                 res.send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
-                response.message = "Occupant Deleted Successfully!"
+                response.message = "Payment Deleted Successfully!"
                 res.send(response)
             }
         }).catch(err => {
@@ -117,4 +117,4 @@ let deleteAllOccupants = (req, res) => {
     }
 }
 
-module.exports = { deleteOccupantByID, deleteOneOccupant, deleteAllOccupants }
+module.exports = { deleteOnePayment , deletePaymentByID, deleteAllPayments }
