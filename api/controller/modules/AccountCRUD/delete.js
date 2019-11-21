@@ -1,9 +1,9 @@
 const AccountModel = require('../../../model/account');
-let response = {}
+let response = { error: false, success: false }
 
 let deleteOne = (req, res) => {
     AccountModel.Account.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, account) => {
-        if (err ) {
+        if (err) {
             response.error = true
             response.status = 404
             response.success = false
@@ -35,7 +35,7 @@ let deleteOne = (req, res) => {
 
 let deleteOneByID = (req, res) => {
     AccountModel.Account.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, account) => {
-        if (err || account == null) {
+        if (err) {
             response.error = true
             response.status = 404
             response.success = false
@@ -64,6 +64,8 @@ let deleteOneByID = (req, res) => {
     });
     // res.send(response);
 }
+
+
 
 
 let deleteAll = (req, res) => {

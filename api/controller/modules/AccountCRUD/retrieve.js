@@ -1,101 +1,65 @@
 const AccountModel = require('../../../model/account');
-let response = {}
+let response = { error: false, success: false }
 
 let retrieveAll = (req, res) => {
     AccountModel.Account.find({}, (err, account) => {
-        if (err || account.length == 0) {
+        if (err) {
             response.error = true
-            response.status = 404
-            response.success = false
+            response.status= 404
+            response.success= false
             response.data = err
-            response.message = "No account found!"
-            res.send(response);
+            response.message = "No account found!" 
         } else {
-            response.error = false
-            response.success = true
-            response.status = 200
-            response.data = account
-            response.message = "Retrieve All Accounts Successfully!"
-            res.send(response)
-            // response = { error: false, success: true, data: account }
+            response = { error: false, success: true, data: account }
         }
-    })
-        .catch(err => {
-            response.error = true
-            response.success = false
-            response.status = 503
-            response.data = err
-            response.message = "Service Unavailable!"
-            res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-        });
-    // res.send(response);
+    }).catch(err => {
+        if (err) {
+            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+        }
+    });
+    res.send(response);
 }
 
 
 let retrieveOne = (req, res) => {
-    AccountModel.Account.findOne({ _id: req.body.id },
-        (err, account) => {
-            if (err || account.length == 0) {
-                response.error = true
-                response.status = 404
-                response.success = false
-                response.data = err
-                response.message = "No account found!"
-                res.send(response);
-            } else {
-                response.error = false
-                response.success = true
-                response.status = 200
-                response.data = account
-                response.message = "Retrieve One Account Successfully!"
-                res.send(response)
-                // response = { error: false, success: true, data: account }
-            }
-        })
-        .catch(err => {
+    AccountModel.Account.findOne({_id: req.body.id},
+         (err, account) => {
+        if (err) {
             response.error = true
-            response.success = false
-            response.status = 503
+            response.status= 404
+            response.success= false
             response.data = err
-            response.message = "Service Unavailable!"
-            res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-        });
-    // res.send(response);
+            response.message = "No account found!" 
+        } else {
+            response = { error: false, success: true, data: account }
+        }
+    }).catch(err => {
+        if (err) {
+            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+        }
+    });
+    res.send(response);
 }
 
 
 let retrievebyId = (req, res) => {
-    AccountModel.Account.findOne({ _id: req.params.id },
-        (err, account) => {
-            if (err || account.length == 0) {
-                response.error = true
-                response.status = 404
-                response.success = false
-                response.data = err
-                response.message = "No account found!"
-                res.send(response);
-            } else {
-                response.error = false
-                response.success = true
-                response.status = 200
-                response.data = account
-                response.message = "Retrieve One Account Successfully!"
-                res.send(response)
-                // response = { error: false, success: true, data: account }
-            }
-        })
-        .catch(err => {
+    AccountModel.Account.findOne({_id: req.params.id},
+         (err, account) => {
+        if (err) {
             response.error = true
-            response.success = false
-            response.status = 503
+            response.status= 404
+            response.success= false
             response.data = err
-            response.message = "Service Unavailable!"
-            res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-        });
-    // res.send(response);
+            response.message = "No account found!" 
+        } else {
+            response = { error: false, success: true, data: account }
+        }
+    }).catch(err => {
+        if (err) {
+            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+        }
+    });
+    res.send(response);
 }
 
-module.exports = { retrieveOne, retrieveAll, retrievebyId }
+module.exports = {retrieveOne, retrieveAll, retrievebyId }
