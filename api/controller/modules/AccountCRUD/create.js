@@ -1,6 +1,6 @@
 const AccountModel = require('../../../model/account');
 
-let response = { error: false, success: false }
+let response = {}
 
 let createAccount = (req, res) => {
     let username = req.body.username;
@@ -12,6 +12,7 @@ let createAccount = (req, res) => {
     Account.save()
         .then(
             account => {
+                response.error = false
                 response.status = 200
                 response.success = true
                 response.data = account
@@ -23,6 +24,7 @@ let createAccount = (req, res) => {
             if (err) {
                 response.status = 503
                 response.error = true
+                response.success = false
                 response.data = err
                 response.message = "Service Unavailable!"
                 res.send(response);
