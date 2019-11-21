@@ -1,64 +1,129 @@
-const RoomModel= require('../../../model/roomDetails');
+const RoomModel = require('../../../model/roomDetails');
 let response = { error: false, success: false }
-
-let deleteOneRoom= (req, res) => {
-    RoomModel.roomSchema.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, account) => {
-        if (err) {
-            response.error = true
-            response.status= 404
-            response.success= false
-            response.data = err
-            response.message = "No occupant found to delete!" 
-        } else {
-            response = { error: false, success: true, data: account, message: "Room Deleted Successfully!" }
-        }
-    }).catch(err => {
-        if (err) {
-            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-        }
-    });
-    res.send(response);
+//deleteOneRoom
+let deleteOneRoom = (req, res) => {
+    if (req.body.token != null) {
+        RoomModel.Room.findByIdAndRemove(
+            { _id: req.body.id },
+            { new: true },
+            (err, room) => {
+                if (err || room == null) {
+                    response.error = true
+                    response.status = 404
+                    response.success = false
+                    response.data = err
+                    response.message = "Room not Found!"
+                    res.send(response)
+                } else {
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = room
+                    response.message = "Room Deleted Successfully!"
+                    res.send(response)
+                }
+            })
+            .catch(err => {
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable!"
+                res.send(response);
+            });
+    }
+    else {
+        response.error = true
+        response.auth = false
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable!"
+        res.send(response);
+    }
 }
+//end
 
-
+//deleteRoomByID
 let deleteRoomByID = (req, res) => {
-    RoomModel.roomSchema.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, account) => {
-        if (err) {
-            response.error = true
-            response.status= 404
-            response.success= false
-            response.data = err
-            response.message = "No occupant found to delete!" 
-        } else {
-            response = { error: false, success: true, data: account, message: "Account Deleted Successfully!" }
-        }
-    }).catch(err => {
-        if (err) {
-            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-        }
-    });
-    res.send(response);
+    if (req.body.token != null) {
+        RoomModel.Room.findByIdAndRemove(
+            { _id: req.params.id },
+            { new: true },
+            (err, room) => {
+                if (err || room == null) {
+                    response.error = true
+                    response.status = 404
+                    response.success = false
+                    response.data = err
+                    response.message = "Room not Found!"
+                    res.send(response)
+                } else {
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = room
+                    response.message = "Room Deleted Successfully!"
+                    res.send(response)
+                }
+            })
+            .catch(err => {
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable!"
+                res.send(response);
+            });
+    }
+    else {
+        response.error = true
+        response.auth = false
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable!"
+        res.send(response);
+    }
 }
+//end
 
-
+//deleteAllRooms
 let deleteAllRooms = (req, res) => {
-    RoomModel.roomSchema.deleteMany({},(err, account) => {
-        if (err) {
-            response.error = true
-            response.status= 404
-            response.success= false
-            response.data = err
-            response.message = "No room found to delete! " 
-        } else {
-            response = { error: false, success: true, data: account }
-        }
-    }).catch(err => {
-        if (err) {
-            response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
-        }
-    });
-    res.send(response);
+    if (req.body.token != null) {
+        RoomModel.Room.deleteMany({}, (err, room) => {
+            if (err || room == null) {
+                response.error = true
+                response.status = 404
+                response.success = false
+                response.data = err
+                response.message = "Room not Found!"
+                res.send(response)
+            } else {
+                response.error = false
+                response.success = true
+                response.status = 200
+                response.data = room
+                response.message = "All Room Deleted Successfully!"
+                res.send(response)
+            }
+        })
+            .catch(err => {
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable!"
+                res.send(response);
+            });
+    }
+    else {
+        response.error = true
+        response.auth = false
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable!"
+        res.send(response);
+    }
 }
+//end
 
-
-module.exports = { deleteRoomByID ,deleteOneRoom, deleteAllRooms }
+module.exports = { deleteRoomByID, deleteOneRoom, deleteAllRooms }
