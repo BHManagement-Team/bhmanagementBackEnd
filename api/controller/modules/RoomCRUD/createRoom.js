@@ -1,3 +1,4 @@
+
 const RoomModel = require('../../../model/roomDetails');
 
 let response = {}

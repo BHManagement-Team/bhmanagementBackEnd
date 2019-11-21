@@ -4,116 +4,143 @@ const routes = express.Router();
 const mainController = require('../controller/mainController');
 
 //Routes for Accounts
-routes.route('/login').post((req,res)=>{
+routes.route('/login').post((req, res) => {
     mainController.login(req, res);
 })
-routes.route('/createAccount').post((req,res)=>{
-    mainController.create(req,res);
+routes.route('/createAccount').post((req, res) => {
+    mainController.create(req, res);
 })
-routes.route('/retrieveAll').post((req, res)=>{
+routes.route('/retrieveAll').post((req, res) => {
     mainController.retrieveAll(req, res);
 })
-routes.route('/retrieveOne').post((req,res)=>{
+routes.route('/retrieveOne').post((req, res) => {
     mainController.retrieveOne(req, res);
 })
-routes.route('/retrievebyId/:id').post((req,res)=>{
+routes.route('/retrievebyId/:id').post((req, res) => {
     mainController.retrievebyId(req, res);
 })
 
-routes.route('/update').post((req,res)=>{
+routes.route('/update').post((req, res) => {
     mainController.update(req, res);
 })
 
-routes.route('/updateByID/:id').post((req,res)=>{
+routes.route('/updateByID/:id').post((req, res) => {
     mainController.updateByID(req, res);
 })
 
-routes.route('/deleteAll').post((req,res)=>{
+routes.route('/deleteAll').post((req, res) => {
     mainController.deleteAll(req, res);
 })
 
-routes.route('/deleteOne').post((req,res)=>{
+routes.route('/deleteOne').post((req, res) => {
     mainController.deleteOne(req, res);
 })
 
-routes.route('/deleteByID/:id').post((req,res)=>{
+routes.route('/deleteByID/:id').post((req, res) => {
     mainController.deleteByID(req, res);
 })
 
 
 // Routes for Occupants
-routes.route('/createOccupant').post((req,res)=>{
+routes.route('/createOccupant').post((req, res) => {
     mainController.occCreate(req, res);
 })
 
-routes.route('/retriveAllOccupants').post((req, res)=>{
+routes.route('/retrieveAllOccupants').post((req, res) => {
     mainController.occRetrieveAll(req, res);
 })
 
-routes.route('/retriveOneOccupant').post((req, res)=>{
+routes.route('/retrieveOneOccupant').post((req, res) => {
     mainController.occRetrieveOne(req, res);
 })
 
-routes.route('/retriveOccupantByID/:id').post((req, res)=>{
+routes.route('/retrieveOccupantByID/:id').post((req, res) => {
     mainController.occRetrievebyId(req, res);
 })
 
-routes.route('/updateOccupant').post((req,res)=>{
+routes.route('/updateOccupant').post((req, res) => {
     mainController.occUpdate(req, res);
 })
 
-routes.route('/deleteAllOccupants').post((req,res)=>{
+routes.route('/deleteAllOccupants').post((req, res) => {
     mainController.occDeleteAll(req, res);
 })
 
-routes.route('/deleteOneOccupant').post((req,res)=>{
+routes.route('/deleteOneOccupant').post((req, res) => {
     mainController.occDeleteOne(req, res);
 })
 
-routes.route('/deleteOccupantByID/:id').post((req,res)=>{
+routes.route('/deleteOccupantByID/:id').post((req, res) => {
     mainController.occDeleteByID(req, res);
 })
 
 
 //Routes for Rooms
-routes.route('/createRoom').post((req, res)=>{
+routes.route('/createRoom').post((req, res) => {
     mainController.roomCreate(req, res);
 })
 
-routes.route('/retrieveAllRooms').post((req, res)=>{
+routes.route('/retrieveAllRooms').post((req, res) => {
     mainController.roomRetrieveAll(req, res);
 })
 
-routes.route('/retrieveOneRoom').post((req, res)=>{
+routes.route('/retrieveOneRoom').post((req, res) => {
     mainController.roomRetrieveOne(req, res);
 })
 
-routes.route('/retrieveRoomByID/:id').post((req, res)=>{
+routes.route('/retrieveRoomByID/:id').post((req, res) => {
     mainController.roomRetrievebyId(req, res);
 })
 
-routes.route('/updateRoom').post((req,res)=>{
-    mainController.roomUpdate(req,res);
+routes.route('/updateRoom').post((req, res) => {
+    mainController.roomUpdate(req, res);
 })
 
-routes.route('/updateRoom/:id').post((req,res)=>{
-    mainController.roomUpdateById(req,res);
+routes.route('/updateRoom/:id').post((req, res) => {
+    mainController.roomUpdateById(req, res);
 })
 
-routes.route('/deleteAllRooms').post((req,res)=>{
+routes.route('/deleteAllRooms').post((req, res) => {
     mainController.roomDeleteAll(req, res);
 })
 
-routes.route('/deleteOneRoom').post((req,res)=>{
+routes.route('/deleteOneRoom').post((req, res) => {
     mainController.roomDeleteOne(req, res);
 })
 
-routes.route('/deleteRoomByID/:id').post((req,res)=>{
+routes.route('/deleteRoomByID/:id').post((req, res) => {
     mainController.roomDeleteByID(req, res);
 })
 //Payment create
-routes.route('/payment/:id').post((req, res)=>{
+routes.route('/payment/:id').post((req, res) => {
     mainController.payment_create(req, res);
 })
 
+routes.route('/retrieveAllPayments').post((req, res) => {
+    mainController.payment_retrieve(req, res);
+})
+
+routes.route('/retrieveOnePayment').post((req, res) => {
+    mainController.payment_retrieve1(req, res);
+})
+
+routes.route('/retrievePaymentByID/:id').post((req, res) => {
+    mainController.payment_retrievebyID(req, res);
+})
+
+routes.route('/updatePayment').post((req, res) => {
+    mainController.payment_update(req, res);
+})
+
+routes.route('/deleteAllPayments').post((req, res) => {
+    mainController.payment_DeleteAll(req, res);
+})
+
+routes.route('/deleteOnePayment').post((req, res) => {
+    mainController.payment_DeleteOne(req, res);
+})
+
+routes.route('/deletePaymentByID/:id').post((req, res) => {
+    mainController.payment_DeleteByID(req, res);
+})
 module.exports = routes

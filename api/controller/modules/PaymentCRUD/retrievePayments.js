@@ -1,22 +1,22 @@
-const OccupantModel = require('../../../model/occupantDetails');
-let response = {}
+const PaymentModel = require('../../../model/paymentDetails');
+let response = { error: false, success: false }
 
-let retrieveAllOccupants = (req, res) => {
+let retrieveAllPayments = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.find({}, (err, data) => {
+        PaymentModel.payment.find({}, (err, data) => {
             if (err) {
                 response.error = true
                 response.success = false
                 response.status = 404
                 response.data = err
-                response.message = "No occupant found to retrieve!"
+                response.message = "No payment found to retrieve!"
                 res.send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
-                response.message = "Occupant Retrieved Successfully!"
+                response.message = "Payment Retrieved Successfully!"
                 res.send(response)
             }
         }).catch(err => {
@@ -33,29 +33,40 @@ let retrieveAllOccupants = (req, res) => {
         response.error = true
         response.success = false
         response.status = 503
-        response.auth = false
         response.message = "Service Unavailable!"
         res.send(response)
     }
+    // PaymentModel.payment.find({occupant_ID: new  mongoose.mongo.ObjectId('5dccf8058adf321b88dc52a7')})
+    //     .populate('accountDetails')
+    //     .exec((err, data) => {
+    //         if (err) {
+    //             res.send(err);
+    //         }
+    //         else {
+    //             res.send(data);
+    //         }
+    //     })
 }
 
-let retrieveOneOccupant = (req, res) => {
+
+
+let retrieveOnePayment = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.findOne({ _id: req.body.id },
+        PaymentModel.payment.findOne({ _id: req.body.id },
             (err, data) => {
                 if (err) {
                     response.error = true
                     response.success = false
                     response.status = 404
                     response.data = err
-                    response.message = "No occupant found to retrieve!"
+                    response.message = "No payment found to retrieve!"
                     res.send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Occupant Retrieved Successfully!"
+                    response.message = "Payment Retrieved Successfully!"
                     res.send(response)
                 }
             }).catch(err => {
@@ -72,45 +83,45 @@ let retrieveOneOccupant = (req, res) => {
         response.error = true
         response.success = false
         response.status = 503
-        response.auth = false
         response.message = "Service Unavailable!"
         res.send(response)
     }
 }
-
-
-let retrieveOccbyId = (req, res) => {
+let retrievePaymentbyId = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.findOne({ _id: req.params.id },
+        PaymentModel.payment.findOne({ _id: req.params.id },
             (err, data) => {
                 if (err) {
                     response.error = true
                     response.success = false
                     response.status = 404
                     response.data = err
-                    response.message = "No occupant found to retrieve!"
+                    response.message = "No payment found to retrieve!"
                     res.send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Occupant Retrieved Successfully!"
+                    response.message = "Payment Retrieved Successfully!"
                     res.send(response)
                 }
             }).catch(err => {
                 if (err) {
-                    response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                    response.error = true
+                    response.success = false
+                    response.status = 503
+                    response.data = err
+                    response.message = "Service Unavailable!"
+                    res.send(response)
                 }
             });
     } else {
         response.error = true
         response.success = false
         response.status = 503
-        response.auth = false
         response.message = "Service Unavailable!"
         res.send(response)
     }
 }
-
-module.exports = { retrieveAllOccupants, retrieveOneOccupant, retrieveOccbyId }
+module.exports = { retrieveAllPayments, retrieveOnePayment, retrievePaymentbyId }

@@ -1,4 +1,3 @@
-
 //DBConfig
 const mongoose = require("mongoose");
 const dbConfig = "mongodb://localhost:27017/dbBhm";

@@ -17,7 +17,6 @@ let retrieveAll = (req, res) => {
             response.data = account
             response.message = "Retrieve All Accounts Successfully!"
             res.send(response)
-            // response = { error: false, success: true, data: account }
         }
     })
         .catch(err => {
@@ -27,9 +26,7 @@ let retrieveAll = (req, res) => {
             response.data = err
             response.message = "Service Unavailable!"
             res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
         });
-    // res.send(response);
 }
 
 
@@ -50,7 +47,6 @@ let retrieveOne = (req, res) => {
                 response.data = account
                 response.message = "Retrieve One Account Successfully!"
                 res.send(response)
-                // response = { error: false, success: true, data: account }
             }
         })
         .catch(err => {
@@ -60,9 +56,7 @@ let retrieveOne = (req, res) => {
             response.data = err
             response.message = "Service Unavailable!"
             res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
         });
-    // res.send(response);
 }
 
 
@@ -83,7 +77,6 @@ let retrievebyId = (req, res) => {
                 response.data = account
                 response.message = "Retrieve One Account Successfully!"
                 res.send(response)
-                // response = { error: false, success: true, data: account }
             }
         })
         .catch(err => {
@@ -93,9 +86,7 @@ let retrievebyId = (req, res) => {
             response.data = err
             response.message = "Service Unavailable!"
             res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
         });
-    // res.send(response);
 }
 
 module.exports = { retrieveOne, retrieveAll, retrievebyId }

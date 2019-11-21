@@ -1,19 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-var paymentSchema = new Schema ({
+require("./occupantDetails")
+var paymentSchema = new Schema({
     occupant_ID: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectId, ref: 'occupantDetails'
     },
     amount: {
         type: Number,
         required: true
     },
     billing_date: {
-        type: Date,
+        type: String,
         required: true
-    } 
+    }
 })
 var payment = mongoose.model('paymentDetails', paymentSchema)
 

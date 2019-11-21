@@ -17,7 +17,6 @@ let deleteOne = (req, res) => {
             response.data = account
             response.message = "Account Deleted Successfully!"
             res.send(response);
-            //response = { error: false, success: true, data: account, message: "Account Deleted Successfully!" }
         }
     }).catch(err => {
         if (err) {
@@ -27,10 +26,8 @@ let deleteOne = (req, res) => {
             response.data = err
             response.message = "Service unavailable!"
             res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
         }
     });
-    // res.send(response);
 }
 
 let deleteOneByID = (req, res) => {
@@ -49,7 +46,6 @@ let deleteOneByID = (req, res) => {
             response.data = account
             response.message = "Account Deleted Successfully!"
             res.send(response);
-            // response = { error: false, success: true, data: account, message: "Account Deleted Successfully!" }
         }
     }).catch(err => {
         if (err) {
@@ -59,10 +55,8 @@ let deleteOneByID = (req, res) => {
             response.data = err
             response.message = "Service unavailable!"
             res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
         }
     });
-    // res.send(response);
 }
 
 
@@ -82,7 +76,6 @@ let deleteAll = (req, res) => {
             response.data = account
             response.message = "Account Deleted Successfully!"
             res.send(response);
-            // response = { error: false, success: true, data: account }
         }
     }).catch(err => {
             response.error = true
@@ -91,9 +84,7 @@ let deleteAll = (req, res) => {
             response.data = err
             response.message = "Service unavailable!"
             res.send(response);
-            // response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
     });
-    // res.send(response);
 }
 
 module.exports = { deleteOne, deleteAll, deleteOneByID }

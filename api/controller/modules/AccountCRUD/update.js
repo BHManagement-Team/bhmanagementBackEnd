@@ -20,7 +20,6 @@ let update = (req, res) => {
                 response.data = account
                 response.message = "Updated Account Successfully!"
                 res.send(response)
-                // response = { error: false, success: true, data: account, message: "Updated Successfully!" }
             }
         })
         .catch(err => {
@@ -31,7 +30,6 @@ let update = (req, res) => {
             response.message = "Service Unavailable!"
             res.send(response);
         });
-    // res.send(response);
 }
 
 let updateByID = (req, res) => {
@@ -53,7 +51,6 @@ let updateByID = (req, res) => {
                 response.data = account
                 response.message = "Updated Account Successfully!"
                 res.send(response)
-                // response = { error: false, success: true, data: account, message: "Updated Successfully!" }
             }
         })
         .catch(err => {
@@ -64,7 +61,6 @@ let updateByID = (req, res) => {
             response.message = "Service Unavailable!"
             res.send(response);
         });
-    // res.send(response);
 }
 
 module.exports = { update, updateByID }

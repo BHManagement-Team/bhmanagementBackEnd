@@ -27,12 +27,7 @@ var occupantSchema = new Schema({
     date_started: {
         type: String,
         required: true
-    },
-    payments: [
-        {
-            type: Array
-        }
-    ]
+    }
 }, { collection: "occupantDetails" }
 )
 var occupant = mongoose.model('occupantDetails', occupantSchema)
