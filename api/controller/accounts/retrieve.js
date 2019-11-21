@@ -11,6 +11,7 @@ let retrieveAll = (req, res) => {
             response.success = true
             response.data = result
             response.message = "No Document found!"
+            res.send(response)
             // response = { error: { body: err, message: "no result", status: true }, success: false, data: null }
         } else {
             response.status = 200
@@ -18,6 +19,7 @@ let retrieveAll = (req, res) => {
             response.success = true
             response.data = result
             response.message = "Successfully Retrieve All!"
+            res.send(response)
             // response = { error: false, success: true, data: account }
         }
     }).catch(err => {
@@ -27,10 +29,11 @@ let retrieveAll = (req, res) => {
             response.success = false
             response.data = err
             response.message = "Service Unavailable!"
+            res.send(response)
             // response = { error: { body: err, message: "service unavailable", status: true }, success: false, data: null }
         }
     });
-    res.send(response);
+    // res.send(response);
 }
 
 let retrieveOne = (req, res) => {
@@ -40,18 +43,20 @@ let retrieveOne = (req, res) => {
             response.success = true
             response.data = result
             response.message = "No Account found!"
+            res.send(response)
             // response = { error: { body: err, message: "no result", status: true }, success: false, data: null }
         } else {
             var token = jwt.sign({
                 result
             }, config.secret, {
-                expiresIn: 86400 // expires in 24 hours
-            })
+                    expiresIn: 86400 // expires in 24 hours
+                })
             response.token = token
             response.status = 200
             response.success = true
             response.data = result
             response.message = "Successfully Retrieved One!"
+            res.send(response)
             // response = { error: false, success: true, data: account }
         }
     })
@@ -61,10 +66,11 @@ let retrieveOne = (req, res) => {
                 response.error = true
                 response.data = err
                 response.message = "Service Unavailable!"
+                res.send(response)
                 // response = { error: { body: err, message: "service unavailable", status: true }, success: false, data: null }
             }
         });
-    res.send(response);
+    // res.send(response);
 }
 
 

@@ -2,7 +2,7 @@ const AccountModel = require('../../../model/account');
 
 let response = { error: false, success: false }
 
-let createAccount= (req, res) => {
+let createAccount = (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     let Account = new AccountModel.Account({
@@ -12,13 +12,25 @@ let createAccount= (req, res) => {
     Account.save()
         .then(
             account => {
-                response = { error: false, success: true, data: account }
+                response.status = 200
+                response.error = false
+                response.success = true
+                response.data = account
+                response.message = "Successfully Created Account!"
+                res.send(response);
+                //response = { error: false, success: true, data: account }
             })
         .catch(err => {
             if (err) {
-                response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
+                response.status = 503
+                response.error = true
+                response.success = false
+                response.data = err
+                response.message = "Service Unavailable!"
+                res.send(response);
+                //response = { error: { body: err, message: "Service unavailable", status: true }, success: false }
             }
         });
-    res.send(response);
+    // res.send(response);
 }
 module.exports = { createAccount }

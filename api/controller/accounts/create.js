@@ -15,6 +15,7 @@ let createAccount = (req, res) => {
             response.success = true
             response.data = result
             response.message = "Successfully Created!"
+            res.send(response)
         })
         .catch(err => {
             response.status = 503
@@ -22,8 +23,9 @@ let createAccount = (req, res) => {
             response.success = false
             response.data = err
             response.message = "Service Unavailable!"
+            res.send(response)
         })
-    res.send(response)
+    // res.send(response)
 }
 
 module.exports = { createAccount }

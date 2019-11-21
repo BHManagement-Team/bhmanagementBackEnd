@@ -9,6 +9,7 @@ let deleteOne = (req, res) => {
             response.success = false
             response.message = "No Data from DB!"
             response.data = err
+            res.send(response)
             // res.status(200).send({ error: { body: err, status: true }, success: false })
         } else {
             response.status = 200
@@ -16,16 +17,18 @@ let deleteOne = (req, res) => {
             response.success = true
             response.message = "Successfully Deleted from DB!"
             response.data = data
+            res.send(response)
             // res.status(200).send({ error: false, success: true })
         }
     })
-    .catch((err) => {
-        response.status = 503
-        response.error = true
-        response.data = err
-        response.message = "Service Unavailable!"
-    })
-    res.status(200).send(response);
+        .catch((err) => {
+            response.status = 503
+            response.error = true
+            response.data = err
+            response.message = "Service Unavailable!"
+            res.send(response)
+        })
+    // res.status(200).send(response);
 }
 
 let deleteMany = (req, res) => {
@@ -36,6 +39,7 @@ let deleteMany = (req, res) => {
             response.success = false
             response.data = err
             response.message = "No Data from DB!"
+            res.send(response)
             // res.status(200).send({ error: { body: err, status: true }, success: false })
         } else {
             response.status = 200
@@ -43,19 +47,21 @@ let deleteMany = (req, res) => {
             response.success = true
             response.data = data
             response.message = "Successfully Deleted Many from DB!"
+            res.send(response)
             // res.status(200).send({ error: false, success: true })
         }
     })
-    .then((result) => {
-        response.data = result
-    })
-    .catch((err) => {
-        response.status = 503
-        response.error = true
-        response.data = err
-        response.message = "Service Unavailable!"
-    })
-    res.status(200).send(response);
+        .then((result) => {
+            response.data = result
+        })
+        .catch((err) => {
+            response.status = 503
+            response.error = true
+            response.data = err
+            response.message = "Service Unavailable!"
+            res.send(response)
+        })
+    // res.status(200).send(response);
 }
 
 
