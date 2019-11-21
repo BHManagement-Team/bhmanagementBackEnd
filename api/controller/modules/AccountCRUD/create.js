@@ -13,7 +13,6 @@ let createAccount = (req, res) => {
         .then(
             account => {
                 response.status = 200
-                response.error = false
                 response.success = true
                 response.data = account
                 response.message = "Successfully Created Account!"
@@ -24,7 +23,6 @@ let createAccount = (req, res) => {
             if (err) {
                 response.status = 503
                 response.error = true
-                response.success = false
                 response.data = err
                 response.message = "Service Unavailable!"
                 res.send(response);
