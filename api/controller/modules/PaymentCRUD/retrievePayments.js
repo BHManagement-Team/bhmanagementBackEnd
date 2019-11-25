@@ -87,11 +87,33 @@ let retrieveOnePayment = (req, res) => {
         res.send(response)
     }
 }
+
 let retrievePaymentbyId = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.payment.findOne({ _id: req.params.id },
-            (err, data) => {
-                if (err) {
+        PaymentModel.payment.find({ _id: req.params.id }
+            // ,
+            // (err, data) => {
+            //     if (err || !data.length) {
+            //         response.error = true
+            //         response.success = false
+            //         response.status = 404
+            //         response.data = err
+            //         response.message = "No payment found to retrieve!"
+            //         res.send(response)
+            //     } else {
+            //         response.error = false
+            //         response.success = true
+            //         response.status = 200
+            //         response.data = data
+            //         response.message = " Payment Retrieved Successfully!"
+            //         res.send(response)
+            //     }
+            // }
+            )
+            .populate('occupantDetails')
+            .exec(
+                 (err, data) => {
+                if (err || !data.length) {
                     response.error = true
                     response.success = false
                     response.status = 404
@@ -103,19 +125,19 @@ let retrievePaymentbyId = (req, res) => {
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Payment Retrieved Successfully!"
+                    response.message = " Payment Retrieved Successfully!"
                     res.send(response)
                 }
-            }).catch(err => {
-                if (err) {
-                    response.error = true
-                    response.success = false
-                    response.status = 503
-                    response.data = err
-                    response.message = "Service Unavailable!"
-                    res.send(response)
-                }
-            });
+            }
+            )
+            // .catch(err => {
+            //     response.error = true
+            //     response.success = false
+            //     response.status = 503
+            //     response.data = err
+            //     response.message = "Service Unavailable!"
+            //     res.send(response)
+            // });
     } else {
         response.error = true
         response.success = false

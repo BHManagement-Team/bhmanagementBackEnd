@@ -18,7 +18,7 @@ let payment = (req, res) => {
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Successfully saved an account!"
+                    response.message = "Successfully add Payment!"
                     res.send(response)
                 })
             .catch(err => {

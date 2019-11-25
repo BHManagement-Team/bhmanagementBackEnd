@@ -111,7 +111,8 @@ routes.route('/deleteOneRoom').post((req, res) => {
 routes.route('/deleteRoomByID/:id').post((req, res) => {
     mainController.roomDeleteByID(req, res);
 })
-//Payment create
+
+//Payment Routes
 routes.route('/payment/:id').post((req, res) => {
     mainController.payment_create(req, res);
 })
