@@ -1,4 +1,4 @@
-let response = { error: null, success: null }
+let response = { error: false, success: false }
 
 let retrieveOne = (model, req, res) => {
     // model - from server to database

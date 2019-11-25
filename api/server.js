@@ -1,37 +1,23 @@
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const router = require('./router')
+// // const mongoose = require("mongoose");
+// const dbConfig = "mongodb://localhost:27017/dbBhm";
+global.mongoose = require("mongoose")
 
-//DBConfig
-const mongoose = require("mongoose");
-const dbConfig = "mongodb://localhost:27017/dbBhm";
-
-mongoose.Promise = global.Promise;
-console.log("Connecting..,");
-mongoose.connect(dbConfig, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
-}, (err, data) => {
-    if (err) {
-        console.log("error : " + err);
-    } else {
-        console.log("database is connected!");
-    }
-});
-
+ //MongoDBConfig_importing
+require('./system/dbConfig')
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true, limit: "20mb" }));
 app.use(bodyParser.json({ limit: "20mb" }));
 
-app.use("/bhm", router)
+//routes
+app.use("/bhm", router);
 
-
-app.listen(port, () => {
-    console.log("Server is running in port..," + port)
+app.listen(PORT, "0.0.0.0", () => {
+    console.log("Server is running in PORT.., " + PORT)
 })
