@@ -6,7 +6,7 @@ let payment = (req, res) => {
         let occupant_ID = req.params.id;
         let amount = req.body.amount
         let billing_date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-        let create_payment = new PaymentModel.payment({
+        let create_payment = new PaymentModel.Payment({
             occupant_ID: occupant_ID,
             amount: amount,
             billing_date: billing_date
