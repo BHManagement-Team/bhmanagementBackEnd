@@ -4,7 +4,7 @@ const Bcrypt = require("bcryptjs");
 var AccountSchema = new mongoose.Schema({
     username: {
         type: String,
-        unique:true,
+        unique: true,
         required: true,
         trim: true,
     },
@@ -14,8 +14,8 @@ var AccountSchema = new mongoose.Schema({
         trim: true,
     }
 }, {
-        collection: 'accounts'
-    }
+    collection: 'accounts'
+}
 );
 
 //hashing password
@@ -28,7 +28,7 @@ AccountSchema.pre("save", function (next) {
 });
 
 //compare Password
-AccountSchema.methods.comparePassword = function(plaintext, callback) {
+AccountSchema.methods.comparePassword = function (plaintext, callback) {
     return callback(null, Bcrypt.compareSync(plaintext, this.password));
 };
 

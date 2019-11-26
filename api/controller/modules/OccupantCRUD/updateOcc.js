@@ -3,7 +3,7 @@ let response = {}
 
 let updateOccupant = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupantSchema.findOneAndUpdate({ _id: req.body.id },
+        OccupantModel.Occupant.findOneAndUpdate({ _id: req.params.id },
             req.body,
             { new: true },
             (err, data) => {
@@ -19,7 +19,7 @@ let updateOccupant = (req, res) => {
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Occupant Retrieved Successfully!"
+                    response.message = "Occupant Updated Successfully!"
                     res.send(response)
                 }
             }).catch(err => {

@@ -30,7 +30,7 @@ var occupantSchema = new Schema({
     }
 }, { collection: "occupantDetails" }
 )
-var occupant = mongoose.model('occupantDetails', occupantSchema)
+var Occupant = mongoose.model('occupantDetails', occupantSchema)
 occupantSchema.plugin(uniqueValidator, { message: 'occupant_name must be unique' });
 
-module.exports = { occupant }
+module.exports = { Occupant }
