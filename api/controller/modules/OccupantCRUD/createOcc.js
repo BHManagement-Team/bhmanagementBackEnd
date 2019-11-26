@@ -3,6 +3,8 @@ const OccupantModel = require('../../../model/occupantDetails');
 let response = {}
 
 let createOcc = (req, res) => {
+    console.log(req.body);
+    
     if (req.body.token != null) {
         let room_name = req.body.room_name;
         let room_floor = req.body.room_floor;
@@ -10,7 +12,7 @@ let createOcc = (req, res) => {
         let occupant_email = req.body.occupant_email;
         let occupant_contact = req.body.occupant_contact;
         let date_started = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-        let Occupant = new OccupantModel.occupant({
+        let Occupant = new OccupantModel.Occupant({
             room_name,
             room_floor,
             occupant_name,

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-require("./occupantDetails")
 var paymentSchema = new Schema({
     occupant_ID: {
         type: Schema.Types.ObjectId, ref: 'occupantDetails'
@@ -14,6 +13,6 @@ var paymentSchema = new Schema({
         required: true
     }
 })
-var payment = mongoose.model('paymentDetails', paymentSchema)
+var Payment = mongoose.model('paymentDetails', paymentSchema)
 
-module.exports = { payment }
+module.exports = { Payment }

@@ -58,7 +58,7 @@ routes.route('/retrieveOccupantByID/:id').post((req, res) => {
     mainController.occRetrievebyId(req, res);
 })
 
-routes.route('/updateOccupant').post((req, res) => {
+routes.route('/updateOccupant/:id').post((req, res) => {
     mainController.occUpdate(req, res);
 })
 
@@ -111,7 +111,8 @@ routes.route('/deleteOneRoom').post((req, res) => {
 routes.route('/deleteRoomByID/:id').post((req, res) => {
     mainController.roomDeleteByID(req, res);
 })
-//Payment create
+
+//Payment Routes
 routes.route('/payment/:id').post((req, res) => {
     mainController.payment_create(req, res);
 })

@@ -3,11 +3,11 @@ let response = {}
 
 let payment = (req, res) => {
     if (req.body.token != null) {
-        let id = req.params.id;
+        let occupant_ID = req.params.id;
         let amount = req.body.amount
         let billing_date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-        let create_payment = new PaymentModel.payment({
-            occupant_ID: id,
+        let create_payment = new PaymentModel.Payment({
+            occupant_ID: occupant_ID,
             amount: amount,
             billing_date: billing_date
         })
@@ -18,7 +18,7 @@ let payment = (req, res) => {
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Successfully saved an account!"
+                    response.message = "Successfully add Payment!"
                     res.send(response)
                 })
             .catch(err => {

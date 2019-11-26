@@ -5,7 +5,7 @@ let response = {}
 let retrieveAllRooms = (req, res) => {
     if (req.body.token != null) {
         RoomModel.Room.find({}, (err, room) => {
-            if (err || room == null) {
+            if (err || !room.length) {
                 response.error = true
                 response.status = 404
                 response.success = false

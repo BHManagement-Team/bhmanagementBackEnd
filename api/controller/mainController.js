@@ -4,10 +4,10 @@ const modules = {
     retrieve: require("./modules/AccountCRUD/retrieve"),
     update: require("./modules/AccountCRUD/update"),
     delete: require("./modules/AccountCRUD/delete"),
-    occCreate: require("./modules/OccupantsCRUD/createOcc"),
-    occRetrieve: require("./modules/OccupantsCRUD/retrieveOcc"),
-    occUpdate: require("./modules/OccupantsCRUD/updateOcc"),
-    occDelete: require("./modules/OccupantsCRUD/deleteOcc"),
+    occCreate: require("./modules/OccupantCRUD/createOcc"),
+    occRetrieve: require("./modules/OccupantCRUD/retrieveOcc"),
+    occUpdate: require("./modules/OccupantCRUD/updateOcc"),
+    occDelete: require("./modules/OccupantCRUD/deleteOcc"),
     roomCreate: require("./modules/RoomCRUD/createRoom"),
     roomRetrieve: require("./modules/RoomCRUD/retrieveRoom"),
     roomUpdate: require("./modules/RoomCRUD/updateRoom"),
@@ -25,7 +25,6 @@ let login = (req, res) => {
 
 //CRUD for Accounts
 let create = (req, res) => {
-    console.log("entered");
     modules.createAccount.createAccount(req, res)
 }
 

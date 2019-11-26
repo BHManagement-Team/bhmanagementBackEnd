@@ -3,13 +3,13 @@ let response = {}
 
 let retrieveAllOccupants = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.find({}, (err, data) => {
+        OccupantModel.Occupant.find({}, (err, data) => {
             if (err) {
                 response.error = true
                 response.success = false
                 response.status = 404
                 response.data = err
-                response.message = "No occupant found to retrieve!"
+                response.message = "No Occupant found to retrieve!"
                 res.send(response)
             } else {
                 response.error = false
@@ -41,14 +41,14 @@ let retrieveAllOccupants = (req, res) => {
 
 let retrieveOneOccupant = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.findOne({ _id: req.body.id },
+        OccupantModel.Occupant.findOne({ _id: req.body.id },
             (err, data) => {
                 if (err) {
                     response.error = true
                     response.success = false
                     response.status = 404
                     response.data = err
-                    response.message = "No occupant found to retrieve!"
+                    response.message = "No Occupant found to retrieve!"
                     res.send(response)
                 } else {
                     response.error = false
@@ -81,14 +81,14 @@ let retrieveOneOccupant = (req, res) => {
 
 let retrieveOccbyId = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.occupant.findOne({ _id: req.params.id },
+        OccupantModel.Occupant.findOne({ _id: req.params.id },
             (err, data) => {
                 if (err) {
                     response.error = true
                     response.success = false
                     response.status = 404
                     response.data = err
-                    response.message = "No occupant found to retrieve!"
+                    response.message = "No Occupant found to retrieve!"
                     res.send(response)
                 } else {
                     response.error = false
