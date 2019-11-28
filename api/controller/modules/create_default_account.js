@@ -1,7 +1,7 @@
 const AccountModel = require('../../model/account');
 let response = {}
 
-let create_default_account = () => {
+let create_default_account = (req,res) => {
     AccountModel.Account.find({}, (err, account) => {
         if (err || account.length == 0) {
             try {
@@ -18,7 +18,7 @@ let create_default_account = () => {
                         response.success = false
                         response.data = err
                         response.message = "Service Unavailable!"
-                        // res.send(response);
+                        res.send(response);
                         console.log(response);
                     }
                     else {
@@ -27,7 +27,7 @@ let create_default_account = () => {
                         response.success = true
                         response.data = data
                         response.message = "Successfully Registered!"
-                        // res.send(response);
+                        res.send(response);
                         console.log(response);
                     }
                 })
@@ -38,7 +38,7 @@ let create_default_account = () => {
                 response.success = false
                 response.data = error
                 response.message = "Service Unavailable!"
-                // res.send(response);
+                res.send(response);
                 console.log(response);
             }
         } else {
@@ -47,7 +47,7 @@ let create_default_account = () => {
             response.status = 200
             response.data = account
             response.message = "Default Account Exist = {'username':'admin','password':'admin'}!"
-            // res.send(response)
+            res.send(response)
             console.log(response);
         }
     })
@@ -57,7 +57,7 @@ let create_default_account = () => {
             response.status = 503
             response.data = err
             response.message = "Service Unavailable!"
-            // res.send(response);
+            res.send(response);
             console.log(response);
         });
 }

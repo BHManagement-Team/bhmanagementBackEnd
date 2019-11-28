@@ -18,11 +18,6 @@ app.use(bodyParser.json({ limit: "20mb" }));
 //routes
 app.use("/bhm", router);
 
-//importing one default account for admin
-//{"username":"admin","password":"admin"}
-const create_admin_account = require('./controller/modules/create_default_account')
-
 app.listen(PORT, "0.0.0.0", () => {
     console.log("Server is running in PORT.., " + PORT);
-    create_admin_account.create_default_account();
 })

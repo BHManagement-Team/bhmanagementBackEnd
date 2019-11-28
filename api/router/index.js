@@ -3,6 +3,14 @@ const express = require("express");
 const routes = express.Router();
 const mainController = require('../controller/mainController');
 
+//importing one default account for admin
+//{"username":"admin","password":"admin"}
+const create_admin_account = require('../controller/modules/create_default_account')
+routes.route('/install').post((req, res) => {
+    create_admin_account.create_default_account(req,res);
+})
+
+
 //Routes for Accounts
 routes.route('/login').post((req, res) => {
     mainController.login(req, res);
