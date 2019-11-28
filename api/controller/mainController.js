@@ -137,7 +137,7 @@ let payment_retrieve = (req, res) => {
 let payment_retrieve1 = (req, res) => {
     modules.paymentRetrieve.retrieveOnePayment(req, res)
 }
-let payment_retrievebyID = (req, res) => {    
+let payment_retrievebyID = (req, res) => {
     modules.paymentRetrieve.retrievePaymentbyId(req, res)
 }
 let payment_update = (req, res) => {
