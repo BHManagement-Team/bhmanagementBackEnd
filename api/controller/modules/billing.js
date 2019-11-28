@@ -22,6 +22,7 @@ let amount_to_pay = (room_name) => {
     }
 }
 
+//try to get the date started of the occupant and compare the current date when the cronjob start
 
 let billing_cycle = (date_time) => {
     try {
@@ -63,7 +64,7 @@ let billing_cycle = (date_time) => {
         //         }
         //     })
 
-        
+
     } catch (err) {
         response.error = true
         response.success = false
