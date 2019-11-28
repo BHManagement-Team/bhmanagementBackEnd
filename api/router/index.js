@@ -24,10 +24,6 @@ routes.route('/update').post((req, res) => {
     mainController.update(req, res);
 })
 
-routes.route('/updateByID/:id').post((req, res) => {
-    mainController.updateByID(req, res);
-})
-
 routes.route('/deleteAll').post((req, res) => {
     mainController.deleteAll(req, res);
 })

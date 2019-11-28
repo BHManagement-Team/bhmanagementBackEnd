@@ -19,6 +19,7 @@ let update = (req, res) => {
                     response.message = "No account found to update!"
                     res.send(response)
                 } else {
+                    console.log(account)
                     Bcrypt.compare(req.body.oldPassword, account[0].password)
                         .then(match => {
                             if (match) {
