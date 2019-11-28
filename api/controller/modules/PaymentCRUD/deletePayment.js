@@ -3,7 +3,7 @@ let response = {}
 
 let deleteOnePayment = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.payment.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, data) => {
+        PaymentModel.Payment.findByIdAndRemove({ _id: req.body.id }, { new: true }, (err, data) => {
             if (err || data == null) {
                 response.error = true
                 response.success = false
@@ -42,7 +42,7 @@ let deleteOnePayment = (req, res) => {
 
 let deletePaymentByID = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.payment.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, data) => {
+        PaymentModel.Payment.findByIdAndRemove({ _id: req.params.id }, { new: true }, (err, data) => {
             if (err) {
                 response.error = true
                 response.success = false
@@ -81,7 +81,7 @@ let deletePaymentByID = (req, res) => {
 
 let deleteAllPayments = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.payment.deleteMany({}, (err, data) => {
+        PaymentModel.Payment.deleteMany({}, (err, data) => {
             if (err) {
                 response.error = true
                 response.success = false

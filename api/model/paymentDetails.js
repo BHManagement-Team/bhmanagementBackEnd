@@ -12,6 +12,7 @@ var paymentSchema = new Schema({
         type: String,
         required: true
     }
+
 })
 var Payment = mongoose.model('paymentDetails', paymentSchema)
 

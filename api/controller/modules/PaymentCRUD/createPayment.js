@@ -9,7 +9,8 @@ let payment = (req, res) => {
         let create_payment = new PaymentModel.Payment({
             occupant_ID: occupant_ID,
             amount: amount,
-            billing_date: billing_date
+            billing_date: billing_date,
+            
         })
         create_payment.save()
             .then(

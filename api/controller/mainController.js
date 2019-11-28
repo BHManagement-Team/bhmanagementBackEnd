@@ -16,11 +16,14 @@ const modules = {
     paymentRetrieve: require("./modules/PaymentCRUD/retrievePayments"),
     paymentUpdate: require("./modules/PaymentCRUD/updatePayment"),
     paymentDelete: require("./modules/PaymentCRUD/deletePayment")
-
 }
 //Login 
 let login = (req, res) => {
     modules.loginAccount.login(req, res)
+}
+
+let bill = (req, res) =>{
+    modules.billing.billing(req,res)
 }
 
 //CRUD for Accounts

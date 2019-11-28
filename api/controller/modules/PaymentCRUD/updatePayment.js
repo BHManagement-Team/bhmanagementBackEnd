@@ -3,7 +3,7 @@ let response = {  }
 
 let updatePayment = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.payment.findOneAndUpdate({ _id: req.body.id },
+        PaymentModel.Payment.findOneAndUpdate({ _id: req.body.id },
             req.body,
             { new: true },
             (err, data) => {

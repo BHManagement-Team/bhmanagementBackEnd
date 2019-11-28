@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var uniqueValidator = require('mongoose-unique-validator');
 
 var occupantSchema = new Schema({
     occupant_name: {
         type: String,
         required: true,
-        unique: true
     },
     occupant_contact: {
         type: String,
@@ -31,6 +29,5 @@ var occupantSchema = new Schema({
 }, { collection: "occupantDetails" }
 )
 var Occupant = mongoose.model('occupantDetails', occupantSchema)
-occupantSchema.plugin(uniqueValidator, { message: 'occupant_name must be unique' });
 
 module.exports = { Occupant }

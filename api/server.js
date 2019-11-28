@@ -18,6 +18,7 @@ app.use(bodyParser.json({ limit: "20mb" }));
 //routes
 app.use("/bhm", router);
 
+
 app.listen(PORT, "0.0.0.0", () => {
     console.log("Server is running in PORT.., " + PORT);
 })

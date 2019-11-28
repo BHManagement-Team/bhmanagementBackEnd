@@ -9,7 +9,7 @@ let update = (req, res) => {
     //     oldPassword: String
     //     newPassword: String
     // }
-    AccountModel.Account.find({ _id: req.body.id },
+    AccountModel.Account.find({ username: req.body.username },
             (err, account) => {
                 if (err || account == null) {
                     response.error = true
