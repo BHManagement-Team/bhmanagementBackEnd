@@ -8,7 +8,7 @@ const router = require('./router')
 // const dbConfig = "mongodb://localhost:27017/dbBhm";
 global.mongoose = require("mongoose")
 
- //MongoDBConfig_importing
+//MongoDBConfig_importing
 require('./system/dbConfig')
 
 app.use(cors())
@@ -19,5 +19,5 @@ app.use(bodyParser.json({ limit: "20mb" }));
 app.use("/bhm", router);
 
 app.listen(PORT, "0.0.0.0", () => {
-    console.log("Server is running in PORT.., " + PORT)
+    console.log("Server is running in PORT.., " + PORT);
 })
