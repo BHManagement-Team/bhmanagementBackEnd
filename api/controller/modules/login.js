@@ -1,17 +1,49 @@
-let response = { error: null, data: null }
+const AccountModel = require('../../model/account');
+const jwt = require("jsonwebtoken");
 
-module.exports.login = (model, req, res) => {
-    model.findOne(
-        { username: req.body.username, password: req.body.password }, (err, data) => {
-            if (err) {
-                response.error = { status: true, message: err };
-            } else {
-                if (!data) {
-                    response.error = { status: true, message: "account not found" };
-                } else {
-                    response.data = data
-                }
+let login = async (req, res) => {
+    try {
+        let account = await AccountModel.Account.findOne({ username: req.body.username }).exec();
+        if (!account) {
+            return res.send({
+                error: true,
+                success: false,
+                status: 400,
+                auth: false,
+                message: "The username does not exist!"
+            });
+        }
+        account.comparePassword(req.body.password, (error, match) => {
+            if (!match) {
+                return res.send({
+                    error: true,
+                    success: false,
+                    status: 400,
+                    auth: false,
+                    message: "The password is invalid!"
+                });
             }
-            res.send(response)
         })
+        let token = jwt.sign({
+            username: req.body.username,
+            password: req.body.password
+        }, "secret", {
+                expiresIn: 86400 // expires in 24 hours
+            })
+        res.send({
+            error: false,
+            success:true,
+            status:200,
+            data: account,
+            token: token,
+            auth: true,
+            message: "The username and password combination is correct!"
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.send(error);
+    }
 }
+
+module.exports = { login }

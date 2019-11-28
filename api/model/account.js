@@ -1,12 +1,31 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Bcrypt = require("bcryptjs");
 
-var accountSchema = new Schema({
+var AccountSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: {
+        type: String,
+        required: true,
+        trim: true,
+    }
 }, {
-    collection: "accounts"
-})
-var Account = mongoose.model('accounts', accountSchema)
+    collection: 'accounts'
+});
 
-module.exports = { Account };
+//hashing password
+AccountSchema.pre("save", function(next) {
+    if (!this.isModified("password")) {
+        return next();
+    }
+    this.password = Bcrypt.hashSync(this.password, 10);
+    next();
+});
+
+//compare Password
+AccountSchema.methods.comparePassword = function(plaintext, callback) {
+    return callback(null, Bcrypt.compareSync(plaintext, this.password));
+};
+
+
+let Account = mongoose.model('account', AccountSchema);
+module.exports = { Account }
