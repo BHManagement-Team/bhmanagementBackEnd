@@ -10,6 +10,11 @@ routes.route('/install').post((req, res) => {
     create_admin_account.create_default_account(req,res);
 })
 
+//billing cycle
+const billing = require('../controller/modules/billing')
+routes.route('/billing').post((req,res) => {
+    billing.billing_cycle(req,res);
+})
 
 //Routes for Accounts
 routes.route('/login').post((req, res) => {

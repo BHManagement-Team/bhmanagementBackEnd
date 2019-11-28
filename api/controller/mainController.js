@@ -15,7 +15,8 @@ const modules = {
     paymentCreate: require("./modules/PaymentCRUD/createPayment"),
     paymentRetrieve: require("./modules/PaymentCRUD/retrievePayments"),
     paymentUpdate: require("./modules/PaymentCRUD/updatePayment"),
-    paymentDelete: require("./modules/PaymentCRUD/deletePayment")
+    paymentDelete: require("./modules/PaymentCRUD/deletePayment"),
+
 
 }
 //Login 

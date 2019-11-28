@@ -1,8 +1,14 @@
 var cron = require('node-cron');
 
 //every 1 min
-let timestamps = Date().slice(0,25);
-cron.schedule('*/1 * * * *', function () {
-    console.log('running a task every minute >>> ' + timestamps);
-});
+let cronJob = () => {
+    console.log("hello world");
+    
+    cron.schedule('*/5 * * * * *', function () {
+        let timestamps = new Date();
+        console.log('running a task every five sec >>> ' + timestamps);
+        
+    });
+}
 
+module.exports = { cronJob }

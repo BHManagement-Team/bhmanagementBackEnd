@@ -75,7 +75,7 @@ let retrievePaymentbyId = (req, res) => {
         PaymentModel.Payment.find({})
             .populate('occupant_ID')
             .exec((err, data) => {
-                if (err || !data.length) {
+                if (!data.length || err) {
                     response.error = true
                     response.success = false
                     response.status = 404
