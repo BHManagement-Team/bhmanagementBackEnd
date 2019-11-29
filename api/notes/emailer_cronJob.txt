@@ -5,7 +5,7 @@
 
 //     const sendMail = (to, content) => {
 //         const sgMail = require('@sendgrid/mail');
-//         sgMail.setApiKey("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");
+//         sgMail.setApiKey("");
 //         const msg = {
 //             to: to,
 //             from: 'BHM@protonmail.com',
