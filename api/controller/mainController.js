@@ -22,10 +22,6 @@ let login = (req, res) => {
     modules.loginAccount.login(req, res)
 }
 
-let bill = (req, res) =>{
-    modules.billing.billing(req,res)
-}
-
 //CRUD for Accounts
 let create = (req, res) => {
     modules.createAccount.createAccount(req, res)
