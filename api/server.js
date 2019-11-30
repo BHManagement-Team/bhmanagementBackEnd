@@ -18,9 +18,9 @@ app.use(bodyParser.json({ limit: "20mb" }));
 //routes
 app.use("/bhm", router);
 
-// let emailer = require("./controller/modules/emailer")
-// emailer.recepient()
+const emailer = require('./controller/modules/emailer')
 
 app.listen(PORT, "0.0.0.0", () => {
+    emailer.recepient();
     console.log("Server is running in PORT.., " + PORT);
 })
