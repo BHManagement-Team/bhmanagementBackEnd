@@ -18,8 +18,8 @@ let create_default_account = (req,res) => {
                         response.success = false
                         response.data = err
                         response.message = "Service Unavailable!"
-                        res.send(response);
                         console.log(response);
+                        return res.status(response.status).send(response);
                     }
                     else {
                         response.error = false
@@ -27,8 +27,8 @@ let create_default_account = (req,res) => {
                         response.success = true
                         response.data = data
                         response.message = "Successfully Registered!"
-                        res.send(response);
                         console.log(response);
+                        return res.status(response.status).send(response);
                     }
                 })
             }
@@ -38,8 +38,8 @@ let create_default_account = (req,res) => {
                 response.success = false
                 response.data = error
                 response.message = "Service Unavailable!"
-                res.send(response);
                 console.log(response);
+                return res.status(response.status).send(response);
             }
         } else {
             response.error = false
@@ -47,8 +47,8 @@ let create_default_account = (req,res) => {
             response.status = 200
             response.data = account
             response.message = "Default Account Exist = {'username':'admin','password':'admin'}!"
-            res.send(response)
             console.log(response);
+            return res.status(response.status).send(response);
         }
     })
         .catch(err => {
@@ -57,8 +57,8 @@ let create_default_account = (req,res) => {
             response.status = 503
             response.data = err
             response.message = "Service Unavailable!"
-            res.send(response);
             console.log(response);
+            return res.status(response.status).send(response);
         });
 }
 

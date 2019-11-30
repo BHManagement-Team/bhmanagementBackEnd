@@ -12,14 +12,14 @@ let retrieveAllPayments = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No payment found to retrieve!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
                     response.message = "Payment Retrieved Successfully!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 }
             })
     } else {
@@ -27,7 +27,7 @@ let retrieveAllPayments = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(response.status).send(response)
     }
 }
 
@@ -42,14 +42,14 @@ let retrieveOnePayment = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No payment found to retrieve!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
                     response.message = "Payment Retrieved Successfully!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 }
             }).catch(err => {
                 if (err) {
@@ -58,7 +58,7 @@ let retrieveOnePayment = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 }
             });
     } else {
@@ -66,7 +66,7 @@ let retrieveOnePayment = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(response.status).send(response)
     }
 }
 
@@ -81,7 +81,7 @@ let retrievePaymentbyId = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No payment found to retrieve!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 } else {
                     let occupant_payments = []
                     data.forEach(element => {
@@ -94,7 +94,7 @@ let retrievePaymentbyId = (req, res) => {
                     response.status = 200
                     response.data = occupant_payments
                     response.message = "Payment Retrieved Successfully!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 }
             })
     } else {
@@ -102,7 +102,7 @@ let retrievePaymentbyId = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(response.status).send(response)
     }
 }
 module.exports = { retrieveAllPayments, retrieveOnePayment, retrievePaymentbyId }

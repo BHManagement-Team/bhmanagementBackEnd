@@ -19,7 +19,7 @@ let payment = (req, res) => {
                     response.status = 200
                     response.data = data
                     response.message = "Successfully add Payment!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 })
             .catch(err => {
                 if (err) {
@@ -28,7 +28,7 @@ let payment = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 }
             });
     } else {
@@ -36,7 +36,7 @@ let payment = (req, res) => {
         response.status = 503
         response.error = true
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(response.status).send(response);
     }
 
 }

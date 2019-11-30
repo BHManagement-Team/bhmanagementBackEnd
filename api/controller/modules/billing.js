@@ -35,7 +35,7 @@ let billing_cycle = (date_time) => {
         //             response.status = 404
         //             response.data = err
         //             response.message = "No payment found to retrieve!"
-        //             res.send(response)
+        //             return res.status(response.status).send(response)
         //         } else {
 
         //             data.forEach(element => {
@@ -60,7 +60,7 @@ let billing_cycle = (date_time) => {
         //             // response.status = 200
         //             response.data = data
         //             // response.message = "Payment Retrieved Successfully!"
-        //             res.send(response)
+        //             return res.status(response.status).send(response)
         //         }
         //     })
 
@@ -71,7 +71,7 @@ let billing_cycle = (date_time) => {
         response.data = err
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(response.status).send(response)
     }
 }
 module.exports = { billing_cycle }

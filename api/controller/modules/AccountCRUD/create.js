@@ -20,14 +20,14 @@ let createAccount = (req, res) => {
                     response.success = false
                     response.data = err
                     response.message = "Service Unavailable!"
-                    res.send(response);
+                    return res.status(response.status).send(response);
                 } else {
                     response.error = false
                     response.status = 200
                     response.success = true
                     response.data = data
                     response.message = "Successfully Registered!"
-                    res.send(response);
+                    return res.status(response.status).send(response);
                 }
             })
 
@@ -37,7 +37,7 @@ let createAccount = (req, res) => {
             response.success = true
             response.data = account
             response.message = "Username already existed!"
-            res.send(response);
+            return res.status(response.status).send(response);
         }
     })
 }
