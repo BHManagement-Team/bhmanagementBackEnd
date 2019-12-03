@@ -2,7 +2,8 @@
 // https://github.com/sendgrid/sendgrid-nodejs
 let emailer = (to) => {
   const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey("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");
+  //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
+  sgMail.setApiKey("");
   const msg = {
     to: to, //'christian.gigante@student.passerellesnumeriques.org'
     from: 'christian.gigante@student.passerellesnumeriques.org',
