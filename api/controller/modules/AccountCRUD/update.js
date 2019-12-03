@@ -17,7 +17,7 @@ let update = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No account found to update!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 } else {
                     console.log(account)
                     Bcrypt.compare(req.body.oldPassword, account[0].password)
@@ -33,7 +33,7 @@ let update = (req, res) => {
                                         response.status = 200
                                         response.data = account[0]
                                         response.message = "Updated Account Successfully!"
-                                        return res.status(response.status).send(response)
+                                        return res.status(200).send(response)
                                         // console.log("Updated Account Successfully!")
                                     })
                                     .catch(err => {
@@ -43,7 +43,7 @@ let update = (req, res) => {
                                             response.status = 503
                                             response.data = err
                                             response.message = "Service Unavailable!"
-                                            return res.status(response.status).send(response);
+                                            return res.status(200).send(response);
                                         }
                                         // console.log(err)
                                     })
@@ -53,7 +53,7 @@ let update = (req, res) => {
                                 response.status = 200
                                 response.data = err
                                 response.message = "Password is incorrect!"
-                                return res.status(response.status).send(response)
+                                return res.status(200).send(response)
 
                             }
                         }).catch(err => {
@@ -62,7 +62,7 @@ let update = (req, res) => {
                             response.status = 503
                             response.data = err
                             response.message = "Service Unavailable!"
-                            return res.status(response.status).send(response);
+                            return res.status(200).send(response);
                         })
                 }
             })
@@ -72,7 +72,7 @@ let update = (req, res) => {
             response.status = 503
             response.data = err
             response.message = "Service Unavailable!"
-            return res.status(response.status).send(response);
+            return res.status(200).send(response);
         });
 }
 

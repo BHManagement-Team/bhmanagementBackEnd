@@ -38,7 +38,7 @@ let billing_cycle = (cron_date) => {
                 response.status = 404
                 response.data = err
                 response.message = "No payment found to retrieve!"
-                return res.send(response)
+                return res.status(200).send(response)
             } else {
                 data.forEach(element => {
                     if (element.date_started == cron_date) {
@@ -54,7 +54,7 @@ let billing_cycle = (cron_date) => {
                 // // response.status = 200
                 // response.data = data
                 // // response.message = "Payment Retrieved Successfully!"
-                // return res.send(response)
+                // return res.status(200).send(response)
             }
         })
 
@@ -65,7 +65,7 @@ let billing_cycle = (cron_date) => {
         // response.data = err
         // response.status = 503
         // response.message = "Service Unavailable!"
-        // return res.send(response)
+        // return res.status(200).send(response)
         console.log(err);        
     }
 }

@@ -19,7 +19,7 @@ let create_default_account = (req,res) => {
                         response.data = err
                         response.message = "Service Unavailable!"
                         console.log(response);
-                        return res.status(response.status).send(response);
+                        return res.status(200).send(response);
                     }
                     else {
                         response.error = false
@@ -28,7 +28,7 @@ let create_default_account = (req,res) => {
                         response.data = data
                         response.message = "Successfully Registered!"
                         console.log(response);
-                        return res.status(response.status).send(response);
+                        return res.status(200).send(response);
                     }
                 })
             }
@@ -39,7 +39,7 @@ let create_default_account = (req,res) => {
                 response.data = error
                 response.message = "Service Unavailable!"
                 console.log(response);
-                return res.status(response.status).send(response);
+                return res.status(200).send(response);
             }
         } else {
             response.error = false
@@ -48,7 +48,7 @@ let create_default_account = (req,res) => {
             response.data = account
             response.message = "Default Account Exist = {'username':'admin','password':'admin'}!"
             console.log(response);
-            return res.status(response.status).send(response);
+            return res.status(200).send(response);
         }
     })
         .catch(err => {
@@ -58,7 +58,7 @@ let create_default_account = (req,res) => {
             response.data = err
             response.message = "Service Unavailable!"
             console.log(response);
-            return res.status(response.status).send(response);
+            return res.status(200).send(response);
         });
 }
 

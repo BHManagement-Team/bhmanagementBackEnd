@@ -13,14 +13,14 @@ let updateOccupant = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No occupant found to update!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
                     response.message = "Occupant Updated Successfully!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 }
             }).catch(err => {
                 if (err) {
@@ -29,7 +29,7 @@ let updateOccupant = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 }
             });
     } else {
@@ -38,7 +38,7 @@ let updateOccupant = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        return res.status(response.status).send(response)
+        return res.status(200).send(response)
     }
 }
 

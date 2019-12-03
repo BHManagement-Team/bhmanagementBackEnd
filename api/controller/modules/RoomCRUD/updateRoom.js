@@ -20,7 +20,7 @@ let updateRoom = (req, res) => {
                     response.status = 200
                     response.data = room
                     response.message = "Room Updated Successfully!"
-                    res.send(response);
+                    return res.status(200).send(response);
                 }
             })
             .catch(err => {
@@ -29,7 +29,7 @@ let updateRoom = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response);
+                return res.status(200).send(response);
             });
     }
     else {
@@ -38,7 +38,7 @@ let updateRoom = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 
 }
@@ -63,7 +63,7 @@ let updateRoomById = (req, res) => {
                     response.status = 200
                     response.data = room
                     response.message = "Room Updated Successfully!"
-                    res.send(response);
+                    return res.status(200).send(response);
                 }
             })
             .catch(err => {
@@ -72,7 +72,7 @@ let updateRoomById = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response);
+                return res.status(200).send(response);
             });
     }
     else {
@@ -81,7 +81,7 @@ let updateRoomById = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 }
 //end

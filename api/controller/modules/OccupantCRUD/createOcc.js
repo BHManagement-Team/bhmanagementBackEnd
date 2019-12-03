@@ -28,7 +28,7 @@ let createOcc = (req, res) => {
                     response.status = 200
                     response.data = data
                     response.message = "Successfully saved an account!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 })
             .catch(err => {
                 if (err) {
@@ -37,7 +37,7 @@ let createOcc = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 }
             });
     } else {
@@ -45,7 +45,7 @@ let createOcc = (req, res) => {
         response.status = 503
         response.error = true
         response.message = "Service Unavailable!"
-        return res.status(response.status).send(response);
+        return res.status(200).send(response);
     }
 }
 

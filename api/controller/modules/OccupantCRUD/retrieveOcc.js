@@ -10,14 +10,14 @@ let retrieveAllOccupants = (req, res) => {
                 response.status = 404
                 response.data = err
                 response.message = "No Occupant found to retrieve!"
-                return res.status(response.status).send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
                 response.message = "Occupant Retrieved Successfully!"
-                return res.status(response.status).send(response)
+                return res.status(200).send(response)
             }
         }).catch(err => {
             if (err) {
@@ -26,7 +26,7 @@ let retrieveAllOccupants = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                return res.status(response.status).send(response)
+                return res.status(200).send(response)
             }
         });
     } else {
@@ -35,7 +35,7 @@ let retrieveAllOccupants = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        return res.status(response.status).send(response)
+        return res.status(200).send(response)
     }
 }
 
@@ -49,14 +49,14 @@ let retrieveOneOccupant = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No Occupant found to retrieve!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
                     response.message = "Occupant Retrieved Successfully!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 }
             }).catch(err => {
                 if (err) {
@@ -65,7 +65,7 @@ let retrieveOneOccupant = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 }
             });
     } else {
@@ -74,7 +74,7 @@ let retrieveOneOccupant = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        return res.status(response.status).send(response)
+        return res.status(200).send(response)
     }
 }
 
@@ -89,14 +89,14 @@ let retrieveOccbyId = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No Occupant found to retrieve!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
                     response.message = "Occupant Retrieved Successfully!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 }
             }).catch(err => {
                 if (err) {
@@ -105,7 +105,7 @@ let retrieveOccbyId = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    return res.status(response.status).send(response)
+                    return res.status(200).send(response)
                 }
             });
     } else {
@@ -114,7 +114,7 @@ let retrieveOccbyId = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        return res.status(response.status).send(response)
+        return res.status(200).send(response)
     }
 }
 

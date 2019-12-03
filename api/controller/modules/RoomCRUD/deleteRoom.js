@@ -13,14 +13,14 @@ let deleteOneRoom = (req, res) => {
                     response.success = false
                     response.data = err
                     response.message = "Room not Found!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = room
                     response.message = "Room Deleted Successfully!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 }
             })
             .catch(err => {
@@ -29,7 +29,7 @@ let deleteOneRoom = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response);
+                return res.status(200).send(response);
             });
     }
     else {
@@ -38,7 +38,7 @@ let deleteOneRoom = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 }
 //end
@@ -56,14 +56,14 @@ let deleteRoomByID = (req, res) => {
                     response.success = false
                     response.data = err
                     response.message = "Room not Found!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = room
                     response.message = "Room Deleted Successfully!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 }
             })
             .catch(err => {
@@ -72,7 +72,7 @@ let deleteRoomByID = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response);
+                return res.status(200).send(response);
             });
     }
     else {
@@ -81,7 +81,7 @@ let deleteRoomByID = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 }
 //end
@@ -96,14 +96,14 @@ let deleteAllRooms = (req, res) => {
                 response.success = false
                 response.data = err
                 response.message = "Room not Found!"
-                res.send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = room
                 response.message = "All Room Deleted Successfully!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         })
             .catch(err => {
@@ -112,7 +112,7 @@ let deleteAllRooms = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response);
+                return res.status(200).send(response);
             });
     }
     else {
@@ -121,7 +121,7 @@ let deleteAllRooms = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 }
 //end

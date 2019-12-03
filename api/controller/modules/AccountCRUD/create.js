@@ -14,35 +14,6 @@ let createAccount = (req, res) => {
                     password
                 })
 
-<<<<<<< HEAD
-                Account.save((err, data) => {
-                    if (err) {
-                        response.status = 503
-                        response.error = true
-                        response.success = false
-                        response.data = err
-                        response.message = "Service Unavailable!"
-                        res.send(response);
-                    } else {
-                        response.error = false
-                        response.status = 200
-                        response.success = true
-                        response.data = data
-                        response.message = "Successfully Registered!"
-                        res.send(response);
-                    }
-                })
-
-            } else {
-                response.error = false
-                response.status = 200
-                response.success = true
-                response.data = account
-                response.message = "Username already existed!"
-                res.send(response);
-            }
-        })
-=======
             Account.save((err, data) => {
                 if (err) {
                     response.status = 503
@@ -50,14 +21,14 @@ let createAccount = (req, res) => {
                     response.success = false
                     response.data = err
                     response.message = "Service Unavailable!"
-                    return res.status(response.status).send(response);
+                    return res.status(200).send(response);
                 } else {
                     response.error = false
                     response.status = 200
                     response.success = true
                     response.data = data
                     response.message = "Successfully Registered!"
-                    return res.status(response.status).send(response);
+                    return res.status(200).send(response);
                 }
             })
 
@@ -67,9 +38,8 @@ let createAccount = (req, res) => {
             response.success = true
             response.data = account
             response.message = "Username already existed!"
-            return res.status(response.status).send(response);
+            return res.status(200).send(response);
         }
     })
->>>>>>> ChristianGigante
 }
 module.exports = { createAccount }

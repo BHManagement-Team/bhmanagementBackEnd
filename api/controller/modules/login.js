@@ -5,7 +5,7 @@ let login = async (req, res) => {
     try {
         let account = await AccountModel.Account.findOne({ username: req.body.username }).exec();
         if (!account) {
-            return res.status(response.status).send({
+            return res.status(200).send({
                 error: true,
                 success: false,
                 status: 400,
@@ -15,7 +15,7 @@ let login = async (req, res) => {
         }
         account.comparePassword(req.body.password, (error, match) => {
             if (!match) {
-                return res.status(response.status).send({
+                return res.status(200).send({
                     error: true,
                     success: false,
                     status: 400,
@@ -43,7 +43,7 @@ let login = async (req, res) => {
     }
     catch (error) {
         console.error(error);
-        return res.status(503).send(error);
+        return res.status(200).send(error);
     }
 }
 
