@@ -18,7 +18,6 @@ app.use(bodyParser.json({ limit: "20mb" }));
 //routes
 app.use("/bhm", router);
 
-
 //importing the cronJob
 const cron_job = require('./controller/modules/cronJob')
 

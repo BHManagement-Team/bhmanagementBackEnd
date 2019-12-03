@@ -13,14 +13,14 @@ let updatePayment = (req, res) => {
                     response.status = 404
                     response.data = err
                     response.message = "No payment found to update!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
                     response.message = "Payment Retrieved Successfully!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 }
             }).catch(err => {
                 if (err) {
@@ -29,7 +29,7 @@ let updatePayment = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    res.send(response)
+                    return res.status(response.status).send(response)
                 }
             });
     } else {
@@ -38,7 +38,7 @@ let updatePayment = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(response.status).send(response)
     }
 }
 
