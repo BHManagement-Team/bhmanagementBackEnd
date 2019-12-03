@@ -7,7 +7,7 @@ template = template.toString();
 
 let emailer = (receiver, amount_to_pay) => {
     const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey("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");
+    sgMail.setApiKey("");
     const msg = {
         to: receiver,
         from: 'BHM@protonmail.com',
