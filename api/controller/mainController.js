@@ -15,11 +15,15 @@ const modules = {
     paymentCreate: require("./modules/PaymentCRUD/createPayment"),
     paymentRetrieve: require("./modules/PaymentCRUD/retrievePayments"),
     paymentUpdate: require("./modules/PaymentCRUD/updatePayment"),
-    paymentDelete: require("./modules/PaymentCRUD/deletePayment")
+    paymentDelete: require("./modules/PaymentCRUD/deletePayment"),
+    billing: require("./modules/billing")
 }
 //Login 
 let login = (req, res) => {
     modules.loginAccount.login(req, res)
+}
+let billing = (req, res) => {
+    modules.billing.billing_cycle(req, res)
 }
 
 //CRUD for Accounts
@@ -156,7 +160,7 @@ let payment_DeleteByID = (req, res) => {
 }
 
 module.exports = {
-    login, create, retrieveAll, retrieveOne, retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate,
+    billing, login, create, retrieveAll, retrieveOne, retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate,
     occRetrieveAll, occRetrieveOne, occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
     roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomUpdateById, roomDeleteAll, roomDeleteOne, roomDeleteByID, payment_create, payment_retrieve, payment_retrieve1, payment_retrievebyID, payment_update, payment_DeleteAll, payment_DeleteOne, payment_DeleteByID
 };
