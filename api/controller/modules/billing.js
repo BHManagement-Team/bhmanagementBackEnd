@@ -1,5 +1,5 @@
 const PaymentModel = require('../../model/paymentDetails');
-const AccountModel = require('../../model/occupantDetails');
+const OccupantModel = require('../../model/occupantDetails');
 
 //importing emailer
 const my_emailer = require('./emailer')
@@ -7,71 +7,70 @@ let response = { error: false, success: false }
 
 //get room amount by room name
 const RoomModel = require('../../model/roomDetails')
-let amount_to_pay = (room_name) => {
-    try {
-        RoomModel.Room.findOne({ _id: room_name }, (err, room) => {
-            if (err || room == null) {
-                return err
-            } else {
-                return room.room_price
-            }
-        })
-    }
-    catch (err) {
-        return err
-    }
+// let amount_to_pay = async (room_name) => {
+let amount_to_pay = async function (room_name) {
+    return await RoomModel.Room.findOne({ room_name: room_name });
 }
+// }
+
 
 //try to get the date started of the occupant and compare the current date when the cronjob start
 
-let billing_cycle = (date_time) => {
+let billing_cycle = (cron_date) => {
     try {
-        // PaymentModel.Payment.find({})
-        //     .populate('occupant_ID')
-        //     .exec((err, data) => {
-        //         if (err || !data.length) {
-        //             response.error = true
-        //             response.success = false
-        //             response.status = 404
-        //             response.data = err
-        //             response.message = "No payment found to retrieve!"
-        //             return res.status(response.status).send(response)
-        //         } else {
+        OccupantModel.Occupant.find({}, (err, data) => {
+            let temp = []
+            if (err || !data.length) {
+                // response.error = true
+                // response.success = false
+                // response.status = 200
+                // response.data = err
+                // response.message = "No payment found to retrieve!"
+                // return res.status(response.status).send(response)
+                console.log(err);
 
-        //             data.forEach(element => {
-        //                 let current_day = new Date().getDate();
-        //                 let billing_day = Number(element.occupant_ID.date_started.slice(8, 10));
-        //                 let current_month = new Date().getMonth();
-        //                 let temp_billing_month = element.occupant_ID.date_started.split('/');
-        //                 let billing_month = Number(temp_billing_month[1]) ;
+            } else {
+                data.forEach(element => {
 
-        //                 if (current_month != billing_month) {
-        //                     if (current_day == billing_day) {
-        //                         let receiver = element.occupant_email
-        //                         let amount_to_pay = amount_to_pay(element.room_name);
-        //                         my_emailer.emailer(receiver, amount_to_pay)
-        //                     }
-        //                 }
+                    //releasing bill
+                    if (element.date_started == cron_date) {
+                        if (element.date_started.slice(8, 12) == cron_date.slice(8, 12)) {
+                            // let amount = amount_to_pay(element.room_name)
+                            my_emailer.emailer(element.occupant_email)
+                        }
+                    }
+
+                    // RoomModel.Room.find({room_name:element.room_name})
+                    //     .then(data => {
+                    //         temp.push(data)
+                    //         console.log(temp);
+
+                    //     })
 
 
-        //             });
-        //             // response.error = false
-        //             // response.success = true
-        //             // response.status = 200
-        //             response.data = data
-        //             // response.message = "Payment Retrieved Successfully!"
-        //             return res.status(response.status).send(response)
-        //         }
-        //     })
+                    // let amount = amount_to_pay(element.room_name)
+                        // temp.push(element.room_name)
+                           console.log(temp);
+                })
+                // response.error = false
+                // response.success = true
+                // response.status = 200
+                // response.data = temp
+                // response.message = "Successfully retrieve all payments!"
+                // return res.status(response.status).send(response)
 
+            }
+        })
 
     } catch (err) {
-        response.error = true
-        response.success = false
-        response.data = err
-        response.status = 503
-        response.message = "Service Unavailable!"
-        return res.status(response.status).send(response)
+        // response.error = true
+        // response.success = false
+        // response.data = err
+        // response.status = 200
+        // response.message = "Service Unavailable!"
+        // return res.status(response.status).send(response)
+        console.log(err);
+
     }
 }
 module.exports = { billing_cycle }
