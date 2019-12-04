@@ -7,10 +7,11 @@ template = template.toString();
 
 let emailer = (receiver_email, amount_to_pay) => {
     const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey(""); //
+    sgMail.setApiKey(""); 
     const msg = {
         to:receiver_email,
         from: 'BHM@protonmail.com',
+        bcc:   'chillajean.cabungcag@student.passerellesnumeriuqes.org',
         subject: 'Boarding House Billing Notification',
         text: 'It is all ready your billing date. The management is waiting for the amount of ' + amount_to_pay,
         html: template,

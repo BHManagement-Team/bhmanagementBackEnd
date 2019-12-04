@@ -52,8 +52,8 @@ let billing_cycle = (cron_date) => {
                         if (element.date_started.slice(8, 12) == cron_date.slice(8, 12)) {
                             
                             // let amount = amount_to_pay(element.room_name)
-                            console.log(element.occupant_contact);
-                            // my_emailer.emailer(element.occupant_email, 150)
+                            console.log(element.occupant_contact, element.occupant_email);
+                            my_emailer.emailer(element.occupant_email, 150)
                             // my_sms.sms_sender(element.occupant_contact, 1500)
                         }
                     }

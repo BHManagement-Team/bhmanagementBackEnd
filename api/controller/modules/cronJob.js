@@ -5,7 +5,7 @@ let billing = require('./billing')
 
 //every 1 min
 let cronJob = () => {
-    cron.schedule('*/5 * * * * *', function () {
+    cron.schedule('*/10 * * * * *', function () {
         let timestamps = new Date();
         let cron_date =  new Date().toJSON().slice(0, 10).replace(/-/g, '/');
         billing.billing_cycle(cron_date)
