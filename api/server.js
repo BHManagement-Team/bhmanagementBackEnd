@@ -18,10 +18,11 @@ app.use(bodyParser.json({ limit: "20mb" }));
 //routes
 app.use("/bhm", router);
 
+
 //importing the cronJob
 const cron_job = require('./controller/modules/cronJob')
 
 app.listen(PORT, "0.0.0.0", () => {
-    cron_job.cronJob();
+    // cron_job.cronJob();
     console.log("Server is running in PORT.., " + PORT);
 })
