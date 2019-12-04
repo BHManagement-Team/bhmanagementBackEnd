@@ -1,4 +1,3 @@
-
 const express = require("express");
 const routes = express.Router();
 const mainController = require('../controller/mainController');
@@ -7,13 +6,13 @@ const mainController = require('../controller/mainController');
 //{"username":"admin","password":"admin"}
 const create_admin_account = require('../controller/modules/create_default_account')
 routes.route('/install').post((req, res) => {
-    create_admin_account.create_default_account(req,res);
+    create_admin_account.create_default_account(req, res);
 })
 
 //billing cycle
 const billing = require('../controller/modules/billing')
-routes.route('/billing').post((req,res) => {
-    billing.billing_cycle(req,res);
+routes.route('/billing').post((req, res) => {
+    billing.billing_cycle(req, res);
 });
 
 //Routes for Accounts
@@ -63,7 +62,9 @@ routes.route('/retrieveOneOccupant').post((req, res) => {
     mainController.occRetrieveOne(req, res);
 })
 
-routes.route('/retrieveOccupantByID/:id').post((req, res) => {
+routes.route('/retrieveOccupantsByRoomId/:id').post((req, res) => {
+    console.log(">>>>>>>>>");
+
     mainController.occRetrievebyId(req, res);
 })
 

@@ -24,4 +24,6 @@ var roomSchema = new Schema({
 })
 var Room = mongoose.model('roomDetails', roomSchema)
 
-module.exports = { Room }
+module.exports = {
+    Room
+}

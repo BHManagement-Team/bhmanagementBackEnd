@@ -5,22 +5,22 @@ let response = {}
 let retrieveAllRooms = (req, res) => {
     if (req.body.token != null) {
         RoomModel.Room.find({}, (err, room) => {
-            if (err || !room.length) {
-                response.error = true
-                response.status = 404
-                response.success = false
-                response.data = err
-                response.message = "No Room found!"
-                return res.status(200).send(response)
-            } else {
-                response.error = false
-                response.success = true
-                response.status = 200
-                response.data = room
-                response.message = "Retrieve All Room Successfully!"
-                return res.status(200).send(response);
-            }
-        })
+                if (err || !room.length) {
+                    response.error = true
+                    response.status = 404
+                    response.success = false
+                    response.data = err
+                    response.message = "No Room found Here!"
+                    return res.status(200).send(response)
+                } else {
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = room
+                    response.message = "Retrieve All Room Successfully!"
+                    return res.status(200).send(response);
+                }
+            })
             .catch(err => {
                 response.error = true
                 response.success = false
@@ -29,8 +29,7 @@ let retrieveAllRooms = (req, res) => {
                 response.message = "Service Unavailable!"
                 return res.status(200).send(response);
             });
-    }
-    else {
+    } else {
         response.error = true
         response.auth = false
         response.success = false
@@ -44,7 +43,9 @@ let retrieveAllRooms = (req, res) => {
 //retrieveOneRoom
 let retrieveOneRoom = (req, res) => {
     if (req.body.token != null) {
-        RoomModel.Room.findById({ _id: req.body.id }, (err, room) => {
+        RoomModel.Room.findById({
+            _id: req.body.id
+        }, (err, room) => {
             if (err || room == null) {
                 response.error = true
                 response.status = 404
@@ -61,16 +62,8 @@ let retrieveOneRoom = (req, res) => {
                 return res.status(200).send(response)
             }
         })
-            .catch(err => {
-                response.error = true
-                response.success = false
-                response.status = 503
-                response.data = err
-                response.message = "Service Unavailable!"
-                return res.status(200).send(response)
-            })
-    }
-    else {
+
+    } else {
         response.error = true
         response.auth = false
         response.success = false
@@ -84,23 +77,25 @@ let retrieveOneRoom = (req, res) => {
 //retrieveRoombyId
 let retrieveRoombyId = (req, res) => {
     if (req.body.token != null) {
-        RoomModel.Room.findById({ _id: req.params.id }, (err, room) => {
-            if (err || room == null) {
-                response.error = true
-                response.status = 404
-                response.success = false
-                response.data = err
-                response.message = "Room not Exist!"
-                return res.status(200).send(response)
-            } else {
-                response.error = false
-                response.success = true
-                response.status = 200
-                response.data = room
-                response.message = "Retrieve One Room Successfully!"
-                return res.status(200).send(response)
-            }
-        })
+        RoomModel.Room.findById({
+                _id: req.params.id
+            }, (err, room) => {
+                if (err || room == null) {
+                    response.error = true
+                    response.status = 404
+                    response.success = false
+                    response.data = err
+                    response.message = "Room not Exist!"
+                    return res.status(200).send(response)
+                } else {
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = room
+                    response.message = "Retrieve One Room Successfully!"
+                    return res.status(200).send(response)
+                }
+            })
             .catch(err => {
                 response.error = true
                 response.success = false
@@ -109,8 +104,7 @@ let retrieveRoombyId = (req, res) => {
                 response.message = "Service Unavailable!"
                 res.send(response)
             })
-    }
-    else {
+    } else {
         response.error = true
         response.auth = false
         response.success = false
@@ -120,4 +114,8 @@ let retrieveRoombyId = (req, res) => {
     }
 }
 //end
-module.exports = { retrieveAllRooms, retrieveOneRoom, retrieveRoombyId }
+module.exports = {
+    retrieveAllRooms,
+    retrieveOneRoom,
+    retrieveRoombyId
+}

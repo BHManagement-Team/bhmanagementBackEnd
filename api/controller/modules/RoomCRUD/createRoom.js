@@ -1,4 +1,3 @@
-
 const RoomModel = require('../../../model/roomDetails');
 
 let response = {}
@@ -30,12 +29,11 @@ let createRoom = (req, res) => {
                 response.error = true
                 response.success = false
                 response.status = 503
-                response.data = err
-                response.message = "Service Unavailable!"
+                response.data = null
+                response.message = err.errmsg
                 return res.status(200).send(response);
             });
-    }
-    else {
+    } else {
         response.error = true
         response.auth = false
         response.success = false
@@ -45,4 +43,6 @@ let createRoom = (req, res) => {
     }
 }
 
-module.exports = { createRoom }
+module.exports = {
+    createRoom
+}

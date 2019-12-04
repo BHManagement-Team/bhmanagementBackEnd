@@ -5,12 +5,13 @@ let payment = (req, res) => {
     if (req.body.token != null) {
         let occupant_ID = req.params.id;
         let amount = req.body.amount
+
         let billing_date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
         let create_payment = new PaymentModel.Payment({
             occupant_ID: occupant_ID,
             amount: amount,
             billing_date: billing_date,
-            
+
         })
         create_payment.save()
             .then(
@@ -27,8 +28,8 @@ let payment = (req, res) => {
                     response.error = true
                     response.success = false
                     response.status = 503
-                    response.data = err
-                    response.message = "Service Unavailable!"
+                    response.data = null
+                    response.message = err.errmsg
                     return res.status(200).send(response)
                 }
             });
@@ -42,5 +43,6 @@ let payment = (req, res) => {
 
 }
 
-module.exports = { payment }
-
+module.exports = {
+    payment
+}
