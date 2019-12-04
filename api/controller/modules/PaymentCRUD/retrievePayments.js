@@ -77,6 +77,7 @@ let retrieveOnePayment = (req, res) => {
 
 let retrievePaymentbyId = (req, res) => {
     if (req.body.token != null) {
+        let occ_ID = req.params.id;
         PaymentModel.Payment.find({})
             .populate('occupant_ID')
             .exec((err, data) => {
@@ -89,8 +90,8 @@ let retrievePaymentbyId = (req, res) => {
                     return res.status(200).send(response)
                 } else {
                     let occupant_payments = []
-                    data.forEach(element => {
-                        if (element.occupant_ID._id == req.params.id) {
+                    data.forEach((element) => {
+                        if (element.occupant_ID._id == occ_ID) {
                             occupant_payments.push(element)
                         }
                     })

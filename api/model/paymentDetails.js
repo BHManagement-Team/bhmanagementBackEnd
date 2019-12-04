@@ -17,8 +17,6 @@ var paymentSchema = new Schema({
         type: String,
     }
 
-}, {
-    collection: "paymentDetails"
 })
 var Payment = mongoose.model('paymentDetails', paymentSchema)
 
