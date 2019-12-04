@@ -3,23 +3,27 @@ const OccupantModel = require('../../../model/occupantDetails');
 let response = {}
 
 let createOcc = (req, res) => {
-    console.log(req.body);
-
+    ////data from frontend
+    // {
+    //     "token": "xxx",
+    //     "room_ID": "5de7cfe44f34c40f185ed08a",
+    //     "occupant_name": "Mayyy",
+    //     "occupant_email": "chan@gmail.com",
+    //     "occupant_contact": "09505764777"
+    // }
     if (req.body.token != null) {
-        // let room_name = req.body.room_name;
-        // let room_floor = req.body.room_floor;
-        let room_ID = req.params.room_ID
+        let room_ID = req.body.room_ID
         let occupant_name = req.body.occupant_name;
         let occupant_email = req.body.occupant_email;
         let occupant_contact = req.body.occupant_contact;
         let date_started = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
 
         let Occupant = new OccupantModel.Occupant({
-            room_ID,
-            occupant_name,
-            occupant_email,
-            occupant_contact,
-            date_started
+            room_ID: room_ID,
+            occupant_name: occupant_name,
+            occupant_email: occupant_email,
+            occupant_contact: occupant_contact,
+            date_started: date_started
         })
         Occupant.save()
             .then(

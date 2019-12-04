@@ -7,9 +7,9 @@ var roomSchema = new Schema({
         required: true
     },
     room_name: {
+        unique: true,
         type: String,
         required: true,
-        unique: true
     },
     room_capacity: {
         type: Number,

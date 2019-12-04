@@ -9,11 +9,11 @@ var AccountSchema = new mongoose.Schema({
         trim: true,
     }
 }, {
-    collection: 'accounts'
+    collection: "account"
 });
 
 //hashing password
-AccountSchema.pre("save", function(next) {
+AccountSchema.pre("save", function (next) {
     if (!this.isModified("password")) {
         return next();
     }
@@ -22,10 +22,12 @@ AccountSchema.pre("save", function(next) {
 });
 
 //compare Password
-AccountSchema.methods.comparePassword = function(plaintext, callback) {
+AccountSchema.methods.comparePassword = function (plaintext, callback) {
     return callback(null, Bcrypt.compareSync(plaintext, this.password));
 };
 
 
 let Account = mongoose.model('account', AccountSchema);
-module.exports = { Account }
+module.exports = {
+    Account
+}
