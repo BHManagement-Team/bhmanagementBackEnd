@@ -11,7 +11,8 @@ let emailer = (receiver_email, amount_to_pay) => {
     const msg = {
         to:receiver_email,
         from: 'BHM@protonmail.com',
-        bcc:   'chillajean.cabungcag@student.passerellesnumeriuqes.org',
+        cc:   'christian.gigante@student.passerellesnumeriuqes.org',
+        // bcc:   'christian.gigante@student.passerellesnumeriuqes.org',
         subject: 'Boarding House Billing Notification',
         text: 'It is all ready your billing date. The management is waiting for the amount of ' + amount_to_pay,
         html: template,
