@@ -9,7 +9,7 @@ var paymentSchema = new Schema({
         type: Number,
         required: true
     },
-    date_paid: {
+    date_pay: {
         type: String,
         required: true
     },

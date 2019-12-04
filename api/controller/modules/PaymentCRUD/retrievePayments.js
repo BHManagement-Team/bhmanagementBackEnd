@@ -1,5 +1,8 @@
 const PaymentModel = require('../../../model/paymentDetails');
-let response = { error: false, success: false }
+let response = {
+    error: false,
+    success: false
+}
 
 let retrieveAllPayments = (req, res) => {
     if (req.body.token != null) {
@@ -34,7 +37,9 @@ let retrieveAllPayments = (req, res) => {
 
 let retrieveOnePayment = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.Payment.findOne({ _id: req.body.id },
+        PaymentModel.Payment.findOne({
+                _id: req.body.id
+            },
             (err, data) => {
                 if (err || !data.length) {
                     response.error = true
@@ -52,15 +57,15 @@ let retrieveOnePayment = (req, res) => {
                     return res.status(200).send(response)
                 }
             }).catch(err => {
-                if (err) {
-                    response.error = true
-                    response.success = false
-                    response.status = 503
-                    response.data = err
-                    response.message = "Service Unavailable!"
-                    return res.status(200).send(response)
-                }
-            });
+            if (err) {
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable!"
+                return res.status(200).send(response)
+            }
+        });
     } else {
         response.error = true
         response.success = false
@@ -105,4 +110,8 @@ let retrievePaymentbyId = (req, res) => {
         return res.status(200).send(response)
     }
 }
-module.exports = { retrieveAllPayments, retrieveOnePayment, retrievePaymentbyId }
+module.exports = {
+    retrieveAllPayments,
+    retrieveOnePayment,
+    retrievePaymentbyId
+}

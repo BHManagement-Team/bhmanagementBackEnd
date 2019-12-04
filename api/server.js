@@ -12,11 +12,21 @@ global.mongoose = require("mongoose")
 require('./system/dbConfig')
 
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: true, limit: "20mb" }));
-app.use(bodyParser.json({ limit: "20mb" }));
+app.use(bodyParser.urlencoded({
+    extended: true,
+    limit: "20mb"
+}));
+app.use(bodyParser.json({
+    limit: "20mb"
+}));
 
 //routes
 app.use("/bhm", router);
+
+app.all("*", () => {
+    console.log("<404> API NOT EXIST!");
+
+})
 
 
 //importing the cronJob

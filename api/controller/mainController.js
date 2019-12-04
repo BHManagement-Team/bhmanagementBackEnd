@@ -132,8 +132,6 @@ let roomDeleteByID = (req, res) => {
 }
 //CRUD for Payments
 let payment_create = (req, res) => {
-    console.log(req.body);
-
     modules.paymentCreate.payment(req, res)
 }
 let payment_retrieve = (req, res) => {

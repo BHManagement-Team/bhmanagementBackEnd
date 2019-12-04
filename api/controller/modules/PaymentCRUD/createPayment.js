@@ -3,16 +3,24 @@ let response = {}
 
 let payment = (req, res) => {
     if (req.body.token != null) {
-        let occupant_ID = req.params.id;
-        let amount = req.body.amount
+        ////data from frontend
+        // {
+        //     "token": "xxx",
+        //     "amount": 100,
+        //     "id": "5de7d0c26bb5c5124cf78c51"
+        // }
+        let occupant_ID = req.body.id;
+        let amount = req.body.amount;
+        let date_pay = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
 
-        let billing_date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
         let create_payment = new PaymentModel.Payment({
             occupant_ID: occupant_ID,
             amount: amount,
-            billing_date: billing_date,
+            date_pay: date_pay,
+            updated_At: null
 
         })
+
         create_payment.save()
             .then(
                 data => {
@@ -24,15 +32,14 @@ let payment = (req, res) => {
                     return res.status(200).send(response)
                 })
             .catch(err => {
-                if (err) {
-                    response.error = true
-                    response.success = false
-                    response.status = 503
-                    response.data = null
-                    response.message = err.errmsg
-                    return res.status(200).send(response)
-                }
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = err.errmsg
+                return res.status(200).send(response)
             });
+
     } else {
         response.auth = false
         response.status = 503
