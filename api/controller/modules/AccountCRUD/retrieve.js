@@ -63,7 +63,7 @@ let retrieveOne = (req, res) => {
 let retrievebyId = (req, res) => {
     AccountModel.Account.findOne({ _id: req.params.id },
         (err, account) => {
-            if (err || account.length == 0) {
+            if (err ) {
                 response.error = true
                 response.status = 404
                 response.success = false

@@ -19,7 +19,7 @@ let billing_cycle = (cron_date) => {
                 return res.status(200).send(response)
             } else {
                 data.forEach(element => {
-                    if (element.date_started != cron_date) {
+                    if (element.date_started == cron_date) {
                         if (element.date_started.slice(8, 12) == cron_date.slice(8, 12)) {
                             
                             console.log(element.occupant_contact, element.occupant_email);
