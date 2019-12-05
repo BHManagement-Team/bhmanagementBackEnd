@@ -1,5 +1,8 @@
 const PaymentModel = require('../../../model/paymentDetails');
-let response = { error: false, success: false }
+let response = {
+    error: false,
+    success: false
+}
 
 let retrieveAllPayments = (req, res) => {
     if (req.body.token != null) {
@@ -34,7 +37,9 @@ let retrieveAllPayments = (req, res) => {
 
 let retrieveOnePayment = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.Payment.findOne({ _id: req.body.id },
+        PaymentModel.Payment.findById({
+                _id: req.body.id
+            },
             (err, data) => {
                 if (err || !data.length) {
                     response.error = true
@@ -52,15 +57,15 @@ let retrieveOnePayment = (req, res) => {
                     return res.status(200).send(response)
                 }
             }).catch(err => {
-                if (err) {
-                    response.error = true
-                    response.success = false
-                    response.status = 503
-                    response.data = err
-                    response.message = "Service Unavailable!"
-                    return res.status(200).send(response)
-                }
-            });
+            if (err) {
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable!"
+                return res.status(200).send(response)
+            }
+        });
     } else {
         response.error = true
         response.success = false
@@ -73,10 +78,7 @@ let retrieveOnePayment = (req, res) => {
 let retrievePaymentbyId = (req, res) => {
     if (req.body.token != null) {
         PaymentModel.Payment.find({})
-            .populate('occupant_ID')
             .exec((err, data) => {
-                console.log(data);
-                
                 if (!data.length || err) {
                     response.error = true
                     response.success = false
@@ -85,13 +87,12 @@ let retrievePaymentbyId = (req, res) => {
                     response.message = "No payment found to retrieve!"
                     return res.status(200).send(response)
                 } else {
-                    
                     let occupant_payments = []
-                    data.forEach(element => {
-                        if (element.occupant_ID._id != null && element.occupant_ID._id == req.params.id) {
-                            occupant_payments.push(element)
+                    for (let index = 0; index < data.length; index++) {
+                        if (data[index].occupant_ID != null && data[index].occupant_ID == req.params.id) {
+                            occupant_payments.push(data[index])
                         }
-                    })
+                    }
                     response.error = false
                     response.success = true
                     response.status = 200
@@ -108,4 +109,8 @@ let retrievePaymentbyId = (req, res) => {
         return res.status(200).send(response)
     }
 }
-module.exports = { retrieveAllPayments, retrieveOnePayment, retrievePaymentbyId }
+module.exports = {
+    retrieveAllPayments,
+    retrieveOnePayment,
+    retrievePaymentbyId
+}
