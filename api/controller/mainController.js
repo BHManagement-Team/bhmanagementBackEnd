@@ -78,7 +78,7 @@ let occRetrieveOne = (req, res) => {
 }
 
 let occRetrievebyId = (req, res) => {
-    modules.occRetrieve.retrieveOccbyId(req, res)
+    modules.occRetrieve.retrieveRoomOccbyId(req, res)
 }
 
 let occUpdate = (req, res) => {

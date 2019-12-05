@@ -4,6 +4,10 @@ let response = {}
 //retrieveAllRooms
 let retrieveAllRooms = (req, res) => {
     if (req.body.token != null) {
+        //data from frontend
+        // {
+        //     "token": "xxx"
+        // }
         RoomModel.Room.find({}, (err, room) => {
                 if (err || !room.length) {
                     response.error = true
@@ -43,10 +47,16 @@ let retrieveAllRooms = (req, res) => {
 //retrieveOneRoom
 let retrieveOneRoom = (req, res) => {
     if (req.body.token != null) {
+        ////data from frontend
+        //  {
+        //      "token": "xxx",
+        //      "room_ID": "5de7cfe44f34c40f185ed08a"
+        //  }
+        let room_ID = req.body.room_ID
         RoomModel.Room.findById({
-                _id: req.body.id
+                _id: room_ID
             }, (err, room) => {
-                if (err || room == null) {
+                if (err) {
                     response.error = true
                     response.status = 404
                     response.success = false

@@ -77,7 +77,12 @@ let retrieveOnePayment = (req, res) => {
 
 let retrievePaymentbyId = (req, res) => {
     if (req.body.token != null) {
-        let occ_ID = req.params.id;
+        ////data from frontend
+        // {
+        //     "token": "xxx",
+        //     "occupant_ID": "5de7d28da79fbb0adcf831e6"
+        // }
+        let occ_ID = req.body.occupant_ID;
         PaymentModel.Payment.find({})
             .populate('occupant_ID')
             .exec((err, data) => {

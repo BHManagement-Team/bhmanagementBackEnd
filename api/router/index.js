@@ -62,9 +62,7 @@ routes.route('/retrieveOneOccupant').post((req, res) => {
     mainController.occRetrieveOne(req, res);
 })
 
-routes.route('/retrieveOccupantsByRoomId/:id').post((req, res) => {
-    console.log(">>>>>>>>>");
-
+routes.route('/retrieveOccupantsByRoomId').post((req, res) => {
     mainController.occRetrievebyId(req, res);
 })
 
@@ -90,11 +88,11 @@ routes.route('/createRoom').post((req, res) => {
     mainController.roomCreate(req, res);
 })
 
-routes.route('/retrieveAllRooms').post((req, res) => {
+routes.route('/retrieveAllRooms').post((req, res) => { // all rooms retrieve
     mainController.roomRetrieveAll(req, res);
 })
 
-routes.route('/retrieveOneRoom').post((req, res) => {
+routes.route('/retrieveOneRoom').post((req, res) => { // one room retrieve
     mainController.roomRetrieveOne(req, res);
 })
 
@@ -102,7 +100,7 @@ routes.route('/retrieveRoomByID/:id').post((req, res) => {
     mainController.roomRetrievebyId(req, res);
 })
 
-routes.route('/updateRoom').post((req, res) => {
+routes.route('/updateRoom').post((req, res) => { // update room
     mainController.roomUpdate(req, res);
 })
 
@@ -114,7 +112,7 @@ routes.route('/deleteAllRooms').post((req, res) => {
     mainController.roomDeleteAll(req, res);
 })
 
-routes.route('/deleteOneRoom').post((req, res) => {
+routes.route('/deleteOneRoom').post((req, res) => { //delete room
     mainController.roomDeleteOne(req, res);
 })
 
@@ -135,7 +133,7 @@ routes.route('/retrieveOnePayment').post((req, res) => {
     mainController.payment_retrieve1(req, res);
 })
 
-routes.route('/retrievePaymentByID/:id').post((req, res) => {
+routes.route('/retrievePaymentByID').post((req, res) => {
     mainController.payment_retrievebyID(req, res);
 })
 
