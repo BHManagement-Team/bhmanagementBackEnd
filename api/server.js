@@ -23,10 +23,10 @@ app.use(bodyParser.json({
 //routes
 app.use("/bhm", router);
 
-app.all("*", (req, res) => {
-    console.log("404 API not found!");
+// app.all("*", (req, res) => {
+//     console.log("404 API not found!");
 
-})
+// })
 
 //importing the cronJob
 const cron_job = require('./controller/modules/cronJob')

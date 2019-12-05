@@ -9,6 +9,7 @@ let createOcc = (req, res) => {
         let room_name = req.body.room_name;
         let room_floor = req.body.room_floor;
         let occupant_name = req.body.occupant_name;
+        let occupant_gender = req.body.occupant_gender;
         let occupant_email = req.body.occupant_email;
         let occupant_contact = req.body.occupant_contact;
         let date_started = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
@@ -16,6 +17,7 @@ let createOcc = (req, res) => {
             room_name,
             room_floor,
             occupant_name,
+            occupant_gender,
             occupant_email,
             occupant_contact,
             date_started

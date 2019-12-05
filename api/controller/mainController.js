@@ -81,6 +81,13 @@ let occRetrievebyId = (req, res) => {
     modules.occRetrieve.retrieveOccbyId(req, res)
 }
 
+let occRetrieveFemale = (req, res) => {
+    modules.occRetrieve.retrieveFemaleOcc(req, res)
+}
+let occRetrieveMale = (req, res) => {
+    modules.occRetrieve.retrieveMaleOcc(req, res)
+}
+
 let occUpdate = (req, res) => {
     modules.occUpdate.updateOccupant(req, res)
 }
@@ -161,6 +168,6 @@ let payment_DeleteByID = (req, res) => {
 
 module.exports = {
     billing, login, create, retrieveAll, retrieveOne, retrievebyId, update, updateByID, deleteAll, deleteOne, deleteByID, occCreate,
-    occRetrieveAll, occRetrieveOne, occRetrievebyId, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
+    occRetrieveAll, occRetrieveOne, occRetrievebyId, occRetrieveFemale, occRetrieveMale, occUpdate, occDeleteAll, occDeleteOne, occDeleteByID,
     roomCreate, roomRetrieveAll, roomRetrieveOne, roomRetrievebyId, roomUpdate, roomUpdateById, roomDeleteAll, roomDeleteOne, roomDeleteByID, payment_create, payment_retrieve, payment_retrieve1, payment_retrievebyID, payment_update, payment_DeleteAll, payment_DeleteOne, payment_DeleteByID
 };

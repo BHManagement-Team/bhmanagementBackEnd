@@ -65,6 +65,12 @@ routes.route('/retrieveOneOccupant').post((req, res) => {
 routes.route('/retrieveOccupantByID/:id').post((req, res) => {
     mainController.occRetrievebyId(req, res);
 })
+routes.route('/retrieveFemaleOcc').post((req, res) => {
+    mainController.occRetrieveFemale(req, res);
+})
+routes.route('/retrieveMaleOcc').post((req, res) => {
+    mainController.occRetrieveMale(req, res);
+})
 
 routes.route('/updateOccupant/:id').post((req, res) => {
     mainController.occUpdate(req, res);
