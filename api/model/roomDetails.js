@@ -18,7 +18,9 @@ var roomSchema = new Schema({
     room_price: {
         type: Number,
         required: true
-    }
+    }, 
+    occupants: [{ type: Schema.Types.ObjectId, ref: 'occupantDetails' }]
+
 }, {
     collection: "roomDetails"
 })

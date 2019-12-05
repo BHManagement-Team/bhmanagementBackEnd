@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-let sms_sender = (receiver_contact, amount_to_pay) => {
+let sms_sender = (receiver_contact) => {
   const Nexmo = require("nexmo");
   const nexmo = new Nexmo({
     apiKey: "796f72fe",
@@ -9,7 +9,7 @@ let sms_sender = (receiver_contact, amount_to_pay) => {
   });
   nexmo.message.sendSms(
     "1234",
-    "639506397570",
+    receiver_contact,
     "Boarding House Payment Notification! *** It is all ready your billing date. The management is waiting for your payment",
     (err, responseData) => {
       if (err) {

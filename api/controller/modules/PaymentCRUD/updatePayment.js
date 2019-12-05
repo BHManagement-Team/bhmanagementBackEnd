@@ -5,8 +5,11 @@ let updatePayment = (req, res) => {
     if (req.body.token != null) {
         PaymentModel.Payment.findOneAndUpdate({ _id: req.body.id },
             req.body,
-            { new: true },
+            {upsert: true},
+           
             (err, data) => {
+                console.log(data);
+                
                 if (err) {
                     response.error = true
                     response.success = false
@@ -19,7 +22,7 @@ let updatePayment = (req, res) => {
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Payment Retrieved Successfully!"
+                    response.message = "Payment Updated Successfully!"
                     return res.status(200).send(response)
                 }
             }).catch(err => {

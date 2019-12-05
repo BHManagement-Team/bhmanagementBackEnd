@@ -6,7 +6,7 @@ let updateRoom = (req, res) => {
     if (req.body.token != null) {
         RoomModel.Room.findByIdAndUpdate({ _id: req.body.id },
             req.body,
-            { new: true },
+            { upsert: true },
             (err, room) => {
                 if (err) {
                     response.error = true

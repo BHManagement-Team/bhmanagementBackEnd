@@ -13,7 +13,7 @@ var paymentSchema = new Schema({
         required: true
     }
 
-})
+}, {collections : 'occupantDetails'})
 var Payment = mongoose.model('paymentDetails', paymentSchema)
 
 module.exports = { Payment }

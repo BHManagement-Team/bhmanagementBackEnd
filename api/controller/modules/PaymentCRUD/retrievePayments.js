@@ -75,6 +75,8 @@ let retrievePaymentbyId = (req, res) => {
         PaymentModel.Payment.find({})
             .populate('occupant_ID')
             .exec((err, data) => {
+                console.log(data);
+                
                 if (!data.length || err) {
                     response.error = true
                     response.success = false
@@ -83,6 +85,7 @@ let retrievePaymentbyId = (req, res) => {
                     response.message = "No payment found to retrieve!"
                     return res.status(200).send(response)
                 } else {
+                    
                     let occupant_payments = []
                     data.forEach(element => {
                         if (element.occupant_ID._id == req.params.id) {

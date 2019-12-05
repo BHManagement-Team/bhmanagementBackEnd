@@ -5,16 +5,15 @@ const fs = require('fs');
 var template = fs.readFileSync('./template.html');
 template = template.toString();
 
-let emailer = (receiver_email, amount_to_pay) => {
+let emailer = (receiver_email) => {
     const sgMail = require('@sendgrid/mail');
     sgMail.setApiKey(""); 
     const msg = {
         to:receiver_email,
         from: 'BHM@protonmail.com',
         cc:   'christian.gigante@student.passerellesnumeriuqes.org',
-        // bcc:   'christian.gigante@student.passerellesnumeriuqes.org',
         subject: 'Boarding House Billing Notification',
-        text: 'It is all ready your billing date. The management is waiting for the amount of ' + amount_to_pay,
+        text: 'It is all ready your billing date. The management is waiting for your payment',
         html: template,
     };
     if (sgMail.send(msg)) {
