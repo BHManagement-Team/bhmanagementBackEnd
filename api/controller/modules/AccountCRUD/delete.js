@@ -9,14 +9,14 @@ let deleteOne = (req, res) => {
             response.success = false
             response.data = err
             response.message = "No account found to delete!"
-            res.send(response);
+            return res.status(200).send(response);
         } else {
             response.error = false
             response.status = 200
             response.success = true
             response.data = account
             response.message = "Account Deleted Successfully!"
-            res.send(response);
+            return res.status(200).send(response);
         }
     }).catch(err => {
         if (err) {
@@ -25,7 +25,7 @@ let deleteOne = (req, res) => {
             response.success = false
             response.data = err
             response.message = "Service unavailable!"
-            res.send(response);
+            return res.status(200).send(response);
         }
     });
 }
@@ -38,14 +38,14 @@ let deleteOneByID = (req, res) => {
             response.success = false
             response.data = err
             response.message = "No account found to delete!"
-            res.send(response);
+            return res.status(200).send(response);
         } else {
             response.error = false
             response.status = 200
             response.success = true
             response.data = account
             response.message = "Account Deleted Successfully!"
-            res.send(response);
+            return res.status(200).send(response);
         }
     }).catch(err => {
         if (err) {
@@ -54,7 +54,7 @@ let deleteOneByID = (req, res) => {
             response.success = false
             response.data = err
             response.message = "Service unavailable!"
-            res.send(response);
+            return res.status(200).send(response);
         }
     });
 }
@@ -68,14 +68,14 @@ let deleteAll = (req, res) => {
             response.success = false
             response.data = err
             response.message = "No account found!"
-            res.send(response);
+            return res.status(200).send(response);
         } else {
             response.error = false
             response.status = 200
             response.success = true
             response.data = account
             response.message = "Account Deleted Successfully!"
-            res.send(response);
+            return res.status(200).send(response);
         }
     }).catch(err => {
             response.error = true
@@ -83,7 +83,7 @@ let deleteAll = (req, res) => {
             response.success = false
             response.data = err
             response.message = "Service unavailable!"
-            res.send(response);
+            return res.status(200).send(response);
     });
 }
 

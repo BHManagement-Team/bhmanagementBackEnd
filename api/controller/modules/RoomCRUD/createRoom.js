@@ -24,7 +24,7 @@ let createRoom = (req, res) => {
                     response.status = 200
                     response.data = data
                     response.message = "Room Added Successfully!"
-                    res.send(response);
+                    return res.status(200).send(response);
                 })
             .catch(err => {
                 response.error = true
@@ -32,7 +32,7 @@ let createRoom = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response);
+                return res.status(200).send(response);
             });
     }
     else {
@@ -41,7 +41,7 @@ let createRoom = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 }
 

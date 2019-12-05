@@ -11,14 +11,14 @@ let retrieveAllRooms = (req, res) => {
                 response.success = false
                 response.data = err
                 response.message = "No Room found!"
-                res.send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = room
                 response.message = "Retrieve All Room Successfully!"
-                res.send(response);
+                return res.status(200).send(response);
             }
         })
             .catch(err => {
@@ -27,7 +27,7 @@ let retrieveAllRooms = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response);
+                return res.status(200).send(response);
             });
     }
     else {
@@ -36,7 +36,7 @@ let retrieveAllRooms = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 }
 //end
@@ -51,14 +51,14 @@ let retrieveOneRoom = (req, res) => {
                 response.success = false
                 response.data = err
                 response.message = "Room not Exist!"
-                res.send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = room
                 response.message = "Retrieve One Room Successfully!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         })
             .catch(err => {
@@ -67,7 +67,7 @@ let retrieveOneRoom = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response)
+                return res.status(200).send(response)
             })
     }
     else {
@@ -76,7 +76,7 @@ let retrieveOneRoom = (req, res) => {
         response.success = false
         response.status = 503
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(200).send(response)
     }
 }
 //end
@@ -91,14 +91,14 @@ let retrieveRoombyId = (req, res) => {
                 response.success = false
                 response.data = err
                 response.message = "Room not Exist!"
-                res.send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = room
                 response.message = "Retrieve One Room Successfully!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         })
             .catch(err => {

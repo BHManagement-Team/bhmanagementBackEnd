@@ -9,7 +9,8 @@ let payment = (req, res) => {
         let create_payment = new PaymentModel.Payment({
             occupant_ID: occupant_ID,
             amount: amount,
-            billing_date: billing_date
+            billing_date: billing_date,
+            
         })
         create_payment.save()
             .then(
@@ -19,7 +20,7 @@ let payment = (req, res) => {
                     response.status = 200
                     response.data = data
                     response.message = "Successfully add Payment!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 })
             .catch(err => {
                 if (err) {
@@ -28,7 +29,7 @@ let payment = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 }
             });
     } else {
@@ -36,7 +37,7 @@ let payment = (req, res) => {
         response.status = 503
         response.error = true
         response.message = "Service Unavailable!"
-        res.send(response);
+        return res.status(200).send(response);
     }
 
 }

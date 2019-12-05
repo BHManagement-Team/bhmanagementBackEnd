@@ -3,24 +3,27 @@ let response = {  }
 
 let updatePayment = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.payment.findOneAndUpdate({ _id: req.body.id },
+        PaymentModel.Payment.findOneAndUpdate({ _id: req.body.id },
             req.body,
-            { new: true },
+            {upsert: true},
+           
             (err, data) => {
+                console.log(data);
+                
                 if (err) {
                     response.error = true
                     response.success = false
                     response.status = 404
                     response.data = err
                     response.message = "No payment found to update!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Payment Retrieved Successfully!"
-                    res.send(response)
+                    response.message = "Payment Updated Successfully!"
+                    return res.status(200).send(response)
                 }
             }).catch(err => {
                 if (err) {
@@ -29,7 +32,7 @@ let updatePayment = (req, res) => {
                     response.status = 503
                     response.data = err
                     response.message = "Service Unavailable!"
-                    res.send(response)
+                    return res.status(200).send(response)
                 }
             });
     } else {
@@ -38,7 +41,7 @@ let updatePayment = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(200).send(response)
     }
 }
 

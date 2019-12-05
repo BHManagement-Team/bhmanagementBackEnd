@@ -10,14 +10,14 @@ let deleteOneOccupant = (req, res) => {
                 response.status = 404
                 response.data = err
                 response.message = "No Occupant found to delete!"
-                res.send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
                 response.message = "Occupant Deleted Successfully!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         }).catch(err => {
             if (err) {
@@ -26,7 +26,7 @@ let deleteOneOccupant = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         });
     } else {
@@ -35,7 +35,7 @@ let deleteOneOccupant = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(200).send(response)
     }
 }
 
@@ -49,14 +49,14 @@ let deleteOccupantByID = (req, res) => {
                 response.status = 404
                 response.data = err
                 response.message = "No Occupant found to delete!"
-                res.send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
                 response.message = "Occupant Deleted Successfully!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         }).catch(err => {
             if (err) {
@@ -65,7 +65,7 @@ let deleteOccupantByID = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         });
     } else {
@@ -74,7 +74,7 @@ let deleteOccupantByID = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(200).send(response)
     }
 }
 
@@ -88,14 +88,14 @@ let deleteAllOccupants = (req, res) => {
                 response.status = 404
                 response.data = err
                 response.message = "No Occupant found to delete!"
-                res.send(response)
+                return res.status(200).send(response)
             } else {
                 response.error = false
                 response.success = true
                 response.status = 200
                 response.data = data
                 response.message = "Occupant Deleted Successfully!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         }).catch(err => {
             if (err) {
@@ -104,7 +104,7 @@ let deleteAllOccupants = (req, res) => {
                 response.status = 503
                 response.data = err
                 response.message = "Service Unavailable!"
-                res.send(response)
+                return res.status(200).send(response)
             }
         });
     } else {
@@ -113,7 +113,7 @@ let deleteAllOccupants = (req, res) => {
         response.status = 503
         response.auth = false
         response.message = "Service Unavailable!"
-        res.send(response)
+        return res.status(200).send(response)
     }
 }
 
