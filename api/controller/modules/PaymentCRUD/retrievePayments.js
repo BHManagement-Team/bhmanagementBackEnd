@@ -88,7 +88,7 @@ let retrievePaymentbyId = (req, res) => {
                     
                     let occupant_payments = []
                     data.forEach(element => {
-                        if (element.occupant_ID._id == req.params.id) {
+                        if (element.occupant_ID._id != null && element.occupant_ID._id == req.params.id) {
                             occupant_payments.push(element)
                         }
                     })

@@ -1,40 +1,37 @@
 const PaymentModel = require('../../../model/paymentDetails');
-let response = {  }
+let response = {}
 
 let updatePayment = (req, res) => {
     if (req.body.token != null) {
-        PaymentModel.Payment.findOneAndUpdate({ _id: req.body.id },
-            req.body,
-            {upsert: true},
-           
+        let payment_ID = req.params.payment_ID;
+        let amount = req.body.amount
+        let billing_date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+        PaymentModel.Payment.findById({
+                _id: payment_ID
+            },
             (err, data) => {
                 console.log(data);
-                
                 if (err) {
                     response.error = true
                     response.success = false
                     response.status = 404
                     response.data = err
-                    response.message = "No payment found to update!"
+                    response.message = "No payment found to update !"
                     return res.status(200).send(response)
                 } else {
-                    response.error = false
-                    response.success = true
-                    response.status = 200
-                    response.data = data
-                    response.message = "Payment Updated Successfully!"
-                    return res.status(200).send(response)
+                    data.amount = amount
+                    data.billing_date = billing_date
+                    data.save()
+                        .then(() => {
+                            response.error = false
+                            response.success = true
+                            response.status = 200
+                            response.data = null
+                            response.message = "Payment Updated Successfully!"
+                            return res.status(200).send(response)
+                        })
                 }
-            }).catch(err => {
-                if (err) {
-                    response.error = true
-                    response.success = false
-                    response.status = 503
-                    response.data = err
-                    response.message = "Service Unavailable!"
-                    return res.status(200).send(response)
-                }
-            });
+            })
     } else {
         response.error = true
         response.success = false
@@ -45,5 +42,6 @@ let updatePayment = (req, res) => {
     }
 }
 
-module.exports = { updatePayment }
-
+module.exports = {
+    updatePayment
+}

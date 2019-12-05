@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var paymentSchema = new Schema({
     occupant_ID: {
-        type: Schema.Types.ObjectId, ref: 'occupantDetails'
+        type: Schema.Types.ObjectId,
+        ref: 'occupantDetails'
     },
     amount: {
         type: Number,
@@ -13,7 +14,11 @@ var paymentSchema = new Schema({
         required: true
     }
 
-}, {collections : 'occupantDetails'})
+}, {
+    collections: 'occupantDetails'
+})
 var Payment = mongoose.model('paymentDetails', paymentSchema)
 
-module.exports = { Payment }
+module.exports = {
+    Payment
+}

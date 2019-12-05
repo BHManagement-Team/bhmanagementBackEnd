@@ -137,7 +137,7 @@ routes.route('/retrievePaymentByID/:id').post((req, res) => {
     mainController.payment_retrievebyID(req, res);
 })
 
-routes.route('/updatePayment').post((req, res) => {
+routes.route('/updateOnePayment/:payment_ID').post((req, res) => {
     mainController.payment_update(req, res);
 })
 
