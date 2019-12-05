@@ -1,22 +1,28 @@
-// using Twilio SendGrid's v3 Node.js Library
-// https://github.com/sendgrid/sendgrid-nodejs
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey("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");
-const msg = {
-  to: 'christian.gigante@student.passerellesnumeriques.org',
-  from: 'christian.gigante@student.passerellesnumeriques.org',
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-};
-console.log("sending .... " +sgMail  );
 
-if (sgMail.send(msg)) {
-    console.log("sent");
-    
-} else {
-    console.log("error");
-    
+//IMPORTANT NOTE!!!
+//REMOVE API KEY BEFORE PUSHING TO GITHUB
+const fs = require('fs');
+var template = fs.readFileSync('./template.html');
+template = template.toString();
+
+let emailer = (receiver_email) => {
+    const sgMail = require('@sendgrid/mail');
+    // sgMail.setApiKey("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"); 
+    const msg = {
+        to:receiver_email,
+        from: 'BHM@protonmail.com',
+        cc:   'christian.gigante@student.passerellesnumeriuqes.org',
+        subject: 'Boarding House Billing Notification',
+        text: 'It is all ready your billing date. The management is waiting for your payment',
+        html: template,
+    };
+    if (sgMail.send(msg)) {
+        console.log("Billing Notification Sent");
+    } else {
+        console.log("Billing Notification Error");
+        
+    }
+    sgMail.send(msg);
 }
 
-sgMail.send(msg);
+module.exports = { emailer }
