@@ -7,11 +7,11 @@ template = template.toString();
 
 let emailer = (receiver_email) => {
     const sgMail = require('@sendgrid/mail');
-    // sgMail.setApiKey("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"); 
+    sgMail.setApiKey("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"); 
     const msg = {
         to:receiver_email,
         from: 'BHM@protonmail.com',
-        cc:   'christian.gigante@student.passerellesnumeriuqes.org',
+        cc:   'chillajean.cabungcag@student.passerellesnumeriuqes.org',
         subject: 'Boarding House Billing Notification',
         text: 'It is all ready your billing date. The management is waiting for your payment',
         html: template,

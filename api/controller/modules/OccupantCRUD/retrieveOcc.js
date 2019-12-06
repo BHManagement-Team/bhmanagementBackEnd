@@ -132,7 +132,6 @@ let retrieveFemaleOcc = (req, res) => {
                     response.message = "No Occupant Gender found to retrieve!"
                     return res.status(200).send(response)
                 } else {
-                    console.log(data);
                     response.error = false
                     response.success = true
                     response.status = 200
@@ -158,7 +157,32 @@ let retrieveMaleOcc = (req, res) => {
                     response.message = "No Occupant Gender found to retrieve!"
                     return res.status(200).send(response)
                 } else {
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = data
+                    response.message = "Male Occupants Counted Successfully!"
+                    return res.status(200).send(response)
+                }
+            })
+    }
+}
+
+let retrievetotal = (req, res) => {
+    if (req.body.token != null) {
+        OccupantModel.Occupant.count()
+        .exec(
+            (err, data) => {
+                if (err || data == 0) {
+                    response.error = true
+                    response.success = false
+                    response.status = 404
+                    response.data = err
+                    response.message = "No Occupant Gender found to retrieve!"
+                    return res.status(200).send(response)
+                } else {
                     console.log(data);
+
                     response.error = false
                     response.success = true
                     response.status = 200
@@ -171,4 +195,6 @@ let retrieveMaleOcc = (req, res) => {
 }
 
 
-module.exports = { retrieveAllOccupants, retrieveOneOccupant, retrieveOccbyId, retrieveFemaleOcc, retrieveMaleOcc }
+
+
+module.exports = { retrieveAllOccupants, retrieveOneOccupant, retrieveOccbyId, retrieveFemaleOcc, retrieveMaleOcc, retrievetotal }

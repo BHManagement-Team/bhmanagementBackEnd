@@ -87,6 +87,9 @@ routes.route('/deleteOneOccupant').post((req, res) => {
 routes.route('/deleteOccupantByID/:id').post((req, res) => {
     mainController.occDeleteByID(req, res);
 })
+routes.route('/totalOcc').post((req, res) => {
+    mainController.totalOcc(req, res);
+})
 
 
 //Routes for Rooms
@@ -131,6 +134,9 @@ routes.route('/payment/:id').post((req, res) => {
     mainController.payment_create(req, res);
 })
 
+routes.route('/paymentAmounts').post((req, res) => {
+    mainController.payment_amount(req, res);
+})
 routes.route('/retrieveAllPayments').post((req, res) => {
     mainController.payment_retrieve(req, res);
 })
