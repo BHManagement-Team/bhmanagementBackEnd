@@ -18,6 +18,10 @@ var roomSchema = new Schema({
     room_price: {
         type: Number,
         required: true
+    },
+    room_status: {
+        type: Boolean,
+        required: true,
     }
 }, {
     collection: "roomDetails"

@@ -19,6 +19,10 @@ var occupantSchema = new Schema({
         type: String,
         required: true
     },
+    occupant_status: {
+        type: Boolean,
+        required: true,
+    },
     date_started: {
         type: String,
         required: true
