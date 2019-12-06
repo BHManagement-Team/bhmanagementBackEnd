@@ -1,6 +1,47 @@
 const RoomModel = require('../../../model/roomDetails');
 let response = {}
 
+//retrieveActiveRooms
+//retrieveAllRooms
+let retrieveAllActiveRooms = (req, res) => {
+    if (req.body.token != null) {
+        //data from frontend
+        // { "token": "xxx" }
+        RoomModel.Room.find({}, (err, room) => {
+            if (err || !room.length) {
+                response.error = false
+                response.status = 404
+                response.success = true
+                response.data = null
+                response.message = "No Room found!"
+                return res.status(200).send(response)
+            } else {       
+                let active_rooms = []         
+                room.forEach(element => {
+                    if(element.room_status == true){
+                        active_rooms.push(element)
+                    }
+                });
+                response.error = false
+                response.success = true
+                response.status = 200
+                response.data = active_rooms
+                response.message = "Retrieve All Active Room Successfully!"
+                return res.status(200).send(response);
+            }
+        })
+    } else {
+        response.error = true
+        response.auth = false
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable!"
+        return res.status(200).send(response);
+    }
+}
+//end
+
+
 //retrieveAllRooms
 let retrieveAllRooms = (req, res) => {
     if (req.body.token != null) {
@@ -11,7 +52,7 @@ let retrieveAllRooms = (req, res) => {
                 response.error = false
                 response.status = 404
                 response.success = true
-                response.data = err
+                response.data = null
                 response.message = "No Room found!"
                 return res.status(200).send(response)
             } else {
@@ -23,14 +64,6 @@ let retrieveAllRooms = (req, res) => {
                 return res.status(200).send(response);
             }
         })
-            .catch(err => {
-                response.error = true
-                response.success = false
-                response.status = 503
-                response.data = err
-                response.message = "Service Unavailable!"
-                return res.status(200).send(response);
-            });
     } else {
         response.error = true
         response.auth = false
@@ -68,14 +101,6 @@ let retrieveOneRoom = (req, res) => {
                 return res.status(200).send(response)
             }
         })
-            .catch(err => {
-                response.error = true
-                response.success = false
-                response.status = 503
-                response.data = err
-                response.message = "Service Unavailable!"
-                return res.status(200).send(response)
-            })
     } else {
         response.error = true
         response.auth = false
@@ -111,14 +136,6 @@ let retrieveRoombyId = (req, res) => {
                 return res.status(200).send(response)
             }
         })
-            .catch(err => {
-                response.error = true
-                response.success = false
-                response.status = 503
-                response.data = err
-                response.message = "Service Unavailable!"
-                res.send(response)
-            })
     } else {
         response.error = true
         response.auth = false
@@ -132,5 +149,6 @@ let retrieveRoombyId = (req, res) => {
 module.exports = {
     retrieveAllRooms,
     retrieveOneRoom,
-    retrieveRoombyId
+    retrieveRoombyId,
+    retrieveAllActiveRooms
 }
