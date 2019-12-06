@@ -3,25 +3,29 @@ const RoomModel = require('../../../model/roomDetails');
 let response = {}
 
 let createRoom = (req, res) => {
+    // console.log(req.body);
     ////data from front end
     // {
-    //     "token": "xxx",
-    //     "room_floor": "1",
-    //     "room_name": "goody",
-    //     "room_capacity": 3,
-    //     "room_price": 100
+    //     "token":"xxx",
+    //     "room_name":"baddy",
+    //     "room_floor":"1",
+    //     "room_capacity":3,
+    //     "room_price":100,
+    //     "room_status":true
     // }
     if (req.body.token != null) {
         let room_name = req.body.room_name;
         let room_floor = req.body.room_floor;
         let room_capacity = req.body.room_capacity;
         let room_price = req.body.room_price;
+        let room_status = req.body.room_status;
 
         let Room = new RoomModel.Room({
             room_name: room_name,
             room_floor: room_floor,
             room_capacity: room_capacity,
-            room_price: room_price
+            room_price: room_price,
+            room_status: room_status
         })
         Room.save()
             .then(

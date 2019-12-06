@@ -84,41 +84,41 @@ routes.route('/deleteOccupantByID/:id').post((req, res) => {
 
 
 //Routes for Rooms
-routes.route('/createRoom').post((req, res) => {
-    mainController.roomCreate(req, res);
-})
+// routes.route('/createRoom').post((req, res) => {
+//     mainController.roomCreate(req, res);
+// })
 
-routes.route('/retrieveAllRooms').post((req, res) => { // all rooms retrieve
-    mainController.roomRetrieveAll(req, res);
-})
+// routes.route('/retrieveAllRooms').post((req, res) => { // all rooms retrieve
+//     mainController.roomRetrieveAll(req, res);
+// })
 
-routes.route('/retrieveOneRoom').post((req, res) => { // one room retrieve
-    mainController.roomRetrieveOne(req, res);
-})
+// routes.route('/retrieveOneRoom').post((req, res) => { // one room retrieve
+//     mainController.roomRetrieveOne(req, res);
+// })
 
-routes.route('/retrieveRoomByID/:id').post((req, res) => {
-    mainController.roomRetrievebyId(req, res);
-})
+// routes.route('/retrieveRoomByID/:id').post((req, res) => {
+//     mainController.roomRetrievebyId(req, res);
+// })
 
-routes.route('/updateRoom').post((req, res) => { // update room
-    mainController.roomUpdate(req, res);
-})
+// routes.route('/updateRoom').post((req, res) => { // update room
+//     mainController.roomUpdate(req, res);
+// })
 
-routes.route('/updateRoom/:id').post((req, res) => {
-    mainController.roomUpdateById(req, res);
-})
+// routes.route('/updateRoom/:id').post((req, res) => {
+//     mainController.roomUpdateById(req, res);
+// })
 
-routes.route('/deleteAllRooms').post((req, res) => {
-    mainController.roomDeleteAll(req, res);
-})
+// routes.route('/deleteAllRooms').post((req, res) => {
+//     mainController.roomDeleteAll(req, res);
+// })
 
-routes.route('/deleteOneRoom').post((req, res) => { //delete room
-    mainController.roomDeleteOne(req, res);
-})
+// routes.route('/deleteOneRoom').post((req, res) => { //delete room
+//     mainController.roomDeleteOne(req, res);
+// })
 
-routes.route('/deleteRoomByID/:id').post((req, res) => {
-    mainController.roomDeleteByID(req, res);
-})
+// routes.route('/deleteRoomByID/:id').post((req, res) => {
+//     mainController.roomDeleteByID(req, res);
+// })
 
 //Payment Routes
 routes.route('/payment').post((req, res) => {
