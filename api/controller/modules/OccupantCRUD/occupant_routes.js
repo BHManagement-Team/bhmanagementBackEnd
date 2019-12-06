@@ -19,7 +19,7 @@ occupante_routes.route('/retrieveAllOccupants').post((req, res) => {
 })
 
 occupante_routes.route('/retrieveOneOccupant').post((req, res) => {
-    modules.retrieve.retrieveOneOccupant(req, res)
+    modules.retrieve.retrieveOneOccupant(req, res) //retrieve by req.body
 })
 
 module.exports = { occupante_routes }

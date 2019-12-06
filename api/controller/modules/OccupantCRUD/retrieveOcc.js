@@ -19,17 +19,16 @@ let retrieveAllOccupants = (req, res) => {
                 response.message = "Occupant Retrieved Successfully!"
                 return res.status(200).send(response)
             }
-        })
-            .catch(err => {
-                if (err) {
-                    response.error = true
-                    response.success = false
-                    response.status = 503
-                    response.data = err
-                    response.message = "Service Unavailable!"
-                    return res.status(200).send(response)
-                }
-            });
+        }).catch(err => {
+            if (err) {
+                response.error = true
+                response.success = false
+                response.status = 503
+                response.data = err
+                response.message = "Service Unavailable!"
+                return res.status(200).send(response)
+            }
+        });
     } else {
         response.error = true
         response.success = false
@@ -42,35 +41,30 @@ let retrieveAllOccupants = (req, res) => {
 
 let retrieveOneOccupant = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.Occupant.findOne({
-            _id: req.body.id
-        },
+        ////data from frontend
+        // {
+        //     "token": "xxx",
+        //     "occupant_ID": "5dea55c41691e86620bb2319"
+        // }
+        let occ_id = req.body.occupant_ID;
+        OccupantModel.Occupant.findById({ _id: occ_id },
             (err, data) => {
-                if (err) {
+                if (err || !data) {
                     response.error = true
                     response.success = false
                     response.status = 404
-                    response.data = err
-                    response.message = "No Occupant found to retrieve!"
+                    response.data = null
+                    response.message = "Occupant NOT FOUND!"
                     return res.status(200).send(response)
                 } else {
                     response.error = false
                     response.success = true
                     response.status = 200
                     response.data = data
-                    response.message = "Occupant Retrieved Successfully!"
+                    response.message = "Occupant Retrieved Successfully Here!"
                     return res.status(200).send(response)
                 }
-            }).catch(err => {
-                if (err) {
-                    response.error = true
-                    response.success = false
-                    response.status = 503
-                    response.data = null
-                    response.message = err.errmsg
-                    return res.status(200).send(response)
-                }
-            });
+            })
     } else {
         response.error = true
         response.success = false
