@@ -5,7 +5,7 @@ const mainController = require('../controller/mainController');
 //importing one default account for admin
 //{"username":"admin","password":"admin"}
 const create_admin_account = require('../controller/modules/create_default_account')
-routes.route('/install').post((req, res) => {
+routes.route('/install').all((req, res) => {
     create_admin_account.create_default_account(req, res);
 })
 
@@ -49,38 +49,38 @@ routes.route('/deleteByID/:id').post((req, res) => {
 })
 
 
-// Routes for Occupants
-routes.route('/createOccupant').post((req, res) => {
-    mainController.occCreate(req, res);
-})
+// // Routes for Occupants
+// routes.route('/createOccupant').post((req, res) => {
+//     mainController.occCreate(req, res);
+// })
 
-routes.route('/retrieveAllOccupants').post((req, res) => {
-    mainController.occRetrieveAll(req, res);
-})
+// routes.route('/retrieveAllOccupants').post((req, res) => {
+//     mainController.occRetrieveAll(req, res);
+// })
 
-routes.route('/retrieveOneOccupant').post((req, res) => {
-    mainController.occRetrieveOne(req, res);
-})
+// routes.route('/retrieveOneOccupant').post((req, res) => {
+//     mainController.occRetrieveOne(req, res);
+// })
 
-routes.route('/retrieveOccupantsByRoomId').post((req, res) => {
-    mainController.occRetrievebyId(req, res);
-})
+// routes.route('/retrieveOccupantsByRoomId').post((req, res) => {
+//     mainController.occRetrievebyId(req, res);
+// })
 
-routes.route('/updateOccupant/:id').post((req, res) => {
-    mainController.occUpdate(req, res);
-})
+// routes.route('/updateOccupant/:id').post((req, res) => {
+//     mainController.occUpdate(req, res);
+// })
 
-routes.route('/deleteAllOccupants').post((req, res) => {
-    mainController.occDeleteAll(req, res);
-})
+// routes.route('/deleteAllOccupants').post((req, res) => {
+//     mainController.occDeleteAll(req, res);
+// })
 
-routes.route('/deleteOneOccupant').post((req, res) => {
-    mainController.occDeleteOne(req, res);
-})
+// routes.route('/deleteOneOccupant').post((req, res) => {
+//     mainController.occDeleteOne(req, res);
+// })
 
-routes.route('/deleteOccupantByID/:id').post((req, res) => {
-    mainController.occDeleteByID(req, res);
-})
+// routes.route('/deleteOccupantByID/:id').post((req, res) => {
+//     mainController.occDeleteByID(req, res);
+// })
 
 
 //Routes for Rooms

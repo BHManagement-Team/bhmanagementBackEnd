@@ -27,6 +27,8 @@ app.use("/bhm", router);
 const room = require('./controller/modules/RoomCRUD/room_routes');
 app.use("/bhm", room.room_routes) //room_routes
 
+const occupant = require('./controller/modules/OccupantCRUD/occupant_routes');
+app.use("/bhm", occupant.occupante_routes) //occupante_routes
 
 app.all("*", () => {
     console.log("<404> API NOT EXIST!");

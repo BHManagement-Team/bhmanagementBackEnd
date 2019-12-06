@@ -18,7 +18,7 @@ let createRoom = (req, res) => {
         let room_floor = req.body.room_floor;
         let room_capacity = req.body.room_capacity;
         let room_price = req.body.room_price;
-        let room_status = req.body.room_status;
+        let room_status = req.body.room_status || true;
 
         let Room = new RoomModel.Room({
             room_name: room_name,
