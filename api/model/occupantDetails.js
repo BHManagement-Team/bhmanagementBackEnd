@@ -19,19 +19,20 @@ var occupantSchema = new Schema({
         type: String,
         required: true
     },
-    occupant_status: {
-        type: Boolean,
-        required: true,
-    },
+    // occupant_status: {
+    //     type: Boolean,
+    //     required: true,
+    // },
     date_started: {
         type: String,
         required: true
+    },
+    date_removed: {
+        type: String
     }
 }, {
     collection: "occupantDetails"
 })
 var Occupant = mongoose.model('occupantDetails', occupantSchema)
 
-module.exports = {
-    Occupant
-}
+module.exports = { Occupant }

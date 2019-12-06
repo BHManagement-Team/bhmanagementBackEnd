@@ -16,10 +16,7 @@ var paymentSchema = new Schema({
     updated_At: {
         type: String,
     }
-
 })
 var Payment = mongoose.model('paymentDetails', paymentSchema)
 
-module.exports = {
-    Payment
-}
+module.exports = { Payment }
