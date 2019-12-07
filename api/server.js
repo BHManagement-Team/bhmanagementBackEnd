@@ -31,7 +31,7 @@ const occupant = require('./controller/modules/OccupantCRUD/occupant_routes');
 app.use("/bhm", occupant.occupante_routes) //occupante_routes
 
 const account = require('./controller/modules/AccountCRUD/account_routes');
-app.use("/bhm", account.account_routes) //occupante_routes
+app.use("/bhm", account.account_routes) //account_routes
 
 
 app.all("*", (req,res) => {
