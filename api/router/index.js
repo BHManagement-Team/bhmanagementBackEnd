@@ -2,12 +2,12 @@ const express = require("express");
 const routes = express.Router();
 const mainController = require('../controller/mainController');
 
-//importing one default account for admin
-//{"username":"admin","password":"admin"}
-const create_admin_account = require('../controller/modules/create_default_account')
-routes.route('/install').all((req, res) => {
-    create_admin_account.create_default_account(req, res);
-})
+// //importing one default account for admin
+// //{"username":"admin","password":"admin"}
+// const create_admin_account = require('../controller/modules/create_default_account')
+// routes.route('/install').all((req, res) => {
+//     create_admin_account.create_default_account(req, res);
+// })
 
 //billing cycle
 const billing = require('../controller/modules/billing')
@@ -16,37 +16,37 @@ routes.route('/billing').post((req, res) => {
 });
 
 //Routes for Accounts
-routes.route('/login').post((req, res) => {
-    mainController.login(req, res);
-})
-routes.route('/createAccount').post((req, res) => {
-    mainController.create(req, res);
-})
-routes.route('/retrieveAll').post((req, res) => {
-    mainController.retrieveAll(req, res);
-})
-routes.route('/retrieveOne').post((req, res) => {
-    mainController.retrieveOne(req, res);
-})
-routes.route('/retrievebyId/:id').post((req, res) => {
-    mainController.retrievebyId(req, res);
-})
+// routes.route('/login').post((req, res) => {
+//     mainController.login(req, res);
+// })
+// routes.route('/createAccount').post((req, res) => {
+//     mainController.create(req, res);
+// })
+// routes.route('/retrieveAll').post((req, res) => {
+//     mainController.retrieveAll(req, res);
+// })
+// routes.route('/retrieveOne').post((req, res) => {
+//     mainController.retrieveOne(req, res);
+// })
+// routes.route('/retrievebyId/:id').post((req, res) => {
+//     mainController.retrievebyId(req, res);
+// })
 
-routes.route('/update').post((req, res) => {
-    mainController.update(req, res);
-})
+// routes.route('/update').post((req, res) => {
+//     mainController.update(req, res);
+// })
 
-routes.route('/deleteAll').post((req, res) => {
-    mainController.deleteAll(req, res);
-})
+// routes.route('/deleteAll').post((req, res) => {
+//     mainController.deleteAll(req, res);
+// })
 
-routes.route('/deleteOne').post((req, res) => {
-    mainController.deleteOne(req, res);
-})
+// routes.route('/deleteOne').post((req, res) => {
+//     mainController.deleteOne(req, res);
+// })
 
-routes.route('/deleteByID/:id').post((req, res) => {
-    mainController.deleteByID(req, res);
-})
+// routes.route('/deleteByID/:id').post((req, res) => {
+//     mainController.deleteByID(req, res);
+// })
 
 
 // // Routes for Occupants
