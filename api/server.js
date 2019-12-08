@@ -20,7 +20,7 @@ app.use(bodyParser.json({
 }));
 
 //old_routes
-const router = require('./router') 
+const router = require('./router')
 app.use("/bhm", router);
 
 //new_routes
@@ -31,12 +31,14 @@ const occupant = require('./controller/modules/OccupantCRUD/occupant_routes');
 app.use("/bhm", occupant.occupante_routes) //occupante_routes
 
 const account = require('./controller/modules/AccountCRUD/account_routes');
-app.use("/bhm", account.account_routes) //occupante_routes
+app.use("/bhm", account.account_routes) //account_routes
 
 
-app.all("*", (req,res) => {
+app.all("*", (req, res) => {
     console.log("<404> API NOT EXIST!");
-    return res.status(200).send({message:"<404> API NOT EXIST!"})
+    return res.status(200).send({
+        message: "<404> API NOT EXIST!"
+    })
 })
 
 

@@ -47,7 +47,9 @@ let retrieveOneOccupant = (req, res) => {
         //     "occupant_ID": "5dea55c41691e86620bb2319"
         // }
         let occ_id = req.body.occupant_ID;
-        OccupantModel.Occupant.findById({ _id: occ_id },
+        OccupantModel.Occupant.findById({
+                _id: occ_id
+            },
             (err, data) => {
                 if (err || !data) {
                     response.error = true

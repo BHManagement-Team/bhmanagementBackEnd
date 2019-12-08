@@ -7,12 +7,16 @@ let createOcc = (req, res) => {
     // {
     //     "token": "xxx",
     //     "room_ID": "5de7cfe44f34c40f185ed08a",
+    //      "room_foor": "1",
+    //      "room_name": "1afloor",
     //     "occupant_name": "Mayyy",
     //     "occupant_email": "chan@gmail.com",
     //     "occupant_contact": "09505764777"
     // }
     if (req.body.token != null) {
-        let room_ID = req.body.room_ID
+        let room_ID = req.body.room_ID;
+        let room_floor = req.body.room_floor;
+        let room_name = req.body.room_name;
         let occupant_name = req.body.occupant_name;
         let occupant_email = req.body.occupant_email;
         let occupant_contact = req.body.occupant_contact;
@@ -20,6 +24,8 @@ let createOcc = (req, res) => {
 
         let Occupant = new OccupantModel.Occupant({
             room_ID: room_ID,
+            room_floor: room_floor,
+            room_name: room_name,
             occupant_name: occupant_name,
             occupant_email: occupant_email,
             occupant_contact: occupant_contact,

@@ -15,10 +15,10 @@ let retrieveAllActiveRooms = (req, res) => {
                 response.data = null
                 response.message = "No Room found!"
                 return res.status(200).send(response)
-            } else {       
-                let active_rooms = []         
+            } else {
+                let active_rooms = []
                 room.forEach(element => {
-                    if(element.room_status == true){
+                    if (element.room_status == true) {
                         active_rooms.push(element)
                     }
                 });
@@ -56,6 +56,7 @@ let retrieveAllRooms = (req, res) => {
                 response.message = "No Room found!"
                 return res.status(200).send(response)
             } else {
+
                 response.error = false
                 response.success = true
                 response.status = 200
