@@ -1,5 +1,19 @@
 const RoomModel = require('../../../model/roomDetails');
+const OccupantModel = require('../../../model/occupantDetails');
 let response = {}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //retrieveActiveRooms
 //retrieveAllRooms
@@ -56,7 +70,6 @@ let retrieveAllRooms = (req, res) => {
                 response.message = "No Room found!"
                 return res.status(200).send(response)
             } else {
-
                 response.error = false
                 response.success = true
                 response.status = 200
@@ -147,9 +160,60 @@ let retrieveRoombyId = (req, res) => {
     }
 }
 //end
+
+
+
+//retrieve ROOM occupants
+let retrieveRoomOccupants = (req, res) => {
+    // {
+    //     "token": "xxx",
+    //     "room_ID": "5de7cfa0c0343214c8692f91"
+    // }
+    if (req.body.token != null) {
+        let room_ID = req.body.room_ID
+        OccupantModel.Occupant.find({})
+            .populate('room_ID')
+            .exec((err, data) => {
+                if (!data.length || err) {
+                    response.error = true
+                    response.success = false
+                    response.status = 404
+                    response.data = err
+                    response.message = "No Occupant found to retrieve!"
+                    return res.status(200).send(response)
+                } else {
+                    console.log("good")
+                    var counter = 0;
+                    data.forEach(element => {
+                        if (element.room_ID._id == room_ID) {
+                            counter++
+                        }
+                    })
+                    console.log(counter);
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.auth = true
+                    response.data = counter
+                    response.message = "Number of Occupant/s in Room Retrieved Successfully!"
+                    return res.status(200).send(response)
+                }
+            })
+    } else {
+        response.error = true
+        response.success = false
+        response.status = 503
+        response.auth = false
+        response.message = "Service Unavailable!"
+        return res.status(200).send(response)
+    }
+}
+
+
 module.exports = {
     retrieveAllRooms,
     retrieveOneRoom,
     retrieveRoombyId,
-    retrieveAllActiveRooms
+    retrieveAllActiveRooms,
+    retrieveRoomOccupants
 }

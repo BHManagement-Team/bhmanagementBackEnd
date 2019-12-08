@@ -96,17 +96,16 @@ let retrieveRoomOccbyId = (req, res) => {
                     response.message = "No Occupant found to retrieve!"
                     return res.status(200).send(response)
                 } else {
-                    console.log("good");
-
-
-                    var room_occupants = []
+                    var counter = 0;
                     data.forEach(element => {
-                        console.log(element.room_ID);
-
-                        // if (element.room_ID._id == room_ID) {
-                        //     room_occupants.push(element)
-                        // }
+                        if (element.room_ID._id == room_ID) {
+                            room_occupants.push(element)
+                            counter++
+                        }
                     })
+                    console.log(counter);
+
+
                     response.error = false
                     response.success = true
                     response.status = 200

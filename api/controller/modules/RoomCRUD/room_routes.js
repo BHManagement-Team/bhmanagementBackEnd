@@ -38,6 +38,11 @@ room_routes.route('/retrieveOneRoom').post((req, res) => {
     modules.retrieve.retrieveOneRoom(req, res) //room_Id in req.body
 })
 
+room_routes.route('/retrieveRoomOccupants').post((req, res) => {
+    // {"token":"xxx",
+    //  "room_ID": "5dea2bb6f02fd71220674a4b"}
+    modules.retrieve.retrieveRoomOccupants(req, res) //room_Id in req.body
+})
 room_routes.route('/retrieveRoomByID/:id').post((req, res) => {
     //{"token":"xxx"}
     //req.params.id
@@ -77,4 +82,6 @@ room_routes.route('/deleteRoomByID/:id').post((req, res) => {
     //req.params.id
     modules.delete.removeRoomById(req, res) //room_Id in req.params #just update room status to false
 })
-module.exports = { room_routes }
+module.exports = {
+    room_routes
+}

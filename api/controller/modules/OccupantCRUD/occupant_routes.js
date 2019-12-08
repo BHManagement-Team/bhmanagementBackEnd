@@ -22,4 +22,11 @@ occupante_routes.route('/retrieveOneOccupant').post((req, res) => {
     modules.retrieve.retrieveOneOccupant(req, res) //retrieve by req.body
 })
 
-module.exports = { occupante_routes }
+occupante_routes.route('/retrieveRoomOcc').post((req, res) => {
+    modules.retrieve.retrieveRoomOccbyId(req, res) //retrieve by room occ by id
+})
+
+
+module.exports = {
+    occupante_routes
+}
