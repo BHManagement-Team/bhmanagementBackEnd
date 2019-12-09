@@ -80,7 +80,7 @@ room_routes.route('/updateRoom').post((req, res) => {
 room_routes.route('/deleteRoomByID/:id').post((req, res) => {
     // {"token":"xxx"}
     //req.params.id
-    modules.delete.removeRoomById(req, res) //room_Id in req.params #just update room status to false
+    modules.delete.deleteRoomByID(req, res) //room_Id in req.params #just update room status to false
 })
 module.exports = {
     room_routes
