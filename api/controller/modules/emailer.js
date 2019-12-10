@@ -10,7 +10,8 @@ let emailer = (receiver_email, amount_to_pay) => {
         ""
     );
     const msg = {
-        to: "chillajean.cabungcag@student.passerellesnumeriuqes.org",
+        // to: "chillajean.cabungcag@student.passerellesnumeriuqes.org",
+        to: receiver_email,
         from: "BHM@protonmail.com",
         cc: "chillajean.cabungcag@student.passerellesnumeriques.org",
         // bcc:   'christian.gigante@student.passerellesnumeriques.org',
