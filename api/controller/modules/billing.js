@@ -23,7 +23,9 @@ let billing_cycle = (cron_date) => {
                     response.status = 404
                     response.data = err
                     response.message = "No payment found to retrieve!"
-                    return res.status(200).send(response)
+                    // return res.status(200).send(response)
+                    console.log(response);
+                    
                 } else {
                     data.forEach(element => {
                         let amount = element.room_ID.room_price
@@ -36,6 +38,13 @@ let billing_cycle = (cron_date) => {
                             }
                         }
                     });
+                    response.error = false
+                    response.success = true
+                    response.status = 200
+                    response.data = data
+                    response.message = "Successful Running of Billing Script!"
+                    console.log(response);
+                    
 
                 }
             })
