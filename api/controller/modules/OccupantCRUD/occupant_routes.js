@@ -38,7 +38,7 @@ occupante_routes.route('/deleteOneOccupant').post((req, res) => {
     modules.delete.deleteOneOccupant(req, res) //retrieve by room occ by id
 })
 occupante_routes.route('/deleteOccupantByID/:id').post((req, res) => {
-    modules.delete.deleteOccupantByID(req, res) //retrieve by room occ by id
+    modules.delete.removeOneOccupantById(req, res) //retrieve by room occ by id
 })
 module.exports = {
     occupante_routes

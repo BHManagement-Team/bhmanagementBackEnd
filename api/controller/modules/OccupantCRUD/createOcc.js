@@ -29,7 +29,8 @@ let createOcc = (req, res) => {
             occupant_name: occupant_name,
             occupant_email: occupant_email,
             occupant_contact: occupant_contact,
-            date_started: date_started
+            date_started: date_started,
+            date_removed: null
         })
         Occupant.save()
             .then(

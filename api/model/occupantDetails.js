@@ -6,6 +6,14 @@ var occupantSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'roomDetails'
     },
+    room_floor: {
+        type: String,
+        required: true
+    },
+    room_name: {
+        type: String,
+        required: true
+    },
     occupant_name: {
         type: String,
         required: true,
@@ -35,4 +43,6 @@ var occupantSchema = new Schema({
 })
 var Occupant = mongoose.model('occupantDetails', occupantSchema)
 
-module.exports = { Occupant }
+module.exports = {
+    Occupant
+}

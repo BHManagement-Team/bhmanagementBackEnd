@@ -3,7 +3,11 @@ let response = {}
 
 let retrieveAllOccupants = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.Occupant.find({})
+        OccupantModel.Occupant.find({
+                date_removed: {
+                    $eq: null
+                }
+            })
             .populate("room_ID")
             .exec(
                 (err, data) => {
