@@ -26,7 +26,20 @@ occupante_routes.route('/retrieveRoomOcc').post((req, res) => {
     modules.retrieve.retrieveRoomOccbyId(req, res) //retrieve by room occ by id
 })
 
+occupante_routes.route('/updateOccupant/:id').post((req, res) => {
+    modules.update.updateOccupant(req, res) //retrieve by room occ by id
+})
 
+occupante_routes.route('/deleteAllOccupants').post((req, res) => {
+    modules.delete.deleteAllOccupants(req, res) //retrieve by room occ by id
+})
+
+occupante_routes.route('/deleteOneOccupant').post((req, res) => {
+    modules.delete.deleteOneOccupant(req, res) //retrieve by room occ by id
+})
+occupante_routes.route('/deleteOccupantByID/:id').post((req, res) => {
+    modules.delete.deleteOccupantByID(req, res) //retrieve by room occ by id
+})
 module.exports = {
     occupante_routes
 }

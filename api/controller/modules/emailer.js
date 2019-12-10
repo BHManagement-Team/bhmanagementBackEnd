@@ -1,4 +1,3 @@
-
 //IMPORTANT NOTE!!!
 //REMOVE API KEY BEFORE PUSHING TO GITHUB
 const fs = require('fs');
@@ -7,11 +6,11 @@ template = template.toString();
 
 let emailer = (receiver_email, amount_to_pay) => {
     const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey(""); 
+    sgMail.setApiKey("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");
     const msg = {
-        to:receiver_email,
+        to: receiver_email,
         from: 'BHM@protonmail.com',
-        cc:   'christian.gigante@student.passerellesnumeriuqes.org',
+        cc: 'christian.gigante@student.passerellesnumeriuqes.org',
         // bcc:   'christian.gigante@student.passerellesnumeriuqes.org',
         subject: 'Boarding House Billing Notification',
         text: 'It is all ready your billing date. The management is waiting for the amount of ' + amount_to_pay,
@@ -21,9 +20,11 @@ let emailer = (receiver_email, amount_to_pay) => {
         console.log("Billing Notification Sent");
     } else {
         console.log("Billing Notification Error");
-        
+
     }
     sgMail.send(msg);
 }
 
-module.exports = { emailer }
+module.exports = {
+    emailer
+}

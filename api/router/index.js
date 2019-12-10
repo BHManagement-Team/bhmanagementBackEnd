@@ -120,36 +120,36 @@ routes.route('/billing').post((req, res) => {
 //     mainController.roomDeleteByID(req, res);
 // })
 
-//Payment Routes
-routes.route('/payment').post((req, res) => {
-    mainController.payment_create(req, res);
-})
+// //Payment Routes
+// routes.route('/payment').post((req, res) => {
+//     mainController.payment_create(req, res);
+// })
 
-routes.route('/retrieveAllPayments').post((req, res) => {
-    mainController.payment_retrieve(req, res);
-})
+// routes.route('/retrieveAllPayments').post((req, res) => {
+//     mainController.payment_retrieve(req, res);
+// })
 
-routes.route('/retrieveOnePayment').post((req, res) => {
-    mainController.payment_retrieve1(req, res);
-})
+// routes.route('/retrieveOnePayment').post((req, res) => {
+//     mainController.payment_retrieve1(req, res);
+// })
 
-routes.route('/retrievePaymentByID').post((req, res) => {
-    mainController.payment_retrievebyID(req, res);
-})
+// routes.route('/retrievePaymentByID').post((req, res) => {
+//     mainController.payment_retrievebyID(req, res);
+// })
 
-routes.route('/updatePayment').post((req, res) => {
-    mainController.payment_update(req, res);
-})
+// routes.route('/updatePayment').post((req, res) => {
+//     mainController.payment_update(req, res);
+// })
 
-routes.route('/deleteAllPayments').post((req, res) => {
-    mainController.payment_DeleteAll(req, res);
-})
+// routes.route('/deleteAllPayments').post((req, res) => {
+//     mainController.payment_DeleteAll(req, res);
+// })
 
-routes.route('/deleteOnePayment').post((req, res) => {
-    mainController.payment_DeleteOne(req, res);
-})
+// routes.route('/deleteOnePayment').post((req, res) => {
+//     mainController.payment_DeleteOne(req, res);
+// })
 
-routes.route('/deletePaymentByID/:id').post((req, res) => {
-    mainController.payment_DeleteByID(req, res);
-})
+// routes.route('/deletePaymentByID/:id').post((req, res) => {
+//     mainController.payment_DeleteByID(req, res);
+// })
 module.exports = routes

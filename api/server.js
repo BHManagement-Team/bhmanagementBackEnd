@@ -33,13 +33,15 @@ app.use("/bhm", occupant.occupante_routes) //occupante_routes
 const account = require('./controller/modules/AccountCRUD/account_routes');
 app.use("/bhm", account.account_routes) //account_routes
 
+const payments = require('./controller/modules/PaymentCRUD/payment_routes');
+app.use("/bhm", payments.pay_routes) //account_routes
 
-app.all("*", (req, res) => {
-    console.log("<404> API NOT EXIST!");
-    return res.status(200).send({
-        message: "<404> API NOT EXIST!"
-    })
-})
+// app.all("*", (req, res) => {
+//     console.log("<404> API NOT EXIST!");
+//     return res.status(200).send({
+//         message: "<404> API NOT EXIST!"
+//     })
+// })
 
 
 //importing the cronJob
