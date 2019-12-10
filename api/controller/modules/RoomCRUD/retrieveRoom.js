@@ -172,9 +172,9 @@ let retrieveRoomOccupants = (req, res) => {
     if (req.body.token != null) {
         let room_ID = req.body.room_ID
         OccupantModel.Occupant.find({
-                // date_removed: {
-                //     $eq: null
-                // }
+                date_removed: {
+                    $eq: null
+                }
             })
             .populate('room_ID')
             .exec((err, data) => {

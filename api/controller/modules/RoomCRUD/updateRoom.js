@@ -25,9 +25,12 @@ let updateRoom = (req, res) => {
             room_price: req.body.room_price,
             room_status: req.body.room_status
         }
-        RoomModel.Room.findByIdAndUpdate({ _id: room_ID },
-            room_update,
-            { new: true },
+        RoomModel.Room.findByIdAndUpdate({
+                _id: room_ID
+            },
+            room_update, {
+                new: true
+            },
             (err, room) => {
                 if (err) {
                     response.error = true
@@ -70,9 +73,12 @@ let updateRoomById = (req, res) => {
     //     "room_status":false
     // }
     if (req.body.token != null) {
-        RoomModel.Room.findByIdAndUpdate({ _id: req.params.id },
-            req.body,
-            { new: true },
+        RoomModel.Room.findByIdAndUpdate({
+                _id: req.params.id
+            },
+            req.body, {
+                new: true
+            },
             (err, room) => {
                 if (err) {
                     response.error = true
@@ -100,4 +106,8 @@ let updateRoomById = (req, res) => {
     }
 }
 //end
-module.exports = { updateRoom, updateRoomById }
+
+module.exports = {
+    updateRoom,
+    updateRoomById
+}
