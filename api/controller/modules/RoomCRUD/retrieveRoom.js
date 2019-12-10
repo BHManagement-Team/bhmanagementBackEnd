@@ -2,19 +2,6 @@ const RoomModel = require('../../../model/roomDetails');
 const OccupantModel = require('../../../model/occupantDetails');
 let response = {}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //retrieveActiveRooms
 //retrieveAllRooms
 let retrieveAllActiveRooms = (req, res) => {
