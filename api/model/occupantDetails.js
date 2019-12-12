@@ -23,6 +23,10 @@ var occupantSchema = new Schema({
         type: String,
         required: true
     },
+    occupant_gender: {
+        type: String,
+        required:true
+    },
     occupant_email: {
         type: String,
         required: true
