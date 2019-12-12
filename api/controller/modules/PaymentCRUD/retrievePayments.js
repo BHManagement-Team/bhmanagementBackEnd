@@ -126,6 +126,12 @@ let retrieveAmounts = (req, res) => {
                     _id: null,
                     payments: { $sum: "$amount" }
                 }
+            },
+            {
+                $project:{
+                    _id:0,
+                    payments:1
+                }
             }
         ]).exec((err, data) => {
             if (err || !data.length) {

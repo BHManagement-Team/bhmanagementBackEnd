@@ -137,7 +137,7 @@ let retrieveRoomOccbyId = (req, res) => {
 
 let retrieveFemaleOcc = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.Occupant.count({ 'occupant_gender': 'female' },
+        OccupantModel.Occupant.count({ 'occupant_gender': 'female', 'date_removed':{$eq :null}},
             (err, data) => {
                 if (err || data == 0) {
                     response.error = true
@@ -162,7 +162,7 @@ let retrieveFemaleOcc = (req, res) => {
 
 let retrieveMaleOcc = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.Occupant.count({ 'occupant_gender': 'male' },
+        OccupantModel.Occupant.count({ 'occupant_gender': 'male', 'date_removed':{$eq :null} },
             (err, data) => {
                 if (err || data == 0) {
                     response.error = true
@@ -185,7 +185,7 @@ let retrieveMaleOcc = (req, res) => {
 
 let retrievetotal = (req, res) => {
     if (req.body.token != null) {
-        OccupantModel.Occupant.count()
+        OccupantModel.Occupant.count({'date_removed':{$eq :null}})
         .exec(
             (err, data) => {
                 if (err || data == 0) {
