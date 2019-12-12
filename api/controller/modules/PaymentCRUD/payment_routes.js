@@ -25,6 +25,10 @@ pay_routes.route('/retrievePaymentByID').post((req, res) => {
     modules.retrieve.retrievePaymentbyId(req, res)
 })
 
+pay_routes.route('/retrieveAmounts').post((req, res) => {
+    modules.retrieve.retrieveAmounts(req, res)
+})
+
 //update
 pay_routes.route('/updatePayment').post((req, res) => {
     modules.update.updatePayment(req, res)

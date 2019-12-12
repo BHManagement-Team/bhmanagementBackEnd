@@ -116,8 +116,47 @@ let retrievePaymentbyId = (req, res) => {
         return res.status(200).send(response)
     }
 }
+
+
+let retrieveAmounts = (req, res) => {
+    if (req.body.token != null) {
+        PaymentModel.Payment.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    payments: { $sum: "$amount" }
+                }
+            }
+        ]).exec((err, data) => {
+            if (err || !data.length) {
+                response.error = true
+                response.success = false
+                response.status = 404
+                response.data = err
+                response.message = "No payment found to retrieve!"
+                return res.status(200).send(response)
+            } else {
+                console.log(data);
+                response.error = false
+                response.success = true
+                response.status = 200
+                response.data = data
+                response.message = "Payment Retrieved Successfully!"
+                return res.status(200).send(response)
+            }
+        })
+    } else {
+        response.error = true
+        response.success = false
+        response.status = 503
+        response.message = "Service Unavailable!"
+        return res.status(200).send(response)
+    }
+}
+
 module.exports = {
     retrieveAllPayments,
     retrieveOnePayment,
-    retrievePaymentbyId
+    retrievePaymentbyId,
+    retrieveAmounts
 }
